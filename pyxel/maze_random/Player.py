@@ -14,7 +14,7 @@ ANIMA_WALK = [
     [(0,0),(16,0),(0,0),(32,0)],
     [(0,16),(16,16),(0,16),(32,16)],
     [(0,32),(16,32),(0,32),(32,32)],
-    [(0,48),(16,48),(0,48),(32,48)],
+    [(0,48),(16,48),(0,48),(32,48)]
     ]
 SPEED = 3
 
@@ -24,7 +24,7 @@ ANIMA_ATTACK = [
     [(48,0),(0,0)],
     [(48,16),(0,16)],
     [(48,32),(0,32)],
-    [(48,48),(0,48)],
+    [(48,48),(0,48)]
     ]
 
 TILE_WALL = (1,0)
@@ -39,7 +39,6 @@ def chkwall(cx,cy):
         if TILE_WALL == pyxel.tilemap(0).pget(xi,yi):
             c += 1
     return c
-
 
 class Player:
     ''' プレイヤーキャラクター '''
@@ -122,7 +121,6 @@ class Player:
             if 19 < self.flmcnt:
                 self.motion = MOT_WALK
                 self.flmcnt = 0
-        
         return
 
     def getImg(self):
@@ -135,7 +133,6 @@ class Player:
             u,v = ANIMA_GOAL[self.flmcnt//8 % 2]
         elif MOT_ATTACK == self.motion:
             u,v = ANIMA_ATTACK[self.dir][self.flmcnt//10 % 2]
-
         return u,v
 
     def test_attack(self,u,v):
@@ -156,7 +153,7 @@ class Player:
             
             pyxel.blt(x,y, 0, u+self.w,v, 16,16,2)
         return
-    
+
     def draw(self):
         u,v = self.getImg()
         if MOT_GOAL == self.motion:
@@ -174,6 +171,8 @@ class Player:
 if __name__ == '__main__':
     pyxel.init(128, 128)
     pyxel.load("alice.pyxres")
+    pyxel.tilemap(0).refimg = 1
+    pyxel.tilemap(0).pset(5,5,TILE_WALL)
     pl = Player(10,10)
 
     def update():
@@ -182,11 +181,12 @@ if __name__ == '__main__':
                 pl.goal()
             else:
                 pl.setpos(pl.x,pl.y)
-        
+
         pl.update()
 
     def draw():
         pyxel.cls(1)
+        pyxel.bltm(0,0, 0, 0,0, pyxel.width,pyxel.height, 0)
         pyxel.text(1,1,"Player Test",7)
         pl.draw()
 
