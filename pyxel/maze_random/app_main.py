@@ -1,7 +1,7 @@
 import pyxel
-import Player as pl
-import Stage as stg
-import Enemy as en
+import player as pl
+import stage as stg
+import enemy as en
 
 APP_WIDTH = 240
 APP_HEIGHT = 160
