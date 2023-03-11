@@ -66,10 +66,9 @@ class Stage:
         for yi in range(size+1):
             pyxel.tilemap(TM).pset(0,yi,TILE_WALL)
             pyxel.tilemap(TM).pset(size,yi,TILE_WALL)
-            for xi in range(size+1):
-                if 0 != yi and size != yi:
-                    continue
-                pyxel.tilemap(TM).pset(xi,yi,TILE_WALL)    
+            if 0 == yi or size == yi:
+                for xi in range(1,size):
+                    pyxel.tilemap(TM).pset(xi,yi,TILE_WALL)    
 
         # 壁の生成
         r_min = DIR_UP
@@ -179,10 +178,10 @@ class Stage:
 
 # テストコード
 if __name__ == '__main__':
-    pyxel.init(512, 512)
+    pyxel.init(488, 488, display_scale=1,capture_scale=1)
     pyxel.load("alice.pyxres")
     stg = Stage()
-    size = 252
+    size = 60
     stg.makemaze(size)
     x = y = 0
     def update():
