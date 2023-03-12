@@ -28,6 +28,7 @@ def isblank(xi,yi,direction):
         
     return ret
 
+
 class Stage:
     ''' 迷路表示 '''
 
@@ -113,6 +114,7 @@ class Stage:
                 self.gx = gxi * 8
                 self.gy = gyi * 8
                 break;
+
         rs = 1
         re = self.size // 2
         if self.gx < self.width / 2 :
@@ -133,6 +135,8 @@ class Stage:
                 self.sy = syi * 8
                 break;
 
+        return
+
     def chkgoal(self,x,y,limit=15):
         ''' ゴール到達判定 '''
         ret = False
@@ -142,7 +146,7 @@ class Stage:
         if dis <= limit :
             ret = True
         return ret
-        
+
     def update(self,x,y):
         ''' 画面のスクロール '''
 
@@ -163,6 +167,7 @@ class Stage:
             self.scroll_y = y - self.bottom_border
             if self.height - pyxel.height < self.scroll_y:
                 self.scroll_y = self.height - pyxel.height
+
         return
     
     def draw(self):
@@ -170,40 +175,46 @@ class Stage:
         pyxel.camera()
         pyxel.bltm(0,0, TM, self.scroll_x,self.scroll_y, pyxel.width,pyxel.height, 0)
         pyxel.camera(self.scroll_x,self.scroll_y)
-
         # ゴール表示
         pyxel.blt(self.gx,self.gy, 0, 0,112, 16,16, 0)
-        
+
         return
 
 # テストコード
 if __name__ == '__main__':
-    pyxel.init(488, 488, display_scale=1,capture_scale=1)
+    pyxel.init(240, 160, display_scale=3,capture_scale=3)
     pyxel.load("alice.pyxres")
     stg = Stage()
-    size = 60
-    stg.makemaze(size)
-    x = y = 0
+    size = 42
+    x = y = 8
+    
     def update():
         global x,y
-
         if pyxel.btnp(pyxel.KEY_SPACE):
             stg.makemaze(size)
-            
+            x = stg.sx
+            y = stg.sy
+
         if pyxel.btn(pyxel.KEY_UP):
-            y -= 80
+            y -= 4
         if pyxel.btn(pyxel.KEY_DOWN):
-            y += 80
+            y += 4
         if pyxel.btn(pyxel.KEY_LEFT):
-            x -= 80
+            x -= 4
         if pyxel.btn(pyxel.KEY_RIGHT):
-            x += 80
+            x += 4
         stg.update(x,y)
+
 
     def draw():
         stg.draw()
         pyxel.rect(stg.sx,stg.sy,16,16,8)
         pyxel.text(1,1,"Stage Test",7)
+        if stg.chkgoal(x,y) :
+            pyxel.text(x,y-10,"Goal",7)
+            pyxel.blt(x,y, 0, 0,80, 16,16,2)
+        else:
+            pyxel.blt(x,y, 0, 0,16, 16,16,2)
 
     pyxel.run(update,draw)
     
