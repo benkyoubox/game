@@ -12,15 +12,15 @@ DIR_DOWN = 1
 DIR_LEFT = 2
 DIR_RIGHT = 3
 
-def isblank(xi,yi,ck):
+def isblank(xi,yi,direction):
     ret = False
-    if DIR_UP == ck:
+    if DIR_UP == direction:
         yi-=1
-    elif DIR_DOWN == ck:
+    elif DIR_DOWN == direction:
         yi+=1
-    elif DIR_LEFT == ck:
+    elif DIR_LEFT == direction:
         xi-=1
-    elif DIR_RIGHT == ck:
+    elif DIR_RIGHT == direction:
         xi+=1
         
     if TILE_BLANK == pyxel.tilemap(TM).pget(xi,yi):
@@ -79,19 +79,19 @@ class Stage:
                 if pyxel.rndi(1,100) < 16:
                     continue
                 while True:
-                    wk = pyxel.rndi(r_min,DIR_RIGHT)
-                    if isblank(xi,yi,wk) :
+                    direction = pyxel.rndi(r_min,DIR_RIGHT)
+                    if isblank(xi,yi,direction) :
                         tmpx = xi
                         tmpy = yi
                         pyxel.tilemap(TM).pset(tmpx,tmpy,TILE_WALL)
                         for i in range(UNIT):
-                            if DIR_UP == wk:
+                            if DIR_UP == direction:
                                 tmpy -= 1
-                            elif DIR_DOWN == wk:
+                            elif DIR_DOWN == direction:
                                 tmpy += 1
-                            elif DIR_LEFT == wk:
+                            elif DIR_LEFT == direction:
                                 tmpx -= 1
-                            elif DIR_RIGHT == wk:
+                            elif DIR_RIGHT == direction:
                                 tmpx += 1
                             pyxel.tilemap(TM).pset(tmpx,tmpy,TILE_WALL)
                         break # while loop break
