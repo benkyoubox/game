@@ -42,16 +42,17 @@ class App:
                 x = self.stg.sx
                 y = self.stg.sy
                 self.player.setpos(x,y)
+                self.stg.update(x,y)
                 self.enemy.moverandom(x,y,size*8)
                 self.scene = SNO_PLAY
                 self.tmr = 0
             
         elif SNO_PLAY == self.scene:
-            self.enemy.update(self.player.x,self.player.y)
             self.player.update()
             x = self.player.x
             y = self.player.y
             self.stg.update(x,y)
+            self.enemy.update(x,y)
 
             if self.stg.chkgoal(x,y) :
                 self.player.goal()
@@ -94,19 +95,21 @@ class App:
         return
 
     def draw(self):
-        self.stg.draw()
-        self.player.draw()
-        self.enemy.draw()
-
+        pyxel.cls(0)
         if SNO_TITLE == self.scene:
+            pyxel.blt(20,0,2,0,0, 104,40, 0)
+            pyxel.blt(APP_WIDTH-116,APP_HEIGHT-80,2,0,48, 96,80, 0)
             if self.tmr%40 < 20:
                 self.ctext(0,0,"Press SPACE to Start.",7)
 
         elif SNO_STAGESET == self.scene:
             self.ctext(0,0,"Stage "+str(self.stage_no),7)
-        elif SNO_PLAY == self.scene:
-            pass
-        elif SNO_SFINISH == self.scene:
+        else:
+            self.stg.draw()
+            self.player.draw()
+            self.enemy.draw()
+
+        if SNO_SFINISH == self.scene:
             self.ctext(0,0,"Clear a stage.",7)
         elif SNO_GAMEOVER == self.scene:
             self.ctext(0,-20,"GAME OVER",7)
