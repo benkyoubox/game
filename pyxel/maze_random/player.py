@@ -28,9 +28,9 @@ ANIMA_ATTACK = [
     ]
 
 TILE_WALL = (1,0)
-chkpoint = [(0,5),(7,5),(15,5),
-            (0,7),      (15,7),
-            (0,15),(7,15),(15,15)]
+chkpoint = [(2,5),(7,5),(13,5),
+            (2,7),      (13,7),
+            (2,15),(7,15),(13,15)]
 def chkwall(cx,cy):
     c = 0
     for cpx,cpy in chkpoint:
