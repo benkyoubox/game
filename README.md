@@ -20,10 +20,12 @@ Python向けレトロゲームエンジン Pyxel を使用したゲーム作成�
 ### プログラムテンプレート
 | No. | リンク | 内容 |
 |:---:|:---:|:---|
-| 1 | [Appクラス](template/01_main.py) | Appクラスのコード |  
-| 2 | [スクリーンショット用](template/02_screenshot.py) | show()で1回だけ表示 |  
-| 3 | [GIFアニメーションファイル用](template/03_animation.py) | flip()で表示 |  
-| 4 | [テストプログラム用](template/04_simple.py) | クラスなし簡易版 |  
+| 1 | [Appクラスのひな形](template/01_main.py) | Appクラスのコード |  
+| 2 | [テストプログラム用](template/01a_simple.py) | クラスなし簡易版 |  
+| 3 | [スクリーンショット用](template/02_screenshot.py) | show()で1回だけ表示 |  
+| 4 | [イメージバンク画像出力](template/02_screenshot.py) | イメージバンクをPNGファイルで出力 |  
+| 5 | [GIFアニメーションファイル用](template/03_animation.py) | flip()で表示ループ |  
+
   
 ### コピペ用命令リスト
   
