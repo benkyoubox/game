@@ -42,9 +42,12 @@ class Enemy:
         return ret
     
     def update(self,px,py):
-        self.x = self.x + (px - self.x) / self.speed
-        self.y = self.y + (py - self.y) / self.speed
-        
+        spd = self.speed
+        if self.chkenemy(px,py,20):
+            spd = 20 # 至近距離での速さ調整
+
+        self.x = self.x + (px - self.x) / spd
+        self.y = self.y + (py - self.y) / spd
         return
     
     def draw(self):
