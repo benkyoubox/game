@@ -28,7 +28,96 @@ Python向けレトロゲームエンジン Pyxel を使用したゲーム作成�
 
   
 ### コピペ用命令リスト
-  
+#### コマンド
+| コマンド | 内容 |
+|:---|:---|
+| `pip install -U pyxel` | Windows Pyxelのインストール（アップデート） |
+| `pyxel copy_examples` | サンプルコードコピー |
+| `pyxel edit filename` | Pyxel Editor の起動 |
+| `pyxel package appdir srcname` | Pyxel アプリケーションファイル (.pyxapp) 作成 |
+| `pyxel app2html your_app.pyxapp` | Pyxel アプリを HTML ファイルに変換する |
+| `python -m http.server` | PythonのWebサーバー起動<br>http://localhost:8000/test.html のようにアクセス |
+
+#### コード部品
+マウス位置取得  
+``` python
+pyxel.mouse(True)
+```
+``` python
+x = pyxel.mouse_x
+y = pyxel.mouse_y
+```
+方向キー入力  
+``` python
+if pyxel.btn(pyxel.KEY_UP) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_UP):
+
+if pyxel.btn(pyxel.KEY_DOWN) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_DOWN):
+
+if pyxel.btn(pyxel.KEY_LEFT) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_LEFT):
+
+if pyxel.btn(pyxel.KEY_RIGHT) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_RIGHT):
+```
+スペースキー入力  
+``` python
+if pyxel.btnp(pyxel.KEY_SPACE) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A):
+```
+``` python
+if pyxel.btnp(pyxel.KEY_SPACE,15,15) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A,15,15):
+```
+イメージ表示  
+``` python
+pyxel.blt(self.x, self.y, 0, u,v, self.w, self.h, 0)
+```
+タイルマップ表示  
+``` python
+pyxel.camera()
+pyxel.bltm(0,0, 0, self.scroll_x,self.scroll_y, pyxel.width,pyxel.height, 0)
+pyxel.camera(self.scroll_x,self.scroll_y)
+```
+タイルマップ取得，設定  
+``` python
+tile = pyxel.tilemap(0).pget(xidx,yidx)
+pyxel.tilemap(0).pset(xidx,yidx, (1,0) )
+```
+乱数（整数）  
+``` python
+pyxel.rndi(1,100)
+```
+効果音再生  
+``` python
+pyxel.play(ch,sNo)
+```
+BGM再生・停止  
+``` python
+pyxel.playm(msc, loop=True)
+pyxel.stop(ch)
+```
+シーン番号  
+``` python
+SNO_TITLE    = 0
+SNO_STAGESET = 10
+SNO_PLAY     = 11
+SNO_SFINISH  = 12
+SNO_GAMEOVER = 13
+SNO_END      = 20
+```
+シーン分岐  
+``` python
+if SNO_TITLE == self.scene:
+    pass
+elif SNO_STAGESET == self.scene:
+    pass
+elif SNO_PLAY == self.scene:
+    pass
+elif SNO_SFINISH == self.scene:
+    pass
+elif SNO_GAMEOVER == self.scene:
+    pass
+elif SNO_END == self.scene:
+    pass
+else:
+    pass
+```
 
 
 
