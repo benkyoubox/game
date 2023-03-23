@@ -43,6 +43,10 @@ Pyxelのゲームの処理の流れは基本的に「初期化処理を最初に
 | `python -m http.server` | PythonのWebサーバー起動<br>http://localhost:8000/test.html のようにアクセス |
 
 #### コード部品
+乱数（整数）  
+``` python
+pyxel.rndi(1,100)
+```
 マウス位置取得  
 ``` python
 pyxel.mouse(True)
@@ -68,9 +72,12 @@ if pyxel.btnp(pyxel.KEY_SPACE) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A):
 ``` python
 if pyxel.btnp(pyxel.KEY_SPACE,15,15) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A,15,15):
 ```
-イメージ表示  
+タイルマップ取得，設定  
 ``` python
-pyxel.blt(self.x, self.y, 0, u,v, self.w, self.h, 0)
+xidx = 1 //8
+yidx = 1 //8
+tile = pyxel.tilemap(0).pget(xidx,yidx)
+pyxel.tilemap(0).pset(xidx,yidx, (1,0) )
 ```
 タイルマップ表示  
 ``` python
@@ -78,14 +85,9 @@ pyxel.camera()
 pyxel.bltm(0,0, 0, self.scroll_x,self.scroll_y, pyxel.width,pyxel.height, 0)
 pyxel.camera(self.scroll_x,self.scroll_y)
 ```
-タイルマップ取得，設定  
+イメージ表示  
 ``` python
-tile = pyxel.tilemap(0).pget(xidx,yidx)
-pyxel.tilemap(0).pset(xidx,yidx, (1,0) )
-```
-乱数（整数）  
-``` python
-pyxel.rndi(1,100)
+pyxel.blt(self.x, self.y, 0, u,v, self.w, self.h, 0)
 ```
 効果音再生  
 ``` python
