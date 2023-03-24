@@ -4,10 +4,10 @@
 バージョン：Pyxel 1.9版  
   
 ## contents
-・[システム](#システム), [リソース](#リソース), [入力](#入力)  
+・[システム](api_system.md#システム), [リソース](api_system.md#リソース), [入力](api_system.md#入力)  
 ・[グラフィックス](api_graphics.md#グラフィックス), [イメージクラス](api_graphics.md#イメージクラス), [タイルマップクラス](api_graphics.md#タイルマップクラス)   
-・[オーディオ](api_audio.md#), [サウンドクラス](api_audio.md#), [ミュージッククラス](api_audio.md#)   
-・[数学](api_math.md)    
+・[オーディオ](api_audio.md#オーディオ), [サウンドクラス](api_audio.md#サウンドクラス), [ミュージッククラス](api_audio.md#サウンドクラス)   
+・[数学](api_math.md)  
   
 [Pyxel APIリファレンス](https://github.com/kitao/pyxel/blob/main//docs/README.ja.md) のAPI実行例です。  
 ※下記import文でPyxelをインポートしたときのAPIの呼び出し記述になります。
@@ -130,9 +130,10 @@ pyxel.init(64, 64)
 pyxel.mouse(True) # マウスカーソル表示指定(表示無しでも座標は取得可能)
 
 def update():
+    # update()内で座標判定処理などに使う例
     x = pyxel.mouse_x
     y = pyxel.mouse_y
-    # 続けて座標判定処理などを行う
+    
     return
 
 def draw():
@@ -169,7 +170,12 @@ pyxel.init(64, 64)
 flg = False
 def update():
     global flg
-    flg = pyxel.btn(pyxel.KEY_SPACE)
+    if pyxel.btn(pyxel.KEY_SPACE):
+        # キーが押されているときの処理
+        flg = True
+    else:
+        # キーが押されていないときの処理
+        flg = False
     return
 
 def draw():
