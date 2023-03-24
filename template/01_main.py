@@ -1,3 +1,6 @@
+# Pyxel用 Appクラス
+# メイン処理コード例
+
 import pyxel
 
 APP_WIDTH = 256
@@ -19,3 +22,5 @@ class App:
         return
 
 App()
+
+# 以降 Appクラスの update() と draw() が繰り返し実行されます
