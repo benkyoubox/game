@@ -12,3 +12,5 @@ pyxel.cls(0)
 pyxel.blt( 0, 0,   0, 0, 0, pyxel.width,pyxel.height, 0 )
 
 pyxel.show()
+
+# show() 画面を一度描画して停止（アプリ終了はEscキー）
