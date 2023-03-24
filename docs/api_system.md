@@ -94,9 +94,10 @@ def update():
   
 ## リソース
 - load(filename, [image], [tilemap], [sound], [music])  
-  リソースファイル (.pyxres) を読み込みます。
+  リソースファイル (.pyxres) を読み込みます。  
+  
+・同じフォルダにある sample.pyxres を読み込む例
 ``` python
-# 同じフォルダにある sample.pyxres を読み込む例
 import pyxel
 pyxel.init(64, 64)
 pyxel.load("sample.pyxres")
