@@ -42,6 +42,10 @@ pyxel.init(128, 64, display_scale=5,capture_scale=5,capture_sec=10)
 ```
 - run() Pyxel アプリケーションを開始
 ``` python
+# このブロックで1つのアプリのコード例です
+import pyxel
+pyxel.init(64, 64)
+
 def update():
     pass
     return
@@ -54,12 +58,18 @@ pyxel.run(update, draw)
 ```
 - show() 画面を表示してEscキーが押されるまで待機
 ``` python
+# このブロックで1つのアプリのコード例です
+import pyxel
+pyxel.init(64, 64)
 pyxel.text(10, 10, "Test", 7)
 pyxel.show()
 ```
 
 - flip() 画面を 1 フレーム更新（Webでは使用不可）
 ``` python
+# このブロックで1つのアプリのコード例です
+import pyxel
+pyxel.init(64, 64)
 while(True):
     pyxel.cls(0)
     pyxel.text(10,10, "Test", pyxel.frame_count % 16)
