@@ -47,10 +47,11 @@ Pyxelのゲームの処理の流れは基本的に「初期化処理を最初に
 ``` python
 pyxel.rndi(1,100)
 ```
-マウス位置取得  
+マウスカーソル表示  
 ``` python
 pyxel.mouse(True)
 ```
+マウス座標取得
 ``` python
 x = pyxel.mouse_x
 y = pyxel.mouse_y
