@@ -1,3 +1,6 @@
+# Pyxel用 プログラムひな形
+# クラスを使わない記述例
+
 import pyxel
 
 APP_WIDTH = 256
@@ -17,3 +20,5 @@ def draw():
     return
 
 pyxel.run(update, draw)
+
+# 以降 update() と draw() が繰り返し実行されます
