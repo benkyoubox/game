@@ -1,14 +1,13 @@
 # Pyxel API sample（非公式）
 
-更新日：2023-03-24
-バージョン：Pyxel 1.9版
+更新日：2023-03-24  
+バージョン：Pyxel 1.9版  
   
 ## contents
-・[システム](#システム),[リソース](#リソース),[入力](#入力)  
-・[数学](api_math.md)  
-・[グラフィックス,イメージクラス,タイルマップクラス](api_graphics.md)   
-・[オーディオ,サウンドクラス,ミュージッククラス](api_audio.md)   
-  
+・[システム](#システム), [リソース](#リソース), [入力](#入力)  
+・[グラフィックス](api_graphics.md#グラフィックス), [イメージクラス](api_graphics.md#イメージクラス), [タイルマップクラス](api_graphics.md#タイルマップクラス)   
+・[オーディオ](api_audio.md#), [サウンドクラス](api_audio.md#), [ミュージッククラス](api_audio.md#)   
+・[数学](api_math.md)    
   
 [Pyxel APIリファレンス](https://github.com/kitao/pyxel/blob/main//docs/README.ja.md) のAPI実行例です。  
 ※下記import文でPyxelをインポートしたときのAPIの呼び出し記述になります。
