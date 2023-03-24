@@ -27,11 +27,11 @@ Pyxelのゲームの処理の流れは基本的に「初期化処理を最初に
 | 1 | [Appクラスのひな形](template/01_main.py) | Appクラスのコード |  
 | 2 | [テストプログラム用](template/01a_simple.py) | クラスなし簡易版 |  
 | 3 | [スクリーンショット用](template/02_screenshot.py) | show()で1回だけ表示 |  
-| 4 | [イメージバンク画像出力](template/02_screenshot.py) | イメージバンクをPNGファイルで出力 |  
+| 4 | [イメージバンク画像出力](template/02a_savepng.py) | イメージバンクをPNGファイルで出力 |  
 | 5 | [GIFアニメーションファイル用](template/03_animation.py) | flip()で表示ループ |  
 
   
-### コピペ用命令リスト
+### 命令リスト抜粋
 #### コマンド
 | コマンド | 内容 |
 |:---|:---|
@@ -98,6 +98,7 @@ BGM再生・停止
 pyxel.playm(msc, loop=True)
 pyxel.stop(ch)
 ```
+#### ゲーム進行例
 シーン番号  
 ``` python
 SNO_TITLE    = 0
