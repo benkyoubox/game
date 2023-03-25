@@ -46,6 +46,8 @@ Pyxelのゲームの処理の流れは基本的に「初期化処理を最初に
 ### APIコード例
 - [システム](docs/api_system.md#システム)  , [リソース](docs/api_system.md#リソース) , [入力](docs/api_system.md#入力)  
 - [グラフィックス](docs/api_graphics.md#グラフィックス) , [イメージクラス](docs/api_graphics.md#イメージクラス) , [タイルマップクラス](docs/api_graphics.md#タイルマップクラス)   
+- [オーディオ](api_audio.md#オーディオ) , [サウンドクラス](api_audio.md#サウンドクラス) , [ミュージッククラス](api_audio.md#ミュージッククラス)     
+  
   
   
 ### コード部品
@@ -62,7 +64,7 @@ pyxel.mouse(True)
 x = pyxel.mouse_x
 y = pyxel.mouse_y
 ```
-方向キー入力  
+方向キー入力 [キー記述例](doc/api_system.md#キー記述例)  
 ``` python
 if pyxel.btn(pyxel.KEY_UP) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_UP):
 
@@ -72,12 +74,25 @@ if pyxel.btn(pyxel.KEY_LEFT) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_LEFT):
 
 if pyxel.btn(pyxel.KEY_RIGHT) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_RIGHT):
 ```
+``` python
+if pyxel.btn(pyxel.KEY_W) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_UP):
+
+if pyxel.btn(pyxel.KEY_S) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_DOWN):
+
+if pyxel.btn(pyxel.KEY_A) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_LEFT):
+
+if pyxel.btn(pyxel.KEY_D) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_RIGHT):
+```
 スペースキー入力  
 ``` python
 if pyxel.btnp(pyxel.KEY_SPACE) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A):
 ```
 ``` python
 if pyxel.btnp(pyxel.KEY_SPACE,15,15) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A,15,15):
+```
+マウスクリック
+``` python
+if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A):
 ```
 タイルマップ取得，設定  
 ``` python
