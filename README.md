@@ -14,7 +14,7 @@ Pyxelのゲームの処理の流れは基本的に「初期化処理を最初に
 | 2 | [アクションゲーム1](pyxel/ninja/) | 忍者のキャラクターをジャンプさせます。<br>タイルマップの使用 | [![ブログ](docs/images/ico_BLOG.png)](https://kinutani.hateblo.jp/entry/2022/11/27/092216) |  
 | 3 | [アクションゲーム2](pyxel/penguinjump/) | ペンギンのキャラクターがステージクリアを目指します。<br>画面スクロール，ゲームの進行管理 | [![ブログ](docs/images/ico_BLOG.png)](https://kinutani.hateblo.jp/entry/2022/12/25/162239) |  
 | 4 | [三目並べ](pyxel/TicTacToe/) | クラスを使ったプログラム | [![ブログ](docs/images/ico_BLOG.png)](https://kinutani.hateblo.jp/entry/2023/01/09/220920) |  
-| 5 | [シューティングゲーム](pyxel/shooter_r/) | 公式サンプルプログラムを横方向のシューティングゲームに改造します | [![ブログ](docs/images/ico_BLOG.png)](https://kinutani.hateblo.jp/entry/2023/01/15/155601) |  
+| 5 | [シューティングゲーム](pyxel/shooter_r/) | 公式サンプルプログラムを横方向のSTGに改造します | [![ブログ](docs/images/ico_BLOG.png)](https://kinutani.hateblo.jp/entry/2023/01/15/155601) |  
 | 6 | [迷路ゲーム1](pyxel/maze/) | ウサギロボがお化けを避けてゴールを目指します<br>上下左右移動のアニメーション（クラス未使用版） | [![ブログ](docs/images/ico_BLOG.png)](https://blog.hatena.ne.jp/kinutani/kinutani.hateblo.jp/edit?entry=4207112889968552854) |  
 | 7 | [迷路ゲーム2](pyxel/maze_random/) | アリスが迷路のゴールを目指します<br>迷路の自動生成　2点間の距離を調べる | [![ブログ](docs/images/ico_BLOG.png)](https://kinutani.hateblo.jp/entry/2023/03/10/222546) |  
 | 8 | [日本語表示例](pyxel/bmpfont/) | ビットマップフォントの表示 | [![ブログ](docs/images/ico_BLOG.png)](https://kinutani.hateblo.jp/entry/2023/03/22/185042) |  
