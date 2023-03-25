@@ -226,7 +226,8 @@ def draw():
 pyxel.run(update, draw)
 ```
    
-・keyの例(詳細は[キー定義一覧](https://github.com/kitao/pyxel/blob/main/python/pyxel/__init__.pyi)参照)
+## キー記述例  
+　(詳細は[キー定義一覧](https://github.com/kitao/pyxel/blob/main/python/pyxel/__init__.pyi)参照)
 | コード例 | キー |
 |:---|:---|
 | pyxel.KEY_SPACE | スペースキー |
