@@ -466,4 +466,6 @@ xidx = x // 8
 yidx = y // 8
 pyxel.tilemap(0).pset(xidx,yidx, (1,0) )
 ```
-
+  
+  
+[TOPに戻る](api_graphics.md)
