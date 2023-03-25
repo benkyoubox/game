@@ -244,3 +244,5 @@ pyxel.run(update, draw)
 pyxel.mouse(True)    # 以降False指定されるまで表示
 ```
   
+  
+[TOPに戻る](api_system.md)
