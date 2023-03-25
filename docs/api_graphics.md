@@ -4,10 +4,10 @@
 バージョン：Pyxel 1.9版  
   
 ## contents
-・[システム](api_system.md#システム), [リソース](api_system.md#リソース), [入力](api_system.md#入力)  
-・[グラフィックス](api_graphics.md#グラフィックス), [イメージクラス](api_graphics.md#イメージクラス), [タイルマップクラス](api_graphics.md#タイルマップクラス)   
-・[オーディオ](api_audio.md#オーディオ), [サウンドクラス](api_audio.md#サウンドクラス), [ミュージッククラス](api_audio.md#ミュージッククラス)   
-・[数学](api_math.md)    
+- [システム](api_system.md#システム), [リソース](api_system.md#リソース), [入力](api_system.md#入力)  
+- [グラフィックス](api_graphics.md#グラフィックス), [イメージクラス](api_graphics.md#イメージクラス), [タイルマップクラス](api_graphics.md#タイルマップクラス)   
+- [オーディオ](api_audio.md#オーディオ), [サウンドクラス](api_audio.md#サウンドクラス), [ミュージッククラス](api_audio.md#ミュージッククラス)   
+- [数学](api_math.md)  
   
 [Pyxel APIリファレンス](https://github.com/kitao/pyxel/blob/main//docs/README.ja.md) のAPI実行例です。 
 （公式サンプルは[03_draw_api.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/03_draw_api.py)を参照してください）  
