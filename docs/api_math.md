@@ -99,7 +99,7 @@ def draw():
 
 pyxel.run(update, draw)
 ```
-![image cos](images/api/m_sin.png)  
+![image sin](images/api/m_sin.gif)  
   
 - cos(deg)  
   deg度(Degree)の余弦を返します。
@@ -126,7 +126,7 @@ def draw():
 
 pyxel.run(update,draw)
 ```
-![image cos](images/api/m_cos.png)  
+![image cos](images/api/m_cos.gif)  
   
 - atan2(y, x)  
   y/xの逆正接を度(Degree)で返します。※引数の順番注意
@@ -143,7 +143,7 @@ pyxel.trib(0,0, x,0, x,y, 7)
 pyxel.text(10,4, str(deg), 10)
 pyxel.show()
 ```
-![image cos](images/api/m_atan1.png)  
+![image atan1](images/api/m_atan1.png)  
   
 ``` python
 import pyxel
@@ -171,7 +171,7 @@ def draw():
 
 pyxel.run(update,draw)
 ```
-![image cos](images/api/m_atan2.gif)  
+![image atan2](images/api/m_atan2.gif)  
   
 - rseed(seed: int)  
   乱数生成器のシードを設定します。
@@ -257,7 +257,7 @@ for y in range(SIZE):
 
 pyxel.show()
 ```
-![image](images/api/m_nseed.png)  
+![image nseed](images/api/m_nseed.png)  
 　（pyxel.nseed(1)の設定値を100や123456に変更しても結果が変わらないため，使い方の調査が必要）
   
 - noise(x, [y], [z])  
@@ -282,9 +282,7 @@ for y in range(SIZE):
 
 pyxel.show()
 ```
-z = 1 ![image](images/api/m_noise_z1.png)  
-z = 2 ![image](images/api/m_noise_z2.png)  
-z = 5 ![image](images/api/m_noise_z5.png)  
+z = 1 ![image](images/api/m_noise_z1.png) z = 2 ![image](images/api/m_noise_z2.png) z = 5 ![image](images/api/m_noise_z5.png)  
   
   
   [TOPに戻る](api_math.md)
