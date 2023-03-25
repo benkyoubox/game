@@ -284,44 +284,185 @@ pyxel.text(4, 4, "Hello, Pyxel!", pyxel.frame_count % 16)
 ```
   
 ## イメージクラス
-- 
+- width, height  
+  イメージの幅と高さ
 ``` python
+print(pyxel.image(0).width)   # 256
+print(pyxel.image(0).height)  # 256
 ```
   
-- 
+- set(x, y, data)  
+  (x, y) に文字列のリストでイメージを設定します。
 ``` python
+import pyxel
+pyxel.init(32, 32)
+
+data = ["bbbb",
+        "b77b",
+        "b77b",
+        "3333"]
+pyxel.image(0).set(0,0, data)
+
+def update():
+    return
+
+def draw():
+    pyxel.cls(0)
+    pyxel.blt(4,8, 0, 0,0, 4,4, 0)
+    return
+
+pyxel.run(update, draw)
+```
+![img set](images/api/g_set.png)  
+  
+- load(x, y, filename)  
+  (x, y) に画像ファイル (png/gif/jpeg) を読み込みます。
+``` python
+pyxel.image(2).load(0, 0, "penguin.png")    # イメージバンク2に画像ファイルを読み込む例
 ```
   
-- 
+- pget(x, y)  
+  (x, y) のピクセルの色を取得します。
 ``` python
+import pyxel
+pyxel.init(32, 32)
+pyxel.load("sample.pyxres")
+
+# リソースファイルのイメージバンク0の色を取得して
+# 行のデータごとに16進数の文字列に変換する例
+data = []
+for v in range(8):
+    tmpstr = ""
+    for u in range(8,16):
+        tmpstr += format(pyxel.image(0).pget(u, v),'x')
+    data.append(tmpstr)
+
+# 文字列データを標準出力
+for row in data:
+    print('"'+row+'",')
+
+# 文字列でイメージバンク2に設定
+pyxel.image(2).set(0,0,data)
+
+def update():
+    return
+
+def draw():
+    pyxel.cls(0)
+    pyxel.blt(0,0, 2, 0,0, 8,8)
+    return
+
+pyxel.run(update, draw)
 ```
+print結果
+<row>"0a0ccc0a",
+"0ac666ca",
+"70f1f1f0",
+"07ccccc0",
+"00fccc50",
+"000c5c0f",
+"00556600",
+"00000500",</row>  
   
-- 
+- pset(x, y, col)  
+  (x, y) に色colのピクセルを描画します。
 ``` python
-```
-  
-- 
-``` python
+import pyxel
+pyxel.init(32, 32)
+pyxel.load("sample.pyxres")
+pyxel.image(0).pset(11,0, 10)
+pyxel.image(0).pset(12,1, 10)
+pyxel.image(0).pset(13,0, 10)
+
+def update():
+    return
+
+def draw():
+    pyxel.cls(0)
+    pyxel.blt(12,2, 0, 8,0, 8,8, 0)
+    return
+
+pyxel.run(update, draw)
 ```
   
 ## タイルマップクラス
-- 
+- width, height  
+  タイルマップの幅と高さ
 ``` python
+print(pyxel.tilemap(0).width)   # 256
+print(pyxel.tilemap(0).height)  # 256
 ```
   
-- 
+- refimg  
+  タイルマップが参照するイメージバンク (0-2)
 ``` python
+pyxel.tilemap(0).refimg = 1  # イメージバンク1を設定する例
+```
+・03_draw_api.py内の切り替え例
+``` python
+print(pyxel.tilemap(0).refimg, pyxel.tilemap(0).image)
+pyxel.tilemap(0).image = pyxel.image(1)
+print(pyxel.tilemap(0).refimg, pyxel.tilemap(0).image)
 ```
   
-- 
+- set(x, y, data)  
+  (x, y) に文字列のリストでタイルマップを設定します。（※APIリファレンスの例は古い仕様。03_draw_api.py内のコードを参照してください）
 ``` python
+import pyxel
+pyxel.init(128, 128)
+pyxel.load("sample.pyxres")
+
+# タイルマップの左上4マスを下記のタイルにする例
+# ( 1,0) ( 2,0) -> "0100 0200" 
+# (12,0) (12,1) -> "0c00 0c01"
+# 
+# (tile_x,tile_y)の指定を xxyy の2オクテットで表す
+# 値は16進数で範囲は0x00-0x1f
+data = ["0100 0200",
+        "0c00 0c01"]
+pyxel.tilemap(0).set(0, 0, data)
+
+def update():
+    return
+
+def draw():
+    pyxel.cls(0)
+    pyxel.bltm(0,0, 0, 0,0, 128,128)
+    return
+
+pyxel.run(update, draw)
 ```
   
-- 
+- pget(x, y)  
+  (x, y) のタイルを取得します。タイルは(tile_x, tile_y)のタプルです。
 ``` python
+import pyxel
+pyxel.init(128, 128)
+pyxel.load("sample.pyxres")
+pyxel.mouse(True)
+
+tile = (0,0)
+def update():
+    global tile
+    xidx = pyxel.mouse_x // 8
+    yidx = pyxel.mouse_y // 8
+    tile = pyxel.tilemap(0).pget(xidx,yidx)
+    return
+
+def draw():
+    pyxel.cls(0)
+    pyxel.bltm(0,0, 0, 0,0, 128,128)
+    pyxel.text(1,9, str(tile), 7)
+    return
+
+pyxel.run(update, draw)
 ```
   
-- 
+- pset(x, y, tile)  
+  (x, y) にタイルを設定します。タイルは(tile_x, tile_y)のタプルです。
 ``` python
+xidx = x // 8
+yidx = y // 8
+pyxel.tilemap(0).pset(xidx,yidx, (1,0) )
 ```
 
