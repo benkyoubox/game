@@ -64,7 +64,7 @@ pyxel.mouse(True)
 x = pyxel.mouse_x
 y = pyxel.mouse_y
 ```
-方向キー入力 [キー記述例](doc/api_system.md#キー記述例)  
+方向キー入力 （[キー記述例](docs/api_system.md#キー記述例)  ）
 ``` python
 if pyxel.btn(pyxel.KEY_UP) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_DPAD_UP):
 
