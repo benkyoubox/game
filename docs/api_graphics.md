@@ -354,15 +354,15 @@ def draw():
 
 pyxel.run(update, draw)
 ```
-print結果
-<row>"0a0ccc0a",
+　print結果
+<pre>"0a0ccc0a",
 "0ac666ca",
 "70f1f1f0",
 "07ccccc0",
 "00fccc50",
 "000c5c0f",
 "00556600",
-"00000500",</row>  
+"00000500",</pre>  
   
 - pset(x, y, col)  
   (x, y) に色colのピクセルを描画します。
@@ -406,7 +406,8 @@ print(pyxel.tilemap(0).refimg, pyxel.tilemap(0).image)
 ```
   
 - set(x, y, data)  
-  (x, y) に文字列のリストでタイルマップを設定します。（※APIリファレンスの例は古い仕様。03_draw_api.py内のコードを参照してください）
+  (x, y) に文字列のリストでタイルマップを設定します。  
+　※APIリファレンス記載の例にあるdataの値は古い仕様のものです。03_draw_api.py内のコードを参照してください。
 ``` python
 import pyxel
 pyxel.init(128, 128)
