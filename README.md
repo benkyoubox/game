@@ -1,16 +1,20 @@
 # Pyxel Game Development
 ![DEMO image](docs/images/demo.gif)  
 Python向けレトロゲームエンジン Pyxel を使用したゲーム作成の情報  
-[ブログ記事（Pyxelゲーム作成の記事一覧）](https://kinutani.hateblo.jp/entry/2022/12/15/184811)  
+<br />
+- [Pyxel公式サイト](https://github.com/kitao/pyxel/blob/main/docs/README.ja.md)  
   
+- [ブログ記事（Pyxelゲーム作成の記事一覧）](https://kinutani.hateblo.jp/entry/2022/12/15/184811)  
   
-[[コマンド抜粋](#コマンド抜粋) | [プログラムテンプレート](#プログラムテンプレート) | [APIコード例](#APIコード例) | [コード部品](#コード部品) ]  
+<br />
+  
+[ [コマンド抜粋](#コマンド抜粋) | [プログラムテンプレート](#プログラムテンプレート) | [APIコード例](README.md#APIコード例) | [コード部品](#コード部品) ]  
   
   
 ## Pyxelゲームの処理の基本
-![flow image](docs/images/pyxel_flow.png)  
 Pyxelのゲームの処理の流れは基本的に「初期化処理を最初に行い，その後は update() と draw() を実行し続ける」になります。この流れを頭に入れてゲーム作成を行いましょう。  
-
+![flow image](docs/images/pyxel_flow.png)  
+  
 ## ブログ記事で紹介したプログラム  
 | No. | ソースコード | 内容 |記事|
 |:---:|:---:|:---|:---:|
@@ -45,16 +49,14 @@ Pyxelのゲームの処理の流れは基本的に「初期化処理を最初に
 | 3 | [スクリーンショット用](template/02_screenshot.py) | show()で1回だけ表示 |  
 | 4 | [イメージバンク画像出力](template/02a_savepng.py) | イメージバンクをPNGファイルで出力 |  
 | 5 | [GIFアニメーションファイル用](template/03_animation.py) | flip()で表示ループ |  
-<br>
+    
   
-
 ### APIコード例
 - [システム](docs/api_system.md#システム)  , [リソース](docs/api_system.md#リソース) , [入力](docs/api_system.md#入力)  
 - [グラフィックス](docs/api_graphics.md#グラフィックス) , [イメージクラス](docs/api_graphics.md#イメージクラス) , [タイルマップクラス](docs/api_graphics.md#タイルマップクラス)   
 - [オーディオ](docs/api_audio.md#オーディオ) , [サウンドクラス](docs/api_audio.md#サウンドクラス) , [ミュージッククラス](docs/api_audio.md#ミュージッククラス)     
 - [数学](docs/api_math.md)  
-<br>
-  
+    
   
 ### コード部品
 乱数（整数）  
