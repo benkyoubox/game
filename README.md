@@ -52,7 +52,7 @@ Pyxelのゲームの処理の流れは基本的に「初期化処理を最初に
 - [システム](docs/api_system.md#システム)  , [リソース](docs/api_system.md#リソース) , [入力](docs/api_system.md#入力)  
 - [グラフィックス](docs/api_graphics.md#グラフィックス) , [イメージクラス](docs/api_graphics.md#イメージクラス) , [タイルマップクラス](docs/api_graphics.md#タイルマップクラス)   
 - [オーディオ](docs/api_audio.md#オーディオ) , [サウンドクラス](docs/api_audio.md#サウンドクラス) , [ミュージッククラス](docs/api_audio.md#ミュージッククラス)     
-- [数学](docs/docs/api_math.md)  
+- [数学](docs/api_math.md)  
 <br>
   
   
