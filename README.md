@@ -1,4 +1,4 @@
-# game
+# Pyxel Game Development
 ![DEMO image](docs/images/demo.gif)  
 Python向けレトロゲームエンジン Pyxel を使用したゲーム作成の情報  
 [ブログ記事（Pyxelゲーム作成の記事一覧）](https://kinutani.hateblo.jp/entry/2022/12/15/184811)  
@@ -8,17 +8,29 @@ Python向けレトロゲームエンジン Pyxel を使用したゲーム作成�
 Pyxelのゲームの処理の流れは基本的に「初期化処理を最初に行い，その後は update() と draw() を実行し続ける」になります。この流れを頭に入れてゲーム作成を行いましょう。  
 
 ## ブログ記事で紹介したプログラム  
-| No. | リンク | 内容 |
-|:---:|:---:|:---|
-| 1 | [じゃんけんゲーム](pyxel/rps_game/) | クリック位置の取得 |  
-| 2 | [アクションゲーム1](pyxel/ninja/) | 忍者のキャラクターをジャンプさせます。<br>タイルマップの使用 |  
-| 3 | [アクションゲーム2](pyxel/penguinjump/) | ペンギンのキャラクターがステージクリアを目指します。<br>画面スクロール，ゲームの進行 |  
-| 4 | [三目並べ](pyxel/TicTacToe/) | クラスを使ったプログラム |  
-| 5 | [シューティングゲーム](pyxel/shooter_r/) | 公式サンプルプログラムを横方向のシューティングゲームに改造します |  
-| 6 | [迷路ゲーム1](pyxel/maze/) | ウサギロボがお化けを避けてゴールを目指します<br>上下左右移動のアニメーション（クラス未使用版） |  
-| 7 | [迷路ゲーム2](pyxel/maze_random/) | アリスが迷路のゴールを目指します<br>迷路の自動生成　2点間の距離を調べる |  
-| 8 | [日本語表示例](pyxel/bmpfont/) | ビットマップフォントの表示 |  
+| No. | ソースコード | 内容 |記事|
+|:---:|:---:|:---|:---:|
+| 1 | [じゃんけんゲーム](pyxel/rps_game/) | クリック位置の取得 | [ブログ](https://kinutani.hateblo.jp/entry/2022/10/29/155359) |  
+| 2 | [アクションゲーム1](pyxel/ninja/) | 忍者のキャラクターをジャンプさせます。<br>タイルマップの使用 | [ブログ](https://kinutani.hateblo.jp/entry/2022/11/27/092216) |  
+| 3 | [アクションゲーム2](pyxel/penguinjump/) | ペンギンのキャラクターがステージクリアを目指します。<br>画面スクロール，ゲームの進行管理 | [ブログ](https://kinutani.hateblo.jp/entry/2022/12/25/162239) |  
+| 4 | [三目並べ](pyxel/TicTacToe/) | クラスを使ったプログラム | [ブログ](https://kinutani.hateblo.jp/entry/2023/01/09/220920) |  
+| 5 | [シューティングゲーム](pyxel/shooter_r/) | 公式サンプルプログラムを横方向のシューティングゲームに改造します | [ブログ](https://kinutani.hateblo.jp/entry/2023/01/15/155601) |  
+| 6 | [迷路ゲーム1](pyxel/maze/) | ウサギロボがお化けを避けてゴールを目指します<br>上下左右移動のアニメーション（クラス未使用版） | [ブログ](https://blog.hatena.ne.jp/kinutani/kinutani.hateblo.jp/edit?entry=4207112889968552854) |  
+| 7 | [迷路ゲーム2](pyxel/maze_random/) | アリスが迷路のゴールを目指します<br>迷路の自動生成　2点間の距離を調べる | [ブログ](https://kinutani.hateblo.jp/entry/2023/03/10/222546) |  
+| 8 | [日本語表示例](pyxel/bmpfont/) | ビットマップフォントの表示 | [ブログ](https://kinutani.hateblo.jp/entry/2023/03/22/185042) |  
 
+  
+## コマンド抜粋
+| コマンド | 内容 |
+|:---|:---|
+| `pip install -U pyxel` | Windows Pyxelのインストール（アップデート） |
+| `pyxel copy_examples` | サンプルコードコピー |
+| `pyxel edit filename` | Pyxel Editor の起動 |
+| `pyxel package appdir srcname` | Pyxel アプリケーションファイル (.pyxapp) 作成 |
+| `pyxel app2html your_app.pyxapp` | Pyxel アプリを HTML ファイルに変換する |
+| `python -m http.server` | PythonのWebサーバー起動<br>http://localhost:8000/test.html のようにアクセス |
+
+  
 ## ひな形等
 
 ### プログラムテンプレート
@@ -31,18 +43,12 @@ Pyxelのゲームの処理の流れは基本的に「初期化処理を最初に
 | 5 | [GIFアニメーションファイル用](template/03_animation.py) | flip()で表示ループ |  
 
   
-### 命令リスト抜粋
-#### コマンド
-| コマンド | 内容 |
-|:---|:---|
-| `pip install -U pyxel` | Windows Pyxelのインストール（アップデート） |
-| `pyxel copy_examples` | サンプルコードコピー |
-| `pyxel edit filename` | Pyxel Editor の起動 |
-| `pyxel package appdir srcname` | Pyxel アプリケーションファイル (.pyxapp) 作成 |
-| `pyxel app2html your_app.pyxapp` | Pyxel アプリを HTML ファイルに変換する |
-| `python -m http.server` | PythonのWebサーバー起動<br>http://localhost:8000/test.html のようにアクセス |
-
-#### コード部品
+### APIコード例
+- [システム](docs/api_system.md#システム)  , [リソース](docs/api_system.md#リソース) , [入力](docs/api_system.md#入力)  
+- [グラフィックス](docs/api_graphics.md#グラフィックス) , [イメージクラス](docs/api_graphics.md#イメージクラス) , [タイルマップクラス](docs/api_graphics.md#タイルマップクラス)   
+  
+  
+### コード部品
 乱数（整数）  
 ``` python
 pyxel.rndi(1,100)
