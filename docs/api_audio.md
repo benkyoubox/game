@@ -11,17 +11,20 @@
   
 [Pyxel APIリファレンス](https://github.com/kitao/pyxel/blob/main//docs/README.ja.md) のAPI実行例です。  
 （公式サンプルは[04_sound_api.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/04_sound_api)を参照してください）  
+  
+  
 ※下記import文でPyxelをインポートしたときのAPIの呼び出し記述になります。
 ``` python
 import pyxel
 ```
   
 ## オーディオ
-  サウンドsnd (0-63) を操作します。([サウンドクラス](サウンドクラス)を参照のこと)
+
 - sound(snd)  
+  サウンドsnd (0-63) を操作します。([サウンドクラス](#サウンドクラス)を参照のこと)
   
 - music(msc)  
-  ミュージックmsc (0-7) を操作します。([ミュージッククラス]()を参照のこと)
+  ミュージックmsc (0-7) を操作します。([ミュージッククラス](#ミュージッククラス)を参照のこと)
   
 - play_pos(ch)  
   チャンネルch (0-3) のサウンド再生位置を(サウンド番号, ノート番号)のタプルとして取得します。再生停止時はNoneを返します。
@@ -169,7 +172,7 @@ pyxel.run(update, draw)
 ``` python
 pyxel.sound(0).set("c2d2e2f2g2a2b2c3", "p", "7", "n", 30)
 ```
-  音程はドレミファソラシをcdefgabの表記で指定する。[ブログ記事](https://kinutani.hateblo.jp/entry/2023/02/05/205654)を参照してください。
+　音程はドレミファソラシをcdefgabの表記で指定します。ブログ記事[音程の一覧](https://kinutani.hateblo.jp/entry/2023/02/05/205654)を参照してください。
   
 - set_notes(notes)  
   'CDEFGAB'+'#-'+'0123'または'R'の文字列で音程を設定します。大文字と小文字は区別されず、空白は無視されます。
