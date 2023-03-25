@@ -45,13 +45,15 @@ Pyxelのゲームの処理の流れは基本的に「初期化処理を最初に
 | 3 | [スクリーンショット用](template/02_screenshot.py) | show()で1回だけ表示 |  
 | 4 | [イメージバンク画像出力](template/02a_savepng.py) | イメージバンクをPNGファイルで出力 |  
 | 5 | [GIFアニメーションファイル用](template/03_animation.py) | flip()で表示ループ |  
-
+<br>
   
+
 ### APIコード例
 - [システム](docs/api_system.md#システム)  , [リソース](docs/api_system.md#リソース) , [入力](docs/api_system.md#入力)  
 - [グラフィックス](docs/api_graphics.md#グラフィックス) , [イメージクラス](docs/api_graphics.md#イメージクラス) , [タイルマップクラス](docs/api_graphics.md#タイルマップクラス)   
-- [オーディオ](api_audio.md#オーディオ) , [サウンドクラス](api_audio.md#サウンドクラス) , [ミュージッククラス](api_audio.md#ミュージッククラス)     
-  
+- [オーディオ](docs/api_audio.md#オーディオ) , [サウンドクラス](docs/api_audio.md#サウンドクラス) , [ミュージッククラス](docs/api_audio.md#ミュージッククラス)     
+- [数学](docs/api_math.md)  
+<br>
   
   
 ### コード部品
