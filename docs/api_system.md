@@ -1,4 +1,4 @@
-# Pyxel API sample（非公式）
+# Pyxel API sample
 
 更新日：2023-03-24  
 バージョン：Pyxel 1.9版  
