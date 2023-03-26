@@ -28,7 +28,20 @@
 ``` python
 import pyxel
 ```
-  
+<br>
+
+説明中の「型」は数値や文字列の種別を示しています。  
+
+| 型 | 内容 |
+|:---:|:---|
+| i32 | 符号付き整数型（負の値あり） |
+| u8 <br> u32 | 符号なし整数型（負の値なし） |
+| f64 | 浮動小数点数（小数の値） |
+| str | 文字列 |
+| bool | True/False |  
+<br>
+
+
 ## システム  
 <br>  
 
@@ -63,7 +76,7 @@ pyxel.text(10, 10, "Hello, Pyxel!", pyxel.frame_count % 16)
 | height | u32 | 画面の高さ |
 | title | str | ウィンドウタイトル |
 | fps | u32 | 動作フレームレート |
-| quit_key | u32 | アプリケーション終了キー（[キー記述例](api_system.md#キー記述例)） |
+| quit_key | u32 | アプリケーション終了キー（[キー記述例](api_system.md#keycode)） |
 | display_scale | u32 | 画面表示の倍率 |
 | capture_scale | u32 | 画面キャプチャの倍率 |
 | capture_sec | u32 | 画面キャプチャ動画の最大録画時間 |  
