@@ -604,7 +604,7 @@ pyxel.run(update, draw)
 <br>
   
 ### pset()  
-  (x, y) に色colのピクセルを描画します。  
+  イメージバンクの (x, y) に色colのピクセルを描画します。  
   `pset(x, y, col)`  
 
 | 引数 | 型 | 説明 |
