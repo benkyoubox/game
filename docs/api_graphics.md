@@ -16,7 +16,7 @@
 |[タイルマップクラス](api_graphics.md#タイルマップクラス)| [変数](api_graphics.md#variable-2)  [set()](api_graphics.md#set-1) [pget()](api_graphics.md#pget-2) [pset()](api_graphics.md#pset-2) |
 |[オーディオ](api_audio.md#オーディオ)| [sound()](api_audio.md#sound) [music()](api_audio.md#music) [play_pos()](api_audio.md#play_pos) [play()](api_audio.md#play) [playm()](api_audio.md#playm) [stop()](api_audio.md#stop) |
 |[サウンドクラス](api_audio.md#サウンドクラス)| [変数](api_audio.md#variable) [set()](api_audio.md#set) [set_notes()](api_audio.md#set_notes) [set_tones()](api_audio.md#set_tones) [set_volumes()](api_audio.md#set_volumes) [set_effects()](api_audio.md#set_effects) |
-|[ミュージッククラス](api_audio.md#ミュージッククラス)| [変数](api_audio.md#variable-1) [set()](api_audio.md#set) |
+|[ミュージッククラス](api_audio.md#ミュージッククラス)| [変数](api_audio.md#variable-1) [set()](api_audio.md#set-1) |
 |[数学](api_math.md)| [ceil()](api_math.md#ceil) [floor()](api_math.md#floor) [sgn()](api_math.md#sgn) [sin()](api_math.md#sin) [(cos)](api_math.md#cos) [atan2()](api_math.md#atan2) [rseed()](api_math.md#rseed) [rndi()](api_math.md#rndi) [rndf()](api_math.md#rndf) [nseed()](api_math.md#nseed) [noise()](api_math.md#noise) |
 
 
@@ -534,7 +534,7 @@ pyxel.image(2).load(0, 0, "penguin.png")    # イメージバンク2に画像フ
 <br>
 
 ### save()  
-  指定したイメージバンクをPNGファイルに出力する。（上級者向けAPI）
+  指定したイメージバンクをPNGファイルに出力する。（上級者向けAPI）  
   `save(filename, scale)`
 
 | 引数 | 型 | 説明 |
@@ -660,7 +660,7 @@ print(pyxel.tilemap(0).height)  # 256
 ``` python
 pyxel.tilemap(0).refimg = 1  # イメージバンク1を設定する例
 ```
-・03_draw_api.py内の切り替え例
+・[03_draw_api.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/03_draw_api.py)内の切り替え例
 ``` python
 print(pyxel.tilemap(0).refimg, pyxel.tilemap(0).image)
 pyxel.tilemap(0).image = pyxel.image(1)
@@ -680,7 +680,7 @@ print(pyxel.tilemap(0).refimg, pyxel.tilemap(0).image)
 | data | リスト | ["1行目データ","2行目データ",・・・]<br>タイル座標を16進数で指定 |  
 
 <br>
-　※APIリファレンス記載の例にあるdataの値は古い仕様のものです。03_draw_api.py内のコードを参照してください。
+　※APIリファレンス記載の例にあるdataの値は古い仕様のものです。[03_draw_api.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/03_draw_api.py)内のコードを参照してください。  
 
 ``` python
 import pyxel
@@ -707,7 +707,8 @@ def draw():
 
 pyxel.run(update, draw)
 ```
-  
+<br>
+
 ### pget()  
   (x, y) のタイルを取得します。タイルは(tile_x, tile_y)のタプルです。  
   `pget(x, y)`    
@@ -741,6 +742,7 @@ def draw():
 
 pyxel.run(update, draw)
 ```
+<br>
   
 ### pset()  
   (x, y) にタイルを設定します。タイルは(tile_x, tile_y)のタプルです。  
@@ -759,6 +761,7 @@ xidx = x // 8
 yidx = y // 8
 pyxel.tilemap(0).pset(xidx,yidx, (1,0) )
 ```
+<br>
   
   
 [ページの先頭に戻る](#pyxel-api-sample)　　[TOPに戻る](../README.md#pyxel-game-development)
