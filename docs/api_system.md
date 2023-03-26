@@ -255,7 +255,7 @@ pyxel.run(update, draw)
 
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
-| key | u32 | 判定するキー（[キー記述例](api_system.md#キー記述例)） |  
+| key | u32 | 判定するキー（[キー記述例](api_system.md#keycode)） |  
 
 <br>
 
