@@ -17,7 +17,7 @@
 |[オーディオ](api_audio.md#オーディオ)| [sound()](api_audio.md#sound) [music()](api_audio.md#music) [play_pos()](api_audio.md#play_pos) [play()](api_audio.md#play) [playm()](api_audio.md#playm) [stop()](api_audio.md#stop) |
 |[サウンドクラス](api_audio.md#サウンドクラス)| [変数](api_audio.md#variable) [set()](api_audio.md#set) [set_notes()](api_audio.md#set_notes) [set_tones()](api_audio.md#set_tones) [set_volumes()](api_audio.md#set_volumes) [set_effects()](api_audio.md#set_effects) |
 |[ミュージッククラス](api_audio.md#ミュージッククラス)| [変数](api_audio.md#variable-1) [set()](api_audio.md#set-1) |
-|[数学](api_math.md)| [ceil()](api_math.md#ceil) [floor()](api_math.md#floor) [sgn()](api_math.md#sgn) [sin()](api_math.md#sin) [(cos)](api_math.md#cos) [atan2()](api_math.md#atan2) [rseed()](api_math.md#rseed) [rndi()](api_math.md#rndi) [rndf()](api_math.md#rndf) [nseed()](api_math.md#nseed) [noise()](api_math.md#noise) |
+|[数学](api_math.md#pyxel-api-sample)| [ceil()](api_math.md#ceil) [floor()](api_math.md#floor) [sgn()](api_math.md#sgn) [sin()](api_math.md#sin) [cos()](api_math.md#cos) [atan2()](api_math.md#atan2) [rseed()](api_math.md#rseed) [rndi()](api_math.md#rndi) [rndf()](api_math.md#rndf) [nseed()](api_math.md#nseed) [noise()](api_math.md#noise) |
 
 
 <br> 
@@ -217,10 +217,12 @@ pyxel.run(update, draw)
 | effects | リスト u8 | エフェクト (0:None / 1:Slide / 2:Vibrato / 3:FadeOut) のリスト<br> Fで音を分離できます。 | pyxel.sound(0).effects |  
 | speed | u32| 再生速度。1 が一番速く、数値が大きいほど再生速度は遅くなります。120 で 1 音の長さが 1 秒になります。 | pyxel.sound(0).speed |  
 
-<br>  
-　再生速度は `pyxel.sound(0).speed = 30` のように代入可。<br>
-　各リストの直接代入 `pyxel.sound(0).notes = data` は不可。 `pyxel.sound(0).notes[0]=30` は可。<br>
-　各リストの更新はset()命令を使うとよい。<br>
+<br>
+
+再生速度は `pyxel.sound(0).speed = 30` のように代入が可能。  
+各リストの直接代入 `pyxel.sound(0).notes = data` は不可。（`pyxel.sound(0).notes[0]=30` は可）  
+各リストの更新はset()命令を使うとよい。  
+
 <br>  
 
 ``` python
