@@ -1,5 +1,6 @@
 # Pyxel API sample
 
+グラフィックス，イメージクラス，タイルマップクラス  
 バージョン：Pyxel 1.9版  
   
 ## contents
@@ -222,6 +223,7 @@ def draw():
 
 pyxel.run(update, draw)
 ```
+![image pget](images/api/g_pget.png)  
 <br>
   
 ### pset()  
@@ -250,6 +252,7 @@ def draw():
 
 pyxel.run(update, draw)
 ```
+![image pset](images/api/g_pset.png)  
 <br>
 
 ### line()  

@@ -1,5 +1,6 @@
 # Pyxel API sample
 
+システム，リソース，入力  
 バージョン：Pyxel 1.9版  
   
 ## contents
@@ -39,6 +40,7 @@ import pyxel
 | height | u32 | 画面の高さ | `pyxel.height` |
 | frame_count | u32 | 経過フレーム数 | `pyxel.frame_count` |  
 <br>
+
 ``` python
 sw = pyxel.width
 sh = pyxel.height
