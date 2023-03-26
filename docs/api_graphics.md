@@ -1,13 +1,25 @@
 # Pyxel API sample
 
-更新日：2023-03-25  
 バージョン：Pyxel 1.9版  
   
 ## contents
-- [システム](api_system.md#システム), [リソース](api_system.md#リソース), [入力](api_system.md#入力)  
-- [グラフィックス](api_graphics.md#グラフィックス), [イメージクラス](api_graphics.md#イメージクラス), [タイルマップクラス](api_graphics.md#タイルマップクラス)   
-- [オーディオ](api_audio.md#オーディオ), [サウンドクラス](api_audio.md#サウンドクラス), [ミュージッククラス](api_audio.md#ミュージッククラス)   
-- [数学](api_math.md)  
+
+
+| 分類 | 項目 |
+|:---:|:---|
+|[システム](api_system.md#システム)| [変数](api_system.md#variable) [init()](api_system.md#init) [run()](api_system.md#run) [show()](api_system.md#show) [flip()](api_system.md#flip) [quit()](api_system.md#quit)|
+|[リソース](api_system.md#リソース)| [load()](api_system.md#load)  |
+|[入力](api_system.md#入力)| [変数](api_system.md#variable-1) [btn()](api_system.md#btn) [btnp()](api_system.md#btnp) [btnr()](api_system.md#btnr) [mouse()](api_system.md#mouse) [キー記述例](api_system.md#keycode) |  
+|[グラフィックス](api_graphics.md#グラフィックス)| [変数](api_graphics.md#variable) [image()](api_graphics.md#image) [tilemap()](api_graphics.md#tilemap) [clip()](api_graphics.md#clip) [camera()](api_graphics.md#camera) [pal()](api_graphics.md#pal) [cls()](api_graphics.md#cls) [pget()](api_graphics.md#pget) [pset()](api_graphics.md#pset) <br> [line()](api_graphics.md#line) [rect()](api_graphics.md#rect) [rectb()](api_graphics.md#rectb) [circ()](api_graphics.md#circ) [circb()](api_graphics.md#circb) [elli()](api_graphics.md#elli) [ellib()](api_graphics.md#ellib) [tri()](api_graphics.md#tri) [trib()](api_graphics.md#trib) <br> [fill()](api_graphics.md#fill) [blt()](api_graphics.md#blt) [bltm()](api_graphics.md#bltm) [text()](api_graphics.md#text) |
+|[イメージクラス](api_graphics.md#イメージクラス)| [変数](api_graphics.md#variable-1) [set()](api_graphics.md#set) [load()](api_graphics.md#load) [pget()](api_graphics.md#pget-1) [pset()](api_graphics.md#pset-1) |
+|[タイルマップクラス](api_graphics.md#タイルマップクラス)| [変数](api_graphics.md#variable-2)  [set()](api_graphics.md#set-1) [pget()](api_graphics.md#pget-2) [pset()](api_graphics.md#pset-2) |
+|[オーディオ](api_audio.md#オーディオ)| [sound()](api_audio.md#sound) [music()](api_audio.md#music) [play_pos()](api_audio.md#play_pos) [play()](api_audio.md#play) [playm()](api_audio.md#playm) [stop()](api_audio.md#stop) |
+|[サウンドクラス](api_audio.md#サウンドクラス)| [変数](api_audio.md#variable) [set()](api_audio.md#set) [set_notes()](api_audio.md#set_notes) [set_tones()](api_audio.md#set_tones) [set_volumes()](api_audio.md#set_volumes) [set_effects()](api_audio.md#set_effects) |
+|[ミュージッククラス](api_audio.md#ミュージッククラス)| [変数](api_audio.md#variable-1) [set()](api_audio.md#set) |
+|[数学](api_math.md)| [ceil()](api_math.md#ceil) [floor()](api_math.md#floor) [sgn()](api_math.md#sgn) [sin()](api_math.md#sin) [(cos)](api_math.md#cos) [atan2()](api_math.md#atan2) [rseed()](api_math.md#rseed) [rndi()](api_math.md#rndi) [rndf()](api_math.md#rndf) [nseed()](api_math.md#nseed) [noise()](api_math.md#noise) |
+
+
+<br>
   
 [Pyxel APIリファレンス](https://github.com/kitao/pyxel/blob/main//docs/README.ja.md) のAPI実行例です。 
 （公式サンプルは[03_draw_api.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/03_draw_api.py)を参照してください）  
@@ -17,9 +29,19 @@
 import pyxel
 ```
   
-## グラフィックス
-- colors  
-  パレットの表示色リスト。表示色は 24 ビット数値で指定します。
+## グラフィックス  
+<br>  
+
+
+### variable  
+
+
+|変数名|型|説明|記述例|
+|:---:|:---:|:---|:---|
+| colors | リスト | パレットの表示色リスト。<br>表示色は 24 ビット数値(0x000000-0xffffff)で指定します。 | pyxel.colors |  
+
+<br>
+
 ``` python
 pyxel.colors[3] = 0x19C5FA    # 表示色3を薄い青色に変更
 pyxel.cls(3)
@@ -32,15 +54,42 @@ org_colors = pyxel.colors.to_list()
 # デフォルトのカラーパレットで復帰
 pyxel.colors.from_list(org_colors)
 ```
+
+<br>  
+
+### image()
+  イメージバンクimg (0-2) を操作します。([イメージクラス](#イメージクラス)を参照のこと)  
+  `image(img)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| img | u32 | 操作対象のイメージバンク (0-2) |
+
+<br>
   
-- image(img)  
-  イメージバンクimg (0-2) を操作します。([イメージクラス](#イメージクラス)を参照のこと)
-  
-- tilemap(tm)  
-  タイルマップtm (0-7) を操作します。([タイルマップクラス](#タイルマップクラス)を参照のこと)
-  
-- clip(x, y, w, h)  
-  画面の描画領域を (x, y) から幅w、高さhに設定します。clip()で描画領域を全画面にリセットします。
+### tilemap()  
+  タイルマップtm (0-7) を操作します。([タイルマップクラス](#タイルマップクラス)を参照のこと)  
+  `tilemap(tm)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| tm | u32 | 操作対象のタイルマップ (0-7) |
+
+<br>
+
+### clip()  
+  画面の描画領域を (x, y) から幅w、高さhに設定します。clip()で描画領域を全画面にリセットします。    
+  `clip(x, y, w, h)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| x | f64 | 左上座標 |
+| y | f64 | 左上座標 |
+| w | f64 | 幅 |
+| h | f64 | 高さ |
+
+<br>
+
 ``` python
 import pyxel
 pyxel.init(64, 64)
@@ -58,9 +107,20 @@ def draw():
 
 pyxel.run(update, draw)
 ```
+![image clip](images/api/g_clip.gif)  
+<br>
   
-- camera(x, y)  
-  画面の左上隅の座標を (x, y) に変更します。camera()で左上隅の座標を (0, 0) にリセットします。
+### camera()  
+  画面の左上隅の座標を (x, y) に変更します。camera()で左上隅の座標を (0, 0) にリセットします。  
+  `camera(x, y)`
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| x | f64 | 左上座標 |
+| y | f64 | 左上座標 | 
+
+<br>
+
 ``` python
 import pyxel
 pyxel.init(64, 64)
@@ -77,9 +137,19 @@ def draw():
 
 pyxel.run(update, draw)
 ```
+<br>
   
-- pal(col1, col2)  
-  描画時に色col1をcol2に置き換えます。pal()で初期状態にリセットします。
+### pal()  
+  描画時に色col1をcol2に置き換えます。pal()で初期状態にリセットします。  
+  `pal(col1, col2)`
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| col1 | u8 | 置き換え対象の色 (0-15) |  
+| col2 | u8 | 置き換える色 (0-15) |  
+
+<br>
+
 ``` python
 import pyxel
 pyxel.init(64, 64)
@@ -104,15 +174,35 @@ def draw():
 
 pyxel.run(update, draw)
 ```
+![image pal](images/api/g_pal.gif)   
+<br>
   
-- cls(col)  
-  画面を色colでクリアします。
+### cls()  
+  画面を色colでクリアします。  
+  `cls(col)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| col | u8 | 画面を塗りつぶす色 (0-15) |  
+
+<br>
+
 ``` python
 pyxel.cls(0)
 ```
+<br>
   
-- pget(x, y)  
-  (x, y) のピクセルの色を取得します。
+### pget()  
+  (x, y) のピクセルの色を取得します。  
+  `pget(x, y)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| x | f64 | x座標 |  
+| y | f64 | y座標 |  
+
+<br>
+
 ``` python
 import pyxel
 pyxel.init(64, 64)
@@ -132,9 +222,20 @@ def draw():
 
 pyxel.run(update, draw)
 ```
+<br>
   
-- pset(x, y, col)  
-  (x, y) に色colのピクセルを描画します。
+### pset()  
+  (x, y) に色colのピクセルを描画します。  
+  `pset(x, y, col)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| x | f64 | x座標 |  
+| y | f64 | y座標 |  
+| col | u8 | 描画色 (0-15) |  
+
+<br>
+
 ``` python
 import pyxel
 pyxel.init(64, 64)
@@ -149,33 +250,43 @@ def draw():
 
 pyxel.run(update, draw)
 ```
-  
-- line(x1, y1, x2, y2, col)  
-  色colの直線を (x1, y1)-(x2, y2) に描画します。
+<br>
 
-- rect(x, y, w, h, col)  
-  幅w、高さh、色colの矩形を (x, y) に描画します。※矩形（くけい）は長方形
+### line()  
+  色colの直線を (x1, y1)-(x2, y2) に描画します。  
+  `line(x1, y1, x2, y2, col)`  
 
-- rectb(x, y, w, h, col)  
-  幅w、高さh、色colの矩形の輪郭線を (x, y) に描画します。
+### rect()  
+  幅w、高さh、色colの矩形を (x, y) に描画します。※矩形（くけい）は長方形  
+  `rect(x, y, w, h, col)`  
 
-- circ(x, y, r, col)  
-  半径r、色colの円を (x, y) に描画します。
+### rectb()  
+  幅w、高さh、色colの矩形の輪郭線を (x, y) に描画します。  
+  `rectb(x, y, w, h, col)`  
 
-- circb(x, y, r, col)  
-  半径r、色colの円の輪郭線を (x, y) に描画します。
+### circ()  
+  半径r、色colの円を (x, y) に描画します。  
+  `circ(x, y, r, col)`  
 
-- elli(x, y, w, h, col)  
-  幅w、高さh、色colの楕円を (x, y) に描画します。
+### circb()  
+  半径r、色colの円の輪郭線を (x, y) に描画します。  
+  `circb(x, y, r, col)`  
 
-- ellib(x, y, w, h, col)  
-  幅w、高さh、色colの楕円の輪郭線を (x, y) に描画します。
+### elli()  
+  幅w、高さh、色colの楕円を (x, y) に描画します。  
+  `elli(x, y, w, h, col)`  
 
-- tri(x1, y1, x2, y2, x3, y3, col)  
-  頂点が (x1, y1)、(x2, y2)、(x3, y3)、色colの三角形を描画します。
+### ellib()  
+  幅w、高さh、色colの楕円の輪郭線を (x, y) に描画します。  
+  `ellib(x, y, w, h, col)`  
 
-- trib(x1, y1, x2, y2, x3, y3, col)  
-  頂点が (x1, y1)、(x2, y2)、(x3, y3)、色colの三角形の輪郭線を描画します
+### tri()  
+  頂点が (x1, y1)、(x2, y2)、(x3, y3)、色colの三角形を描画します。  
+  `tri(x1, y1, x2, y2, x3, y3, col)`  
+
+### trib()  
+  頂点が (x1, y1)、(x2, y2)、(x3, y3)、色colの三角形の輪郭線を描画します。  
+  `trib(x1, y1, x2, y2, x3, y3, col)`  
   
 ``` python
 import pyxel
@@ -204,9 +315,21 @@ def draw():
 
 pyxel.run(update, draw)
 ```
+<br>
   
-- fill(x, y, col)  
-  (x, y) と同じ色でつながっている領域を色colで塗りつぶします。
+### fill()  
+  (x, y) と同じ色でつながっている領域を色colで塗りつぶします。  
+  `fill(x, y, col)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| x | f64 | x座標 |  
+| y | f64 | y座標 |  
+| col | u8 | 塗りつぶし色 (0-15) |  
+
+<br>
+
+
 ``` python
 import pyxel
 pyxel.init(64, 64)
@@ -225,9 +348,27 @@ def draw():
 
 pyxel.run(update, draw)
 ```
-  
-- blt(x, y, img, u, v, w, h, [colkey])  
-  イメージバンクimg (0-2) の (u, v) からサイズ (w, h) の領域を (x, y) にコピーします。w、hそれぞれに負の値を設定すると水平、垂直方向に反転します。colkeyに色を指定すると透明色として扱われます。
+![image fill](images/api/g_fill.gif)   
+
+<br>
+ 
+### blt()  
+  イメージバンクimg (0-2) の (u, v) からサイズ (w, h) の領域を (x, y) にコピーします。w、hそれぞれに負の値を設定すると水平、垂直方向に反転します。colkeyに色を指定すると透明色として扱われます。  
+  `blt(x, y, img, u, v, w, h, [colkey])`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| x | f64 | 描画先のx座標 |  
+| y | f64 | 描画先のy座標 |  
+| img | u32 | イメージバンク (0-2) |  
+| u | f64 | ドット絵の座標 |  
+| v | f64 | ドット絵の座標 |  
+| w | f64 | ドット絵の幅（マイナスで左右反転） |  
+| h | f64 | ドット絵の高さ（マイナスで上下反転） |  
+| colkey | u8 | 透明色 (0-15) |  
+
+<br>
+
 ``` python
 import pyxel
 pyxel.init(42, 12)
@@ -247,9 +388,25 @@ def draw():
 pyxel.run(update, draw)
 ```
 ![image blt](images/api/g_blt.png)  
+<br>
   
-- bltm(x, y, tm, u, v, w, h, [colkey])  
-  タイルマップtm (0-7) の (u, v) からサイズ (w, h) の領域を (x, y) にコピーします。w、hそれぞれに負の値を設定すると水平、垂直方向に反転します。colkeyに色を指定すると透明色として扱われます。1 タイルのサイズは 8x8 ピクセルで、(tile_x, tile_y)のタプルとしてタイルマップに格納されています。
+### bltm()  
+  タイルマップtm (0-7) の (u, v) からサイズ (w, h) の領域を (x, y) にコピーします。w、hそれぞれに負の値を設定すると水平、垂直方向に反転します。colkeyに色を指定すると透明色として扱われます。1 タイルのサイズは 8x8 ピクセルで、(tile_x, tile_y)のタプルとしてタイルマップに格納されています。  
+  `bltm(x, y, tm, u, v, w, h, [colkey])`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| x | f64 | 描画先のx座標 |  
+| y | f64 | 描画先のy座標 |  
+| tm | u32 | タイルマップ (0-7) |  
+| u | f64 | タイルマップの座標 |  
+| v | f64 | タイルマップの座標 |  
+| w | f64 | タイルマップの幅（マイナスで左右反転） |  
+| h | f64 | タイルマップ高さ（マイナスで上下反転） |  
+| colkey | u8 | 透明色 (0-15) | 
+
+<br>
+
 ``` python
 pyxel.bltm(0,0, 0, 0,0, 128,128, 0)
 ```
@@ -276,23 +433,62 @@ def draw():
 
 pyxel.run(update, draw)
 ```
+<br>
   
-- text(x, y, s, col)  
-  色colの文字列sを (x, y) に描画します。
+### text()  
+  色colの文字列sを (x, y) に描画します。  
+  `text(x, y, s, col)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| x | f64 | 描画先のx座標 |  
+| y | f64 | 描画先のy座標 | 
+| s | str | 文字列（半角英数） |
+| col | u8 | 文字色 (0-15) |  
+
+<br>
+
+
 ``` python
 pyxel.text(4, 4, "Hello, Pyxel!", pyxel.frame_count % 16)
 ```
-  
+
+<br>
+
+[ページの先頭に戻る](#pyxel-api-sample)　
+
+
 ## イメージクラス
-- width, height  
-  イメージの幅と高さ
+<br>
+
+
+### variable  
+
+
+|変数名|型|説明|記述例|
+|:---:|:---:|:---|:---|
+| width | u32 | イメージの幅 | `pyxel.image(0).width` |
+| height | u32 | イメージの高さ | `pyxel.image(0).height` |
+<br>
+
 ``` python
 print(pyxel.image(0).width)   # 256
 print(pyxel.image(0).height)  # 256
 ```
+<br>
   
-- set(x, y, data)  
-  (x, y) に文字列のリストでイメージを設定します。
+### set()  
+  (x, y) に文字列のリストでイメージを設定します。  
+  `set(x, y, data)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| x | i32 | イメージバンクの座標 |  
+| y | i32 | イメージバンクの座標 |  
+| data | リスト | ["1行目データ","2行目データ",・・・]<br>ドットの色を16進数で指定 |  
+
+<br>
+
 ``` python
 import pyxel
 pyxel.init(32, 32)
@@ -314,15 +510,54 @@ def draw():
 pyxel.run(update, draw)
 ```
 ![img set](images/api/g_set.png)  
+<br>
   
-- load(x, y, filename)  
-  (x, y) に画像ファイル (png/gif/jpeg) を読み込みます。
+### load()  
+  (x, y) に画像ファイル (png/gif/jpeg) を読み込みます。  
+  `load(x, y, filename)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| x | i32 | イメージバンクの座標 |  
+| y | i32 | イメージバンクの座標 |  
+| filename | str | 画像ファイル名 (png/gif/jpeg) |  
+
+<br>
+
 ``` python
 pyxel.image(2).load(0, 0, "penguin.png")    # イメージバンク2に画像ファイルを読み込む例
 ```
-  
-- pget(x, y)  
-  (x, y) のピクセルの色を取得します。
+
+<br>
+
+### save()  
+  指定したイメージバンクをPNGファイルに出力する。（上級者向けAPI）
+  `save(filename, scale)`
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| filename | str | 出力ファイル名 (.png が付加される) |  
+| scale | u32 | 画像サイズの倍率 |  
+
+<br>
+
+``` python
+pyxel.image(0).save("image_0", 1)    # イメージバンク0を等倍で出力
+```
+
+<br>
+
+### pget()  
+  イメージバンクの (x, y) のピクセルの色 (0-15) を取得します。  
+  `pget(x, y)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| x | f64 | イメージバンクの座標 |  
+| y | f64 | イメージバンクの座標 |  
+
+<br>
+
 ``` python
 import pyxel
 pyxel.init(32, 32)
@@ -363,9 +598,20 @@ pyxel.run(update, draw)
 "000c5c0f",
 "00556600",
 "00000500",</pre>  
+<br>
   
-- pset(x, y, col)  
-  (x, y) に色colのピクセルを描画します。
+### pset()  
+  (x, y) に色colのピクセルを描画します。  
+  `pset(x, y, col)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| x | f64 | イメージバンクの座標 |  
+| y | f64 | イメージバンクの座標 |  
+| col | u8 | 描画色 (0-15) |
+
+<br>
+
 ``` python
 import pyxel
 pyxel.init(32, 32)
@@ -384,17 +630,30 @@ def draw():
 
 pyxel.run(update, draw)
 ```
-  
-## タイルマップクラス
-- width, height  
-  タイルマップの幅と高さ
+
+<br>
+
+[ページの先頭に戻る](#pyxel-api-sample)　
+
+## タイルマップクラス  
+<br>
+
+
+### variable  
+
+
+|変数名|型|説明|記述例|
+|:---:|:---:|:---|:---|
+| width | u32 | タイルマップの幅 | `pyxel.tilemap(0).width` |
+| height | u32 | タイルマップの高さ | `pyxel.tilemap(0).height` |
+| refimg | u32 | タイルマップが参照するイメージバンク (0-2) | `pyxel.tilemap(0).refimg` |
+<br>
+
 ``` python
 print(pyxel.tilemap(0).width)   # 256
 print(pyxel.tilemap(0).height)  # 256
 ```
-  
-- refimg  
-  タイルマップが参照するイメージバンク (0-2)
+ 
 ``` python
 pyxel.tilemap(0).refimg = 1  # イメージバンク1を設定する例
 ```
@@ -404,10 +663,22 @@ print(pyxel.tilemap(0).refimg, pyxel.tilemap(0).image)
 pyxel.tilemap(0).image = pyxel.image(1)
 print(pyxel.tilemap(0).refimg, pyxel.tilemap(0).image)
 ```
+
+<br>
   
-- set(x, y, data)  
+### set()  
   (x, y) に文字列のリストでタイルマップを設定します。  
+  `set(x, y, data)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| x | i32 | タイルマップの書き込み開始位置 |  
+| y | i32 | タイルマップの書き込み開始位置 |  
+| data | リスト | ["1行目データ","2行目データ",・・・]<br>タイル座標を16進数で指定 |  
+
+<br>
 　※APIリファレンス記載の例にあるdataの値は古い仕様のものです。03_draw_api.py内のコードを参照してください。
+
 ``` python
 import pyxel
 pyxel.init(128, 128)
@@ -434,8 +705,17 @@ def draw():
 pyxel.run(update, draw)
 ```
   
-- pget(x, y)  
-  (x, y) のタイルを取得します。タイルは(tile_x, tile_y)のタプルです。
+### pget()  
+  (x, y) のタイルを取得します。タイルは(tile_x, tile_y)のタプルです。  
+  `pget(x, y)`    
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| x | f64 | タイルマップの位置 |  
+| y | f64 | タイルマップの位置 |  
+
+<br>
+
 ``` python
 import pyxel
 pyxel.init(128, 128)
@@ -459,8 +739,18 @@ def draw():
 pyxel.run(update, draw)
 ```
   
-- pset(x, y, tile)  
-  (x, y) にタイルを設定します。タイルは(tile_x, tile_y)のタプルです。
+### pset()  
+  (x, y) にタイルを設定します。タイルは(tile_x, tile_y)のタプルです。  
+  `pset(x, y, tile)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| x | f64 | タイルマップの位置 |  
+| y | f64 | タイルマップの位置 |  
+| tile | (u8,u8) | タイル種類（イメージバンク上の位置） |  
+
+<br>
+
 ``` python
 xidx = x // 8
 yidx = y // 8
@@ -468,4 +758,4 @@ pyxel.tilemap(0).pset(xidx,yidx, (1,0) )
 ```
   
   
-[TOPに戻る](api_graphics.md)
+[ページの先頭に戻る](#pyxel-api-sample)　　[TOPに戻る](../README.md#pyxel-game-development)

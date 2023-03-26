@@ -1,39 +1,73 @@
 # Pyxel API sample
 
-更新日：2023-03-24  
 バージョン：Pyxel 1.9版  
   
 ## contents
-- [システム](api_system.md#システム), [リソース](api_system.md#リソース), [入力](api_system.md#入力)  
-- [グラフィックス](api_graphics.md#グラフィックス), [イメージクラス](api_graphics.md#イメージクラス), [タイルマップクラス](api_graphics.md#タイルマップクラス)   
-- [オーディオ](api_audio.md#オーディオ), [サウンドクラス](api_audio.md#サウンドクラス), [ミュージッククラス](api_audio.md#ミュージッククラス)   
-- [数学](api_math.md)  
-  
+
+
+| 分類 | 項目 |
+|:---:|:---|
+|[システム](api_system.md#システム)| [変数](api_system.md#変数) [init()](api_system.md#init) [run()](api_system.md#run) [show()](api_system.md#show) [flip()](api_system.md#flip) [quit()](api_system.md#quit)|
+|[リソース](api_system.md#リソース)| [load()](api_system.md#load)  |
+|[入力](api_system.md#入力)| [変数](api_system.md#変数-1) [btn()](api_system.md#btn) [btnp()](api_system.md#btnp) [btnr()](api_system.md#btnr) [mouse()](api_system.md#mouse) [キー記述例](api_system.md#keycode) |  
+|[グラフィックス](api_graphics.md#グラフィックス)| [変数](api_graphics.md#変数) [image()](api_graphics.md#image) [tilemap()](api_graphics.md#tilemap) [clip()](api_graphics.md#clip) [camera()](api_graphics.md#camera) [pal()](api_graphics.md#pal) [cls()](api_graphics.md#cls) [pget()](api_graphics.md#pget) [pset()](api_graphics.md#pset) <br> [line()](api_graphics.md#line) [rect()](api_graphics.md#rect) [rectb()](api_graphics.md#rectb) [circ()](api_graphics.md#circ) [circb()](api_graphics.md#circb) [elli()](api_graphics.md#elli) [ellib()](api_graphics.md#ellib) [tri()](api_graphics.md#tri) [trib()](api_graphics.md#trib) <br> [fill()](api_graphics.md#fill) [blt()](api_graphics.md#blt) [bltm()](api_graphics.md#bltm) [text()](api_graphics.md#text) |
+|[イメージクラス](api_graphics.md#イメージクラス)| [変数](api_graphics.md#変数-1) [set()](api_graphics.md#set) [load()](api_graphics.md#load) [pget()](api_graphics.md#pget-1) [pset()](api_graphics.md#pset-1) |
+|[タイルマップクラス](api_graphics.md#タイルマップクラス)| [変数](api_graphics.md#変数-2)  [set()](api_graphics.md#set-1) [pget()](api_graphics.md#pget-2) [pset()](api_graphics.md#pset-2) |
+|[オーディオ](api_audio.md#オーディオ)| [sound()](api_audio.md#sound) [music()](api_audio.md#music) [play_pos()](api_audio.md#play_pos) [play()](api_audio.md#play) [playm()](api_audio.md#playm) [stop()](api_audio.md#stop) |
+|[サウンドクラス](api_audio.md#サウンドクラス)| [変数](api_audio.md#変数) [set()](api_audio.md#set) [set_notes()](api_audio.md#set_notes) [set_tones()](api_audio.md#set_tones) [set_volumes()](api_audio.md#set_volumes) [set_effects()](api_audio.md#set_effects) |
+|[ミュージッククラス](api_audio.md#ミュージッククラス)| [変数](api_audio.md#変数-1) [set()](api_audio.md#set) |
+|[数学](api_math.md)| [ceil()](api_math.md#ceil) [floor()](api_math.md#floor) [sgn()](api_math.md#sgn) [sin()](api_math.md#sin) [(cos)](api_math.md#cos) [atan2()](api_math.md#atan2) [rseed()](api_math.md#rseed) [rndi()](api_math.md#rndi) [rndf()](api_math.md#rndf) [nseed()](api_math.md#nseed) [noise()](api_math.md#noise) |
+
+
+<br>
+
+
 [Pyxel APIリファレンス](https://github.com/kitao/pyxel/blob/main//docs/README.ja.md) のAPI実行例です。  
 ※下記import文でPyxelをインポートしたときのAPIの呼び出し記述になります。
 ``` python
 import pyxel
 ```
   
-## システム
+## システム  
+<br>  
 
-- width,height  
-  画面の幅と高さ
+### variable  
+
+|変数名|型|説明|記述例|
+|:---:|:---:|:---|:---|
+| width | u32 | 画面の幅 | `pyxel.width` |
+| height | u32 | 画面の高さ | `pyxel.height` |
+| frame_count | u32 | 経過フレーム数 | `pyxel.frame_count` |  
+<br>
 ``` python
 sw = pyxel.width
 sh = pyxel.height
 print("width=",sw,"height=",sh)     # print文はIDLEシェル等への出力でデバッグに利用できます
 ```
-  
-- frame_count  
-  経過フレーム数
+
 ``` python
 pyxel.text(10, 10, "Hello, Pyxel!", pyxel.frame_count % 16)
 ```
-  
-- init()  
-  Pyxel アプリケーションを画面サイズ (width, height) で初期化します。  
-  
+
+<br>
+
+### init()  
+  Pyxel アプリケーションを初期化します。  
+  `init(width, height, [title], [fps], [quit_key], [display_scale], [capture_scale], [capture_sec])`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| width | u32 | 画面の幅 |
+| height | u32 | 画面の高さ |
+| title | str | ウィンドウタイトル |
+| fps | u32 | 動作フレームレート |
+| quit_key | u32 | アプリケーション終了キー（[キー記述例](api_system.md#キー記述例)） |
+| display_scale | u32 | 画面表示の倍率 |
+| capture_scale | u32 | 画面キャプチャの倍率 |
+| capture_sec | u32 | 画面キャプチャ動画の最大録画時間 |  
+
+<br>
+ 
 ・アプリケーション初期化 画面サイズとタイトル指定
 ``` python
 pyxel.init(240, 160, title="Pyxel App")
@@ -46,9 +80,19 @@ pyxel.init(240, 160, title="Pyxel App", fps=60, quit_key=pyxel.KEY_NONE)
 ``` python
 pyxel.init(128, 64, display_scale=5,capture_scale=5,capture_sec=10)
 ```  
-  
-- run()  
-  Pyxel アプリケーションを開始
+<br>
+
+### run()  
+  Pyxel アプリケーションを開始、フレーム更新時にupdate関数、描画時にdraw関数を呼びます。  
+  `run(update, draw)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| update | 関数 | 更新時に実行する関数名を指定 |
+| draw | 関数 | 描画時に実行する関数名を指定 |
+
+<br>
+
 ``` python
 import pyxel
 pyxel.init(64, 64)
@@ -62,9 +106,11 @@ def draw():
 
 pyxel.run(update, draw)
 ```
-  
-- show()  
-  画面を表示してEscキーが押されるまで待機
+
+<br>  
+
+### show()  
+  画面を表示してEscキーが押されるまで待機  
 ``` python
 import pyxel
 pyxel.init(64, 64)
@@ -72,7 +118,9 @@ pyxel.text(10, 10, "Test", 7)
 pyxel.show()
 ```
 
-- flip()  
+<br>
+
+### flip()  
   画面を 1 フレーム更新（Webでは使用不可）
 ``` python
 import pyxel
@@ -82,8 +130,10 @@ while(True):
     pyxel.text(10,10, "Test", pyxel.frame_count % 16)
     pyxel.flip()
 ```
-  
-- quit()  
+
+<br>  
+
+### quit()  
   Pyxel アプリケーションを終了
 ``` python
 def update():
@@ -91,11 +141,29 @@ def update():
         pyxel.quit()
     return
 ```
-  
+
+
+[ページの先頭に戻る](#pyxel-api-sample)　
+
+
 ## リソース
-- load(filename, [image], [tilemap], [sound], [music])  
+
+<br>  
+
+### load()  
   リソースファイル (.pyxres) を読み込みます。  
-  
+  `load(filename, [image], [tilemap], [sound], [music])`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| filename | str | リソースファイルのパス |
+| image | bool | イメージバンクを読み込まない場合 False を指定 |
+| tilemap | bool | タイルマップを読み込まない場合 False を指定 |
+| sound | bool | サウンドを読み込まない場合 False を指定 |
+| music | bool | ミュージックを読み込まない場合 False を指定 |
+
+<br>
+
 ・同じフォルダにある sample.pyxres を読み込む例
 ``` python
 import pyxel
@@ -120,10 +188,28 @@ pyxel.run(update, draw)
 # music   True の例
 pyxel.load("sample.pyxres",True,False)
 ```
-  
+
+
+[ページの先頭に戻る](#pyxel-api-sample)　
+
+
 ## 入力
-- mouse_x, mouse_y  
-  現在のマウスカーソル座標  (Pyxel Web ではスマホタッチ位置を取得可)
+<br>
+
+
+### variable  
+
+
+|変数名| 型 |説明|記述例|
+|:---:|:---:|:---|:---|
+| mouse_x | i32 | 現在のマウスカーソルx座標 | `pyxel.mouse_x` |  
+| mouse_y | i32 | 現在のマウスカーソルy座標 | `pyxel.mouse_y` |  
+| mouse_wheel | i32 | 現在のマウスホイールの値 | `pyxel.mouse_wheel` |  
+  
+※Pyxel Web では mouse_x,mouse_y でスマホタッチ位置を取得可
+
+<br>
+
 ``` python
 import pyxel
 pyxel.init(64, 64)
@@ -143,9 +229,7 @@ def draw():
 
 pyxel.run(update, draw)
 ```
-  
-- mouse_wheel  
-  現在のマウスホイールの値
+ 
 ``` python
 import pyxel
 pyxel.init(64, 64)
@@ -160,9 +244,19 @@ def draw():
 
 pyxel.run(update, draw)
 ```
-  
-- btn(key)  
-  keyが押されていたらTrue、押されていなければFalseを返します。（[キー記述例](api_system.md#キー記述例)  ）
+
+<br>  
+
+###  btn() 
+  keyが押されていたらTrue、押されていなければFalseを返します。  
+  `btn(key) `  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| key | u32 | 判定するキー（[キー記述例](api_system.md#キー記述例)） |  
+
+<br>
+
 ``` python
 import pyxel
 pyxel.init(64, 64)
@@ -185,9 +279,21 @@ def draw():
 
 pyxel.run(update, draw)
 ```
-   
-- btnp(key, [hold], [repeat])  
-  そのフレームにkeyが押されたらTrue、押されなければFalseを返します。
+
+<br>
+
+### btnp()  
+  そのフレームにkeyが押されたらTrue、押されなければFalseを返します。  
+  `btnp(key, [hold], [repeat]) `  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| key | u32 | 判定するキー（[キー記述例](api_system.md#keycode)） |  
+| hold | u32 | 押し続け判定フレーム数 |
+| repeat | u32 | Trueを返すフレーム間隔 |
+
+<br>
+
 ``` python
 import pyxel
 pyxel.init(64, 64)
@@ -225,9 +331,62 @@ def draw():
 
 pyxel.run(update, draw)
 ```
-   
-## キー記述例  
-　(詳細は[キー定義一覧](https://github.com/kitao/pyxel/blob/main/python/pyxel/__init__.pyi)参照)
+
+<br>
+
+### btnr()  
+  そのフレームにkeyが離されたらTrue、離されなければFalseを返します。  
+  `btnr(key)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| key | 定義値 | 判定するキー（[キー記述例](api_system.md#keycode)） |  
+
+<br>
+
+``` python
+import pyxel
+pyxel.init(64, 64)
+
+cnt = 0
+def update():
+    global cnt
+    if pyxel.btnr(pyxel.KEY_SPACE) :
+        cnt += 1
+    return
+
+def draw():
+    pyxel.cls(0)
+    pyxel.text(4,4, str(cnt),7)
+    return
+
+pyxel.run(update, draw)
+```
+
+<br>
+
+### mouse()  
+  visibleがTrueならマウスカーソルを表示し、Falseなら非表示にします。マウスカーソルが非表示でも座標は更新されます。  
+  `mouse(visible)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| visible | bool | 表示させる場合 True |  
+
+<br>
+
+``` python
+pyxel.mouse(True)    # 以降False指定されるまで表示
+```
+  
+<br>
+  
+
+## Keycode  
+
+  Keycodeの定義値です。　(詳細は[キー定義一覧](https://github.com/kitao/pyxel/blob/main/python/pyxel/__init__.pyi)参照)  
+
+
 | コード例 | キー |
 |:---|:---|
 | pyxel.KEY_SPACE | スペースキー |
@@ -251,13 +410,7 @@ pyxel.run(update, draw)
 | pyxel.GAMEPAD1_BUTTON_X | バーチャルゲームパッドX |
 | pyxel.GAMEPAD1_BUTTON_Y | バーチャルゲームパッドY |
   
+  
+<br>
 
-- mouse(visible)  
-  visibleがTrueならマウスカーソルを表示し、Falseなら非表示にします。マウスカーソルが非表示でも座標は更新されます。
-``` python
-pyxel.mouse(True)    # 以降False指定されるまで表示
-```
-  
-  
-  
-[TOPに戻る](api_system.md)
+[ページの先頭に戻る](#pyxel-api-sample)　　[TOPに戻る](../README.md#pyxel-game-development)

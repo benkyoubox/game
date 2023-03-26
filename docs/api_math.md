@@ -1,13 +1,25 @@
 # Pyxel API sample
 
-更新日：2023-03-25  
 バージョン：Pyxel 1.9版  
   
 ## contents
-- [システム](api_system.md#システム), [リソース](api_system.md#リソース), [入力](api_system.md#入力)  
-- [グラフィックス](api_graphics.md#グラフィックス), [イメージクラス](api_graphics.md#イメージクラス), [タイルマップクラス](api_graphics.md#タイルマップクラス)   
-- [オーディオ](api_audio.md#オーディオ), [サウンドクラス](api_audio.md#サウンドクラス), [ミュージッククラス](api_audio.md#ミュージッククラス)   
-- [数学](api_math.md)    
+
+
+| 分類 | 項目 |
+|:---:|:---|
+|[システム](api_system.md#システム)| [変数](api_system.md#変数) [init()](api_system.md#init) [run()](api_system.md#run) [show()](api_system.md#show) [flip()](api_system.md#flip) [quit()](api_system.md#quit)|
+|[リソース](api_system.md#リソース)| [load()](api_system.md#load)  |
+|[入力](api_system.md#入力)| [変数](api_system.md#変数-1) [btn()](api_system.md#btn) [btnp()](api_system.md#btnp) [btnr()](api_system.md#btnr) [mouse()](api_system.md#mouse) [キー記述例](api_system.md#keycode) |  
+|[グラフィックス](api_graphics.md#グラフィックス)| [変数](api_graphics.md#変数) [image()](api_graphics.md#image) [tilemap()](api_graphics.md#tilemap) [clip()](api_graphics.md#clip) [camera()](api_graphics.md#camera) [pal()](api_graphics.md#pal) [cls()](api_graphics.md#cls) [pget()](api_graphics.md#pget) [pset()](api_graphics.md#pset) <br> [line()](api_graphics.md#line) [rect()](api_graphics.md#rect) [rectb()](api_graphics.md#rectb) [circ()](api_graphics.md#circ) [circb()](api_graphics.md#circb) [elli()](api_graphics.md#elli) [ellib()](api_graphics.md#ellib) [tri()](api_graphics.md#tri) [trib()](api_graphics.md#trib) <br> [fill()](api_graphics.md#fill) [blt()](api_graphics.md#blt) [bltm()](api_graphics.md#bltm) [text()](api_graphics.md#text) |
+|[イメージクラス](api_graphics.md#イメージクラス)| [変数](api_graphics.md#変数-1) [set()](api_graphics.md#set) [load()](api_graphics.md#load) [pget()](api_graphics.md#pget-1) [pset()](api_graphics.md#pset-1) |
+|[タイルマップクラス](api_graphics.md#タイルマップクラス)| [変数](api_graphics.md#変数-2)  [set()](api_graphics.md#set-1) [pget()](api_graphics.md#pget-2) [pset()](api_graphics.md#pset-2) |
+|[オーディオ](api_audio.md#オーディオ)| [sound()](api_audio.md#sound) [music()](api_audio.md#music) [play_pos()](api_audio.md#play_pos) [play()](api_audio.md#play) [playm()](api_audio.md#playm) [stop()](api_audio.md#stop) |
+|[サウンドクラス](api_audio.md#サウンドクラス)| [変数](api_audio.md#変数) [set()](api_audio.md#set) [set_notes()](api_audio.md#set_notes) [set_tones()](api_audio.md#set_tones) [set_volumes()](api_audio.md#set_volumes) [set_effects()](api_audio.md#set_effects) |
+|[ミュージッククラス](api_audio.md#ミュージッククラス)| [変数](api_audio.md#変数-1) [set()](api_audio.md#set) |
+|[数学](api_math.md)| [ceil()](api_math.md#ceil) [floor()](api_math.md#floor) [sgn()](api_math.md#sgn) [sin()](api_math.md#sin) [(cos)](api_math.md#cos) [atan2()](api_math.md#atan2) [rseed()](api_math.md#rseed) [rndi()](api_math.md#rndi) [rndf()](api_math.md#rndf) [nseed()](api_math.md#nseed) [noise()](api_math.md#noise) |
+
+
+<br>  
   
 [Pyxel APIリファレンス](https://github.com/kitao/pyxel/blob/main//docs/README.ja.md) のAPI実行例です。  
   
@@ -19,20 +31,20 @@ import pyxel
   
 ## 数学
   
-- ceil(x)  
+### ceil(x)  
   x以上の最小の整数を返します。
 ``` python
 n = pyxel.ceil( 4.125 )
 print(n)    # 5
 ```
-- floor(x)  
+### floor(x)  
   x以下の最大の整数を返します。
 ``` python
 n = pyxel.floor( 9.99 )
 print(n)    # 9
 ```
   
-- sgn(x)  
+### sgn(x)  
   xが正の時に 1、0 の時に 0、負の時に-1 を返します。
 ``` python
 print( pyxel.sgn( 20 ) )  # 1.0
@@ -40,7 +52,7 @@ print( pyxel.sgn(  0 ) )  # 0.0
 print( pyxel.sgn( -3 ) )  # -1.0
 ```
   
-- sqrt(x)  
+### sqrt(x)  
   xの平方根を返します。
 ``` python
 a = 3
@@ -72,7 +84,7 @@ def draw():
 pyxel.run(update, draw)
 ```
   
-- sin(deg)  
+### sin(deg)  
   deg度(Degree)の正弦を返します。
 ``` python
 import pyxel
@@ -101,7 +113,7 @@ pyxel.run(update, draw)
 ```
 ![image sin](images/api/m_sin.gif)  
   
-- cos(deg)  
+### cos(deg)  
   deg度(Degree)の余弦を返します。
 ``` python
 import pyxel
@@ -128,7 +140,7 @@ pyxel.run(update,draw)
 ```
 ![image cos](images/api/m_cos.gif)  
   
-- atan2(y, x)  
+### atan2(y, x)  
   y/xの逆正接を度(Degree)で返します。※引数の順番注意
 ``` python
 import pyxel
@@ -173,7 +185,7 @@ pyxel.run(update,draw)
 ```
 ![image atan2](images/api/m_atan2.gif)  
   
-- rseed(seed: int)  
+### rseed(seed: int)  
   乱数生成器のシードを設定します。
 ``` python
 import pyxel
@@ -239,7 +251,7 @@ pyxel.show()
 64.38980237759799
 </pre>
   
-- nseed(seed)  
+### nseed(seed)  
   Perlin ノイズのシードを設定します。  
 　（パーリンノイズは座標ごとの乱数でなだらかな変化の値を得られるもの。ゲームで地形生成やテクスチャに利用される）
 ``` python
@@ -285,5 +297,4 @@ pyxel.show()
 z = 1 ![image](images/api/m_noise_z1.png) z = 2 ![image](images/api/m_noise_z2.png) z = 5 ![image](images/api/m_noise_z5.png)  
   
   
-  [TOPに戻る](api_math.md)
-  
+[ページの先頭に戻る](#pyxel-api-sample)　　[TOPに戻る](../README.md#pyxel-game-development)
