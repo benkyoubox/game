@@ -680,7 +680,10 @@ print(pyxel.tilemap(0).refimg, pyxel.tilemap(0).image)
 | data | リスト | ["1行目データ","2行目データ",・・・]<br>タイル座標を16進数で指定 |  
 
 <br>
-　※APIリファレンス記載の例にあるdataの値は古い仕様のものです。[03_draw_api.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/03_draw_api.py)内のコードを参照してください。  
+※APIリファレンス記載の例にあるdataの値は古い仕様のものです。 
+
+[03_draw_api.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/03_draw_api.py) 内のコードを参照してください。  
+
 
 ``` python
 import pyxel
