@@ -832,28 +832,28 @@ pyxel.tilemap(0).pset(xidx,yidx, (1,0) )
   <th>番号</th><th>表示色</th><th>16進数</th> <th>番号</th><th>表示色</th><th>16進数</th>
 </tr>
 <tr>
-  <td>0</td><td><span style="font-size:120%;color:#000000">■</span></td><td>000000</td> <td>8</td><td><span style="font-size:120%;color:#d4186c">■</span></td><td>d4186c</td>
+  <td>0</td><td><span style="font-size:120%;color:#000000">$\color[RGB]{0,0,0} ■$</span></td><td>000000</td> <td>8</td><td><span style="font-size:120%;color:#d4186c">$\color[RGB]{212,24,108} ■$</span></td><td>d4186c</td>
 </tr>
 <tr>
-  <td>1</td><td> <span style="font-size:120%;color:#2b335f">■</span> </td><td> 2b335f </td> <td>9</td><td> <span style="font-size:120%;color:#d38441">■</span> </td><td> d38441 </td>
+  <td>1</td><td> <span style="font-size:120%;color:#2b335f">$\color[RGB]{43,51,95} ■$</span> </td><td> 2b335f </td> <td>9</td><td> <span style="font-size:120%;color:#d38441">$\color[RGB]{211,132,65} ■$</span> </td><td> d38441 </td>
 </tr>
 <tr>
-  <td>2</td><td> <span style="font-size:120%;color:#7e2072">■</span> </td><td> 7e2072 </td> <td>10</td><td> <span style="font-size:120%;color:#e9c35b">■</span> </td><td> e9c35b </td>
+  <td>2</td><td> <span style="font-size:120%;color:#7e2072">$\color[RGB]{126,32,114} ■$</span> </td><td> 7e2072 </td> <td>10</td><td> <span style="font-size:120%;color:#e9c35b">$\color[RGB]{233,195,91} ■$</span> </td><td> e9c35b </td>
 </tr>
 <tr>
-  <td>3</td><td> <span style="font-size:120%;color:#19959c">■</span> </td><td> 19959c </td> <td>11</td><td> <span style="font-size:120%;color:#70c6a9">■</span> </td><td> 70c6a9 </td>
+  <td>3</td><td> <span style="font-size:120%;color:#19959c">$\color[RGB]{25,149,156} ■$</span> </td><td> 19959c </td> <td>11</td><td> <span style="font-size:120%;color:#70c6a9">$\color[RGB]{112,198,169} ■$</span> </td><td> 70c6a9 </td>
 </tr>
 <tr>
-  <td>4</td><td> <span style="font-size:120%;color:#8b4852">■</span> </td><td> 8b4852 </td> <td>12</td><td> <span style="font-size:120%;color:#7696de">■</span> </td><td> 7696de </td>
+  <td>4</td><td> <span style="font-size:120%;color:#8b4852">$\color[RGB]{139,72,82} ■$</span> </td><td> 8b4852 </td> <td>12</td><td> <span style="font-size:120%;color:#7696de">$\color[RGB]{118,150,222} ■$</span> </td><td> 7696de </td>
 </tr>
 <tr>
-  <td>5</td><td> <span style="font-size:120%;color:#395c98">■</span> </td><td> 395c98 </td> <td>13</td><td> <span style="font-size:120%;color:#a3a3a3">■</span> </td><td> a3a3a3 </td>
+  <td>5</td><td> <span style="font-size:120%;color:#395c98">$\color[RGB]{57,92,152} ■$</span> </td><td> 395c98 </td> <td>13</td><td> <span style="font-size:120%;color:#a3a3a3">$\color[RGB]{163,163,163} ■$</span> </td><td> a3a3a3 </td>
 </tr>
 <tr>
-  <td>6</td><td> <span style="font-size:120%;color:#a9c1ff">■</span> </td><td> a9c1ff </td> <td>14</td><td> <span style="font-size:120%;color:#ff9798">■</span> </td><td> ff9798 </td>
+  <td>6</td><td> <span style="font-size:120%;color:#a9c1ff">$\color[RGB]{169,193,255} ■$</span> </td><td> a9c1ff </td> <td>14</td><td> <span style="font-size:120%;color:#ff9798">$\color[RGB]{255,151,152} ■$</span> </td><td> ff9798 </td>
 </tr>
 <tr>
-  <td>7</td><td> <span style="font-size:120%;color:#eeeeee">■</span> </td><td> eeeeee </td> <td>15</td><td> <span style="font-size:120%;color:#edc7b0">■</span> </td><td> edc7b0 </td>
+  <td>7</td><td> <span style="font-size:120%;color:#eeeeee">$\color[RGB]{238,238,238} ■$</span> </td><td> eeeeee </td> <td>15</td><td> <span style="font-size:120%;color:#edc7b0">$\color[RGB]{237,199,176} ■$</span> </td><td> edc7b0 </td>
 </tr>
 </table>
 <br>
