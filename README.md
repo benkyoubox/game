@@ -52,7 +52,7 @@ Pyxelのゲームの処理の流れは基本的に「初期化処理を最初に
 |[システム](docs/api_system.md#pyxel-api-sample)| [変数](docs/api_system.md#variable) [init()](docs/api_system.md#init) [run()](docs/api_system.md#run) [show()](docs/api_system.md#show) [flip()](docs/api_system.md#flip) [quit()](docs/api_system.md#quit)|
 |[リソース](docs/api_system.md#リソース)| [load()](docs/api_system.md#load)  |
 |[入力](docs/api_system.md#入力)| [変数](docs/api_system.md#variable-1) [btn()](docs/api_system.md#btn) [btnp()](docs/api_system.md#btnp) [btnr()](docs/api_system.md#btnr) [mouse()](docs/api_system.md#mouse) [キー記述例](docs/api_system.md#keycode) |  
-|[グラフィックス](docs/api_graphics.md#pyxel-api-sample)| [変数](docs/api_graphics.md#variable) [image()](docs/api_graphics.md#image) [tilemap()](docs/api_graphics.md#tilemap) [clip()](docs/api_graphics.md#clip) [camera()](docs/api_graphics.md#camera) [pal()](docs/api_graphics.md#pal) [cls()](docs/api_graphics.md#cls) [pget()](docs/api_graphics.md#pget) [pset()](docs/api_graphics.md#pset) <br> [line()](docs/api_graphics.md#line) [rect()](docs/api_graphics.md#rect) [rectb()](docs/api_graphics.md#rectb) [circ()](docs/api_graphics.md#circ) [circb()](docs/api_graphics.md#circb) [elli()](docs/api_graphics.md#elli) [ellib()](docs/api_graphics.md#ellib) [tri()](docs/api_graphics.md#tri) [trib()](docs/api_graphics.md#trib) <br> [fill()](docs/api_graphics.md#fill) [blt()](docs/api_graphics.md#blt) [bltm()](docs/api_graphics.md#bltm) [text()](docs/api_graphics.md#text) |
+|[グラフィックス](docs/api_graphics.md#pyxel-api-sample)| [変数](docs/api_graphics.md#variable) [image()](docs/api_graphics.md#image) [tilemap()](docs/api_graphics.md#tilemap) [clip()](docs/api_graphics.md#clip) [camera()](docs/api_graphics.md#camera) [pal()](docs/api_graphics.md#pal) [cls()](docs/api_graphics.md#cls) [pget()](docs/api_graphics.md#pget) [pset()](docs/api_graphics.md#pset) <br> [line()](docs/api_graphics.md#line) [rect()](docs/api_graphics.md#rect) [rectb()](docs/api_graphics.md#rectb) [circ()](docs/api_graphics.md#circ) [circb()](docs/api_graphics.md#circb) [elli()](docs/api_graphics.md#elli) [ellib()](docs/api_graphics.md#ellib) [tri()](docs/api_graphics.md#tri) [trib()](docs/api_graphics.md#trib) <br> [fill()](docs/api_graphics.md#fill) [blt()](docs/api_graphics.md#blt) [bltm()](docs/api_graphics.md#bltm) [text()](docs/api_graphics.md#text) [表示色](docs/api_graphics.md#color) |
 |[イメージクラス](docs/api_graphics.md#イメージクラス)| [変数](docs/api_graphics.md#variable-1) [set()](docs/api_graphics.md#set) [load()](docs/api_graphics.md#load) [save()](docs/api_graphics.md#save) [pget()](docs/api_graphics.md#pget-1) [pset()](docs/api_graphics.md#pset-1) |
 |[タイルマップクラス](docs/api_graphics.md#タイルマップクラス)| [変数](docs/api_graphics.md#variable-2)  [set()](docs/api_graphics.md#set-1) [pget()](docs/api_graphics.md#pget-2) [pset()](docs/api_graphics.md#pset-2) |
 |[オーディオ](docs/api_audio.md#pyxel-api-sample)| [sound()](docs/api_audio.md#sound) [music()](docs/api_audio.md#music) [play_pos()](docs/api_audio.md#play_pos) [play()](docs/api_audio.md#play) [playm()](docs/api_audio.md#playm) [stop()](docs/api_audio.md#stop) |
@@ -159,7 +159,7 @@ pyxel.camera()
 pyxel.bltm(0,0, 0, self.scroll_x,self.scroll_y, pyxel.width,pyxel.height, 0)
 pyxel.camera(self.scroll_x,self.scroll_y)
 ```
-イメージ表示  
+イメージ表示  （[透明色](docs/api_graphics.md#color)）   
 ``` python
 pyxel.blt(self.x, self.y, 0, u,v, self.w, self.h, 0)
 ```

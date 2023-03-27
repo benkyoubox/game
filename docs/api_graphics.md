@@ -11,7 +11,7 @@
 |[システム](api_system.md#システム)| [変数](api_system.md#variable) [init()](api_system.md#init) [run()](api_system.md#run) [show()](api_system.md#show) [flip()](api_system.md#flip) [quit()](api_system.md#quit)|
 |[リソース](api_system.md#リソース)| [load()](api_system.md#load)  |
 |[入力](api_system.md#入力)| [変数](api_system.md#variable-1) [btn()](api_system.md#btn) [btnp()](api_system.md#btnp) [btnr()](api_system.md#btnr) [mouse()](api_system.md#mouse) [キー記述例](api_system.md#keycode) |  
-|[グラフィックス](api_graphics.md#グラフィックス)| [変数](api_graphics.md#variable) [image()](api_graphics.md#image) [tilemap()](api_graphics.md#tilemap) [clip()](api_graphics.md#clip) [camera()](api_graphics.md#camera) [pal()](api_graphics.md#pal) [cls()](api_graphics.md#cls) [pget()](api_graphics.md#pget) [pset()](api_graphics.md#pset) <br> [line()](api_graphics.md#line) [rect()](api_graphics.md#rect) [rectb()](api_graphics.md#rectb) [circ()](api_graphics.md#circ) [circb()](api_graphics.md#circb) [elli()](api_graphics.md#elli) [ellib()](api_graphics.md#ellib) [tri()](api_graphics.md#tri) [trib()](api_graphics.md#trib) <br> [fill()](api_graphics.md#fill) [blt()](api_graphics.md#blt) [bltm()](api_graphics.md#bltm) [text()](api_graphics.md#text) |
+|[グラフィックス](api_graphics.md#グラフィックス)| [変数](api_graphics.md#variable) [image()](api_graphics.md#image) [tilemap()](api_graphics.md#tilemap) [clip()](api_graphics.md#clip) [camera()](api_graphics.md#camera) [pal()](api_graphics.md#pal) [cls()](api_graphics.md#cls) [pget()](api_graphics.md#pget) [pset()](api_graphics.md#pset) <br> [line()](api_graphics.md#line) [rect()](api_graphics.md#rect) [rectb()](api_graphics.md#rectb) [circ()](api_graphics.md#circ) [circb()](api_graphics.md#circb) [elli()](api_graphics.md#elli) [ellib()](api_graphics.md#ellib) [tri()](api_graphics.md#tri) [trib()](api_graphics.md#trib) <br> [fill()](api_graphics.md#fill) [blt()](api_graphics.md#blt) [bltm()](api_graphics.md#bltm) [text()](api_graphics.md#text) [表示色](api_graphics.md#color) |
 |[イメージクラス](api_graphics.md#イメージクラス)| [変数](api_graphics.md#variable-1) [set()](api_graphics.md#set) [load()](api_graphics.md#load) [save()](api_graphics.md#save) [pget()](api_graphics.md#pget-1) [pset()](api_graphics.md#pset-1) |
 |[タイルマップクラス](api_graphics.md#タイルマップクラス)| [変数](api_graphics.md#variable-2)  [set()](api_graphics.md#set-1) [pget()](api_graphics.md#pget-2) [pset()](api_graphics.md#pset-2) |
 |[オーディオ](api_audio.md#オーディオ)| [sound()](api_audio.md#sound) [music()](api_audio.md#music) [play_pos()](api_audio.md#play_pos) [play()](api_audio.md#play) [playm()](api_audio.md#playm) [stop()](api_audio.md#stop) |
@@ -179,7 +179,7 @@ pyxel.run(update, draw)
 
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
-| col1 | u8 | 置き換え対象の色 (0-15) |  
+| col1 | u8 | 置き換え対象の色 (0-15) [表示色](api_graphics.md#color) |  
 | col2 | u8 | 置き換える色 (0-15) |  
 
 <br>
@@ -217,7 +217,7 @@ pyxel.run(update, draw)
 
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
-| col | u8 | 画面を塗りつぶす色 (0-15) |  
+| col | u8 | 画面を塗りつぶす色 (0-15) [表示色](api_graphics.md#color) |  
 
 <br>
 
@@ -273,7 +273,7 @@ pyxel.run(update, draw)
 |:---:|:---:|:---|
 | x | f64 | x座標 |  
 | y | f64 | y座標 |  
-| col | u8 | 描画色 (0-15) |  
+| col | u8 | 描画色 (0-15) [表示色](api_graphics.md#color) |  
 
 <br>
 
@@ -295,7 +295,7 @@ pyxel.run(update, draw)
 <br>
 
 ### line()  
-  色colの直線を (x1, y1)-(x2, y2) に描画します。  
+  色colの直線を (x1, y1)-(x2, y2) に描画します。 [表示色](api_graphics.md#color)   
   `line(x1, y1, x2, y2, col)`  
 
 ### rect()  
@@ -367,7 +367,7 @@ pyxel.run(update, draw)
 |:---:|:---:|:---|
 | x | f64 | x座標 |  
 | y | f64 | y座標 |  
-| col | u8 | 塗りつぶし色 (0-15) |  
+| col | u8 | 塗りつぶし色 (0-15) [表示色](api_graphics.md#color) |  
 
 <br>
 
@@ -407,7 +407,7 @@ pyxel.run(update, draw)
 | v | f64 | ドット絵の座標 |  
 | w | f64 | ドット絵の幅（マイナスで左右反転） |  
 | h | f64 | ドット絵の高さ（マイナスで上下反転） |  
-| colkey | u8 | 透明色 (0-15) |  
+| colkey | u8 | 透明色 (0-15)  [表示色](api_graphics.md#color) |  
 
 <br>
 
@@ -445,7 +445,7 @@ pyxel.run(update, draw)
 | v | f64 | タイルマップの座標 |  
 | w | f64 | タイルマップの幅（マイナスで左右反転） |  
 | h | f64 | タイルマップ高さ（マイナスで上下反転） |  
-| colkey | u8 | 透明色 (0-15) | 
+| colkey | u8 | 透明色 (0-15)  [表示色](api_graphics.md#color) | 
 
 <br>
 
@@ -486,7 +486,7 @@ pyxel.run(update, draw)
 | x | f64 | 描画先のx座標 |  
 | y | f64 | 描画先のy座標 | 
 | s | str | 文字列（半角英数） |
-| col | u8 | 文字色 (0-15) |  
+| col | u8 | 文字色 (0-15) [表示色](api_graphics.md#color) |  
 
 <br>
 
@@ -656,7 +656,7 @@ pyxel.run(update, draw)
 |:---:|:---:|:---|
 | x | f64 | イメージバンクの座標 |  
 | y | f64 | イメージバンクの座標 |  
-| col | u8 | 描画色 (0-15) |
+| col | u8 | 描画色 (0-15) [表示色](api_graphics.md#color) |
 
 <br>
 
@@ -816,6 +816,30 @@ yidx = y // 8
 pyxel.tilemap(0).pset(xidx,yidx, (1,0) )
 ```
 <br>
+
   
-  
+
+## color  
+
+
+表示色の番号です。  
+![img color](images/api/g_color.png)  
+
+<br>
+
+
+| 番号 | 表示色 | 16進数 || 番号 | 表示色 | 16進数 |  
+|---:|:---:|:---:|---|---:|:---:|:---:|  
+| 0 | <span style="font-size:120%;color:#000000">■</span> | 000000 |　| 8 | <span style="font-size:120%;color:#d4186c">■</span> | d4186c |  
+| 1 | <span style="font-size:120%;color:#2b335f">■</span> | 2b335f |　| 9 | <span style="font-size:120%;color:#d38441">■</span> | d38441 |  
+| 2 | <span style="font-size:120%;color:#7e2072">■</span> | 7e2072 |　| 10 | <span style="font-size:120%;color:#e9c35b">■</span> | e9c35b |  
+| 3 | <span style="font-size:120%;color:#19959c">■</span> | 19959c |　| 11 | <span style="font-size:120%;color:#70c6a9">■</span> | 70c6a9 |   
+| 4 | <span style="font-size:120%;color:#8b4852">■</span> | 8b4852 |　| 12 | <span style="font-size:120%;color:#7696de">■</span> | 7696de |  
+| 5 | <span style="font-size:120%;color:#395c98">■</span> | 395c98 |　| 13 | <span style="font-size:120%;color:#a3a3a3">■</span> | a3a3a3 |  
+| 6 | <span style="font-size:120%;color:#a9c1ff">■</span> | a9c1ff |　| 14 | <span style="font-size:120%;color:#ff9798">■</span> | ff9798 |  
+| 7 | <span style="font-size:120%;color:#eeeeee">■</span> | eeeeee |　| 15 | <span style="font-size:120%;color:#edc7b0">■</span> | edc7b0 |   
+
+<br>
+
+
 [ページの先頭に戻る](#pyxel-api-sample)　　[TOPに戻る](../README.md#pyxel-game-development)
