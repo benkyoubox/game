@@ -179,7 +179,7 @@ pyxel.run(update, draw)
 
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
-| col1 | u8 | 置き換え対象の色 (0-15) [表示色](api_graphics.md#color) |  
+| col1 | u8 | 置き換え対象の色 (0-15) （[表示色](api_graphics.md#color)） |  
 | col2 | u8 | 置き換える色 (0-15) |  
 
 <br>
@@ -217,7 +217,7 @@ pyxel.run(update, draw)
 
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
-| col | u8 | 画面を塗りつぶす色 (0-15) [表示色](api_graphics.md#color) |  
+| col | u8 | 画面を塗りつぶす色 (0-15) （[表示色](api_graphics.md#color)） |  
 
 <br>
 
@@ -273,7 +273,7 @@ pyxel.run(update, draw)
 |:---:|:---:|:---|
 | x | f64 | x座標 |  
 | y | f64 | y座標 |  
-| col | u8 | 描画色 (0-15) [表示色](api_graphics.md#color) |  
+| col | u8 | 描画色 (0-15) （[表示色](api_graphics.md#color)） |  
 
 <br>
 
@@ -295,7 +295,7 @@ pyxel.run(update, draw)
 <br>
 
 ### line()  
-  色colの直線を (x1, y1)-(x2, y2) に描画します。 [表示色](api_graphics.md#color)   
+  色colの直線を (x1, y1)-(x2, y2) に描画します。 （[表示色](api_graphics.md#color)）   
   `line(x1, y1, x2, y2, col)`  
 
 ### rect()  
@@ -367,7 +367,7 @@ pyxel.run(update, draw)
 |:---:|:---:|:---|
 | x | f64 | x座標 |  
 | y | f64 | y座標 |  
-| col | u8 | 塗りつぶし色 (0-15) [表示色](api_graphics.md#color) |  
+| col | u8 | 塗りつぶし色 (0-15) （[表示色](api_graphics.md#color)） |  
 
 <br>
 
@@ -407,7 +407,7 @@ pyxel.run(update, draw)
 | v | f64 | ドット絵の座標 |  
 | w | f64 | ドット絵の幅（マイナスで左右反転） |  
 | h | f64 | ドット絵の高さ（マイナスで上下反転） |  
-| colkey | u8 | 透明色 (0-15)  [表示色](api_graphics.md#color) |  
+| colkey | u8 | 透明色 (0-15)  （[表示色](api_graphics.md#color)） |  
 
 <br>
 
@@ -445,7 +445,7 @@ pyxel.run(update, draw)
 | v | f64 | タイルマップの座標 |  
 | w | f64 | タイルマップの幅（マイナスで左右反転） |  
 | h | f64 | タイルマップ高さ（マイナスで上下反転） |  
-| colkey | u8 | 透明色 (0-15)  [表示色](api_graphics.md#color) | 
+| colkey | u8 | 透明色 (0-15)  （[表示色](api_graphics.md#color)） | 
 
 <br>
 
@@ -486,7 +486,7 @@ pyxel.run(update, draw)
 | x | f64 | 描画先のx座標 |  
 | y | f64 | 描画先のy座標 | 
 | s | str | 文字列（半角英数） |
-| col | u8 | 文字色 (0-15) [表示色](api_graphics.md#color) |  
+| col | u8 | 文字色 (0-15) （[表示色](api_graphics.md#color)） |  
 
 <br>
 
@@ -656,7 +656,7 @@ pyxel.run(update, draw)
 |:---:|:---:|:---|
 | x | f64 | イメージバンクの座標 |  
 | y | f64 | イメージバンクの座標 |  
-| col | u8 | 描画色 (0-15) [表示色](api_graphics.md#color) |
+| col | u8 | 描画色 (0-15) （[表示色](api_graphics.md#color)） |
 
 <br>
 
@@ -827,35 +827,19 @@ pyxel.tilemap(0).pset(xidx,yidx, (1,0) )
 
 <br>
 
-<table style="text-align:center">
-<tr>
-  <th>番号</th><th>表示色</th><th>16進数</th> <th>番号</th><th>表示色</th><th>16進数</th>
-</tr>
-<tr>
-  <td>0</td><td><span style="font-size:120%;color:#000000">$\color[RGB]{0,0,0} ■$</span></td><td>000000</td> <td>8</td><td><span style="font-size:120%;color:#d4186c">$\color[RGB]{212,24,108} ■$</span></td><td>d4186c</td>
-</tr>
-<tr>
-  <td>1</td><td> <span style="font-size:120%;color:#2b335f">$\color[RGB]{43,51,95} ■$</span> </td><td> 2b335f </td> <td>9</td><td> <span style="font-size:120%;color:#d38441">$\color[RGB]{211,132,65} ■$</span> </td><td> d38441 </td>
-</tr>
-<tr>
-  <td>2</td><td> <span style="font-size:120%;color:#7e2072">$\color[RGB]{126,32,114} ■$</span> </td><td> 7e2072 </td> <td>10</td><td> <span style="font-size:120%;color:#e9c35b">$\color[RGB]{233,195,91} ■$</span> </td><td> e9c35b </td>
-</tr>
-<tr>
-  <td>3</td><td> <span style="font-size:120%;color:#19959c">$\color[RGB]{25,149,156} ■$</span> </td><td> 19959c </td> <td>11</td><td> <span style="font-size:120%;color:#70c6a9">$\color[RGB]{112,198,169} ■$</span> </td><td> 70c6a9 </td>
-</tr>
-<tr>
-  <td>4</td><td> <span style="font-size:120%;color:#8b4852">$\color[RGB]{139,72,82} ■$</span> </td><td> 8b4852 </td> <td>12</td><td> <span style="font-size:120%;color:#7696de">$\color[RGB]{118,150,222} ■$</span> </td><td> 7696de </td>
-</tr>
-<tr>
-  <td>5</td><td> <span style="font-size:120%;color:#395c98">$\color[RGB]{57,92,152} ■$</span> </td><td> 395c98 </td> <td>13</td><td> <span style="font-size:120%;color:#a3a3a3">$\color[RGB]{163,163,163} ■$</span> </td><td> a3a3a3 </td>
-</tr>
-<tr>
-  <td>6</td><td> <span style="font-size:120%;color:#a9c1ff">$\color[RGB]{169,193,255} ■$</span> </td><td> a9c1ff </td> <td>14</td><td> <span style="font-size:120%;color:#ff9798">$\color[RGB]{255,151,152} ■$</span> </td><td> ff9798 </td>
-</tr>
-<tr>
-  <td>7</td><td> <span style="font-size:120%;color:#eeeeee">$\color[RGB]{238,238,238} ■$</span> </td><td> eeeeee </td> <td>15</td><td> <span style="font-size:120%;color:#edc7b0">$\color[RGB]{237,199,176} ■$</span> </td><td> edc7b0 </td>
-</tr>
-</table>
+
+| 番号 | 表示色 | 16進数 || 番号 | 表示色 | 16進数 |  
+|---:|:---:|:---:|---|---:|:---:|:---:|  
+| 0 | $\color[RGB]{0,0,0} ■(0,0,0)$ | 000000 |　| 8 | $\color[RGB]{212,24,108} ■(212,24,108)$ | d4186c |  
+| 1 | $\color[RGB]{43,51,95} ■(43,51,95)$ | 2b335f |　| 9 | $\color[RGB]{211,132,65} ■(211,132,65)$ | d38441 |  
+| 2 | $\color[RGB]{126,32,114} ■(126,32,114)$ | 7e2072 |　| 10 | $\color[RGB]{233,195,91} ■(233,195,91)$ | e9c35b |  
+| 3 | $\color[RGB]{25,149,156} ■(25,149,156)$ | 19959c |　| 11 | $\color[RGB]{112,198,169} ■(112,198,169)$ | 70c6a9 |   
+| 4 | $\color[RGB]{139,72,82} ■(139,72,82)$ | 8b4852 |　| 12 | $\color[RGB]{118,150,222} ■(118,150,222)$ | 7696de |  
+| 5 | $\color[RGB]{57,92,152} ■(57,92,152)$ | 395c98 |　| 13 | $\color[RGB]{163,163,163} ■(163,163,163)$ | a3a3a3 |  
+| 6 | $\color[RGB]{169,193,255} ■(69,193,255)$ | a9c1ff |　| 14 | $\color[RGB]{255,151,152} ■(255,151,152)$ | ff9798 |  
+| 7 | $\color[RGB]{238,238,238} ■(238,238,238)$ | eeeeee |　| 15 | $\color[RGB]{237,199,176} ■(237,199,176)$ | edc7b0 |  
+
+
 <br>
 
 
