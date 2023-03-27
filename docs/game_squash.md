@@ -32,7 +32,7 @@ def draw():
 pyxel.run(update,draw)
 ```
 
-![img 01](/game/pyxel/squash/img/01.png)  
+![img 01](../pyxel/squash/img/01.png)  
 
 黒い画面が起動できれば成功です。  
 画面の横軸 x は右方向に進むと大きくなり，縦軸 y は下方向に進むと大きくなります。  
@@ -85,7 +85,7 @@ def draw():
 pyxel.run(update,draw)
 ```
 
-![img 02](/game/pyxel/squash/img/02.gif)  
+![img 02](../pyxel/squash/img/02.gif)  
 
 <br>
 
@@ -143,14 +143,14 @@ def draw():
 pyxel.run(update,draw)
 ```
 
-![img 03](/game/pyxel/squash/img/03.gif)  
+![img 03](../pyxel/squash/img/03.gif)  
 
 <br>
 
 ### 04 バーとボールの衝突判定を行う  
 
 下図の赤い枠内にボールの中心が入ったら，ボールのy軸方向の移動量を反転させます。  
-![img 04a](/game/pyxel/squash/img/04a.png)  
+![img 04a](../pyxel/squash/img/04a.png)  
 
 また，ボールのy座標が画面下に到達した場合は更新処理を止めてGAME OVERの文字を表示させます。
 
@@ -218,13 +218,13 @@ def draw():
 pyxel.run(update,draw)
 ```
 
-![img 04](/game/pyxel/squash/img/04b.gif) 
+![img 04](../pyxel/squash/img/04b.gif) 
 
 これでボールを打ち返すゲームが作成できました。  
 
 <br>
 
-[ピンポンゲームのソースコード](/game/pyxel/squash)  
+[ピンポンゲームのソースコード](../pyxel/squash)  
 
 <br>
 
