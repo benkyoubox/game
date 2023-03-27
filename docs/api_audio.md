@@ -22,14 +22,17 @@
 
 <br> 
   
-[Pyxel APIリファレンス](https://github.com/kitao/pyxel/blob/main//docs/README.ja.md) のAPI実行例です。  
-（公式サンプルは[04_sound_api.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/04_sound_api)を参照してください）  
-  
-  
-※下記import文でPyxelをインポートしたときのAPIの呼び出し記述になります。
-``` python
-import pyxel
-```
+- [Pyxel APIリファレンス](https://github.com/kitao/pyxel/blob/main//docs/README.ja.md) のAPI実行例です。  
+
+<br>
+
+- 公式サンプルは[04_sound_api.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/04_sound_api)を参照してください。  
+
+<br>
+
+- コード例で使用しているリソースファイル（[sample.pyxres](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/assets/sample.pyxres)）は公式サイトからDownloadできます。
+
+<br>
   
 ## オーディオ  
 <br>
@@ -42,6 +45,12 @@ import pyxel
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
 | snd | u32 | サウンド (0-63) |  
+  
+<br>
+
+| 戻り値 | 型 | 説明 |
+|:---:|:---:|:---|  
+| サウンド | Sound | 指定したサウンドのオブジェクト |  
 
 <br>
   
@@ -55,6 +64,12 @@ import pyxel
 | msc | u32 | ミュージック (0-7) |  
 
 <br>
+
+| 戻り値 | 型 | 説明 |
+|:---:|:---:|:---|  
+| ミュージック | Music | 指定したミュージックのオブジェクト |  
+
+<br>
    
 ### play_pos()  
   チャンネルch (0-3) のサウンド再生位置を(サウンド番号, ノート番号)のタプルとして取得します。再生停止時はNoneを返します。  
@@ -63,6 +78,12 @@ import pyxel
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
 | ch | u32 | チャンネル (0-3) |  
+  
+<br>
+
+| 戻り値 | 型 | 説明 |
+|:---:|:---:|:---|  
+| snd, ノート番号 | (u32, u32) | ch再生中　(サウンド番号, ノート番号)のタプル <br> 停止時 None |  
 
 <br>
 
@@ -364,6 +385,10 @@ pyxel.sound(0).set_effects("NFNF NVVS")
 <br>
   
 ``` python
+import pyxel
+pyxel.init(64, 64)
+pyxel.load("sample.pyxres")
+
 i=0
 for msc in pyxel.music(0).snds_list:
     print("ch{}:".format(i),end=" ")
@@ -371,6 +396,8 @@ for msc in pyxel.music(0).snds_list:
         print(snd,end=" ")
     print("\n")
     i+=1
+
+pyxel.show()
 ```
   
 　サンプルリソース ミュージック0 の snds_list の表示結果
