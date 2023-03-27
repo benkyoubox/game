@@ -31,7 +31,8 @@ Python向けレトロゲームエンジン Pyxel を使用したゲーム作成�
 - [ピンポンゲームの作成](docs/game_squash.md#gamedev-squash)  
   バーを動かしてボールを打ち返す，基本のゲーム  
 
-- [サンプルリソースの記事](https://kinutani.hateblo.jp/entry/2023/01/07/155550) sample.pyxres のイメージバンクの座標情報のブログ記事です。 
+- [サンプルリソースの記事](https://kinutani.hateblo.jp/entry/2023/01/07/155550)  
+  sample.pyxres のイメージバンクの座標情報のブログ記事です。 
 
 
 <br>
