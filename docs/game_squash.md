@@ -238,4 +238,4 @@ Pyxelにはドット絵のエディタも付属しています。ゲームに登
 <br>
 
 
-[ページの先頭に戻る](#GameDev-Squash)　　[TOPに戻る](../README.md#pyxel-game-development)
+[ページの先頭に戻る](#gamedev-squash)　　[TOPに戻る](../README.md#pyxel-game-development)

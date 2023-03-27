@@ -8,9 +8,6 @@ Python向けレトロゲームエンジン Pyxel を使用したゲーム作成�
 
 - [Pyxel公式サイト](https://github.com/kitao/pyxel/blob/main/docs/README.ja.md)  
   
-- [ブログ記事（Pyxelゲーム作成の記事一覧）](https://kinutani.hateblo.jp/entry/2022/12/15/184811)  
-
-
 <br>
 
 
@@ -19,10 +16,22 @@ Python向けレトロゲームエンジン Pyxel を使用したゲーム作成�
 
 <br>
 
-  
+![img color](docs/images/api/g_color.png)  
+
+
+
+<br>
+
+
 ## Pyxelゲームの処理の基本
-Pyxelのゲームの処理の流れは基本的に「初期化処理を最初に行い，その後は update() と draw() を実行し続ける」になります。この流れを頭に入れてゲーム作成を行いましょう。  
-![flow image](docs/images/pyxel_flow.png)  
+
+- [ブログ記事（Pyxelゲーム作成の記事一覧）](https://kinutani.hateblo.jp/entry/2022/12/15/184811)   
+  特にPythonの学習初めの人向け。簡単なゲームからアクションゲーム，クラスを使ったプログラミングの作成へと進みます。  
+
+- [ピンポンゲームの作成](docs/game_squash.md#gamedev-squash)  
+  バーを動かしてボールを打ち返す，基本のゲーム  
+
+- [サンプルリソースの記事](https://kinutani.hateblo.jp/entry/2023/01/07/155550) sample.pyxres のイメージバンクの座標情報のブログ記事です。 
 
 
 <br>
@@ -39,6 +48,17 @@ Pyxelのゲームの処理の流れは基本的に「初期化処理を最初に
 | `pyxel app2html your_app.pyxapp` | Pyxel アプリを HTML ファイルに変換する |
 | `python -m http.server` | PythonのWebサーバー起動<br>http://localhost:8000/test.html のようにアクセス |
 
+<br>
+
+Pyxelアプリケーション実行中の特殊な操作  
+| 特殊操作 | 内容 |
+|:---|:---|
+| Esc | アプリケーションを終了する |
+| Alt(Option)+1 | スクリーンショットをデスクトップに保存する |
+| Alt(Option)+2 | 画面キャプチャ動画の録画開始時刻をリセットする |
+| Alt(Option)+3 | 画面キャプチャ動画をデスクトップに保存する |
+| Alt(Option)+0 | パフォーマンスモニタ (fps、update 時間、draw 時間) の表示を切り替える |
+| Alt(Option)+Enter | フルスクリーン表示を切り替える |
 
 <br>
 
