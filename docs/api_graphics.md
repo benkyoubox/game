@@ -12,7 +12,7 @@
 |[リソース](api_system.md#リソース)| [load()](api_system.md#load)  |
 |[入力](api_system.md#入力)| [変数](api_system.md#variable-1) [btn()](api_system.md#btn) [btnp()](api_system.md#btnp) [btnr()](api_system.md#btnr) [mouse()](api_system.md#mouse) [キー記述例](api_system.md#keycode) |  
 |[グラフィックス](api_graphics.md#グラフィックス)| [変数](api_graphics.md#variable) [image()](api_graphics.md#image) [tilemap()](api_graphics.md#tilemap) [clip()](api_graphics.md#clip) [camera()](api_graphics.md#camera) [pal()](api_graphics.md#pal) [cls()](api_graphics.md#cls) [pget()](api_graphics.md#pget) [pset()](api_graphics.md#pset) <br> [line()](api_graphics.md#line) [rect()](api_graphics.md#rect) [rectb()](api_graphics.md#rectb) [circ()](api_graphics.md#circ) [circb()](api_graphics.md#circb) [elli()](api_graphics.md#elli) [ellib()](api_graphics.md#ellib) [tri()](api_graphics.md#tri) [trib()](api_graphics.md#trib) <br> [fill()](api_graphics.md#fill) [blt()](api_graphics.md#blt) [bltm()](api_graphics.md#bltm) [text()](api_graphics.md#text) |
-|[イメージクラス](api_graphics.md#イメージクラス)| [変数](api_graphics.md#variable-1) [set()](api_graphics.md#set) [load()](api_graphics.md#load) [pget()](api_graphics.md#pget-1) [pset()](api_graphics.md#pset-1) |
+|[イメージクラス](api_graphics.md#イメージクラス)| [変数](api_graphics.md#variable-1) [set()](api_graphics.md#set) [load()](api_graphics.md#load) [save()](api_graphics.md#save) [pget()](api_graphics.md#pget-1) [pset()](api_graphics.md#pset-1) |
 |[タイルマップクラス](api_graphics.md#タイルマップクラス)| [変数](api_graphics.md#variable-2)  [set()](api_graphics.md#set-1) [pget()](api_graphics.md#pget-2) [pset()](api_graphics.md#pset-2) |
 |[オーディオ](api_audio.md#オーディオ)| [sound()](api_audio.md#sound) [music()](api_audio.md#music) [play_pos()](api_audio.md#play_pos) [play()](api_audio.md#play) [playm()](api_audio.md#playm) [stop()](api_audio.md#stop) |
 |[サウンドクラス](api_audio.md#サウンドクラス)| [変数](api_audio.md#variable) [set()](api_audio.md#set) [set_notes()](api_audio.md#set_notes) [set_tones()](api_audio.md#set_tones) [set_volumes()](api_audio.md#set_volumes) [set_effects()](api_audio.md#set_effects) |
@@ -65,6 +65,26 @@ pyxel.colors.from_list(org_colors)
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
 | img | u32 | 操作対象のイメージバンク (0-2) |
+  
+<br>
+
+| 戻り値 | 型 | 説明 |
+|:---:|:---:|:---|  
+| イメージバンク | Image | 指定したイメージバンクのオブジェクト |  
+
+<br>
+
+【参考】イメージバンクに描画する例  
+``` python
+import pyxel
+pyxel.init(64, 64)
+
+pyxel.cls(1)
+pyxel.image(0).text(0,0,"Image",7)  # img 0 にテキストを描画
+pyxel.blt(10,10, 0, 0,0, 20,8, 0)   # img 0 の指定範囲を画面に表示
+
+pyxel.show()
+```
 
 <br>
   
@@ -75,6 +95,13 @@ pyxel.colors.from_list(org_colors)
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
 | tm | u32 | 操作対象のタイルマップ (0-7) |
+  
+<br>
+
+| 戻り値 | 型 | 説明 |
+|:---:|:---:|:---|  
+| タイルマップ | Tilemap | 指定したタイルマップのオブジェクト |  
+
 
 <br>
 

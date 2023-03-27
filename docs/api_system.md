@@ -12,7 +12,7 @@
 |[リソース](api_system.md#リソース)| [load()](api_system.md#load)  |
 |[入力](api_system.md#入力)| [変数](api_system.md#variable-1) [btn()](api_system.md#btn) [btnp()](api_system.md#btnp) [btnr()](api_system.md#btnr) [mouse()](api_system.md#mouse) [キー記述例](api_system.md#keycode) |  
 |[グラフィックス](api_graphics.md#グラフィックス)| [変数](api_graphics.md#variable) [image()](api_graphics.md#image) [tilemap()](api_graphics.md#tilemap) [clip()](api_graphics.md#clip) [camera()](api_graphics.md#camera) [pal()](api_graphics.md#pal) [cls()](api_graphics.md#cls) [pget()](api_graphics.md#pget) [pset()](api_graphics.md#pset) <br> [line()](api_graphics.md#line) [rect()](api_graphics.md#rect) [rectb()](api_graphics.md#rectb) [circ()](api_graphics.md#circ) [circb()](api_graphics.md#circb) [elli()](api_graphics.md#elli) [ellib()](api_graphics.md#ellib) [tri()](api_graphics.md#tri) [trib()](api_graphics.md#trib) <br> [fill()](api_graphics.md#fill) [blt()](api_graphics.md#blt) [bltm()](api_graphics.md#bltm) [text()](api_graphics.md#text) |
-|[イメージクラス](api_graphics.md#イメージクラス)| [変数](api_graphics.md#variable-1) [set()](api_graphics.md#set) [load()](api_graphics.md#load) [pget()](api_graphics.md#pget-1) [pset()](api_graphics.md#pset-1) |
+|[イメージクラス](api_graphics.md#イメージクラス)| [変数](api_graphics.md#variable-1) [set()](api_graphics.md#set) [load()](api_graphics.md#load) [save()](api_graphics.md#save) [pget()](api_graphics.md#pget-1) [pset()](api_graphics.md#pset-1) |
 |[タイルマップクラス](api_graphics.md#タイルマップクラス)| [変数](api_graphics.md#variable-2)  [set()](api_graphics.md#set-1) [pget()](api_graphics.md#pget-2) [pset()](api_graphics.md#pset-2) |
 |[オーディオ](api_audio.md#オーディオ)| [sound()](api_audio.md#sound) [music()](api_audio.md#music) [play_pos()](api_audio.md#play_pos) [play()](api_audio.md#play) [playm()](api_audio.md#playm) [stop()](api_audio.md#stop) |
 |[サウンドクラス](api_audio.md#サウンドクラス)| [変数](api_audio.md#variable) [set()](api_audio.md#set) [set_notes()](api_audio.md#set_notes) [set_tones()](api_audio.md#set_tones) [set_volumes()](api_audio.md#set_volumes) [set_effects()](api_audio.md#set_effects) |
@@ -269,6 +269,13 @@ pyxel.run(update, draw)
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
 | key | u32 | 判定するキー（[キー記述例](api_system.md#keycode)） |  
+  
+<br>
+
+| 戻り値 | 型 | 説明 |
+|:---:|:---:|:---|  
+| キー状態 | bool | 押している間 True |  
+
 
 <br>
 
@@ -298,7 +305,7 @@ pyxel.run(update, draw)
 <br>
 
 ### btnp()  
-  そのフレームにkeyが押されたらTrue、押されなければFalseを返します。  
+  そのフレームにkeyが押されたらTrue、押されなければFalseを返します。holdとrepeatを指定すると、holdフレーム以上ボタンを押し続けた時にrepeatフレーム間隔でTrueが返ります。  
   `btnp(key, [hold], [repeat]) `  
 
 | 引数 | 型 | 説明 |
@@ -306,6 +313,12 @@ pyxel.run(update, draw)
 | key | u32 | 判定するキー（[キー記述例](api_system.md#keycode)） |  
 | hold | u32 | 押し続け判定フレーム数 |
 | repeat | u32 | Trueを返すフレーム間隔 |
+  
+<br>
+
+| 戻り値 | 型 | 説明 |
+|:---:|:---:|:---|  
+| キー状態 | bool | 押した最初の瞬間だけTrue<br>holdとrepeatを指定するとSTGなどで押し続けて連射ができる |  
 
 <br>
 
@@ -327,7 +340,7 @@ def draw():
 
 pyxel.run(update, draw)
 ```
-・holdとrepeatを指定すると、holdフレーム以上ボタンを押し続けた時にrepeatフレーム間隔でTrueが返ります。
+
 ``` python
 import pyxel
 pyxel.init(64, 64)
@@ -356,6 +369,13 @@ pyxel.run(update, draw)
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
 | key | 定義値 | 判定するキー（[キー記述例](api_system.md#keycode)） |  
+  
+<br>
+
+| 戻り値 | 型 | 説明 |
+|:---:|:---:|:---|  
+| キー状態 | bool | 押している間 False , 押されたキーが離されたら True <br>押す前（通常状態）は False　|  
+
 
 <br>
 
