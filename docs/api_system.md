@@ -23,14 +23,17 @@
 <br>
 
 
-[Pyxel APIリファレンス](https://github.com/kitao/pyxel/blob/main//docs/README.ja.md) のAPI実行例です。  
-※下記import文でPyxelをインポートしたときのAPIの呼び出し記述になります。
+- [Pyxel APIリファレンス](https://github.com/kitao/pyxel/blob/main//docs/README.ja.md) のAPI実行例です。  
+
+<br>
+
+- 下記import文でPyxelをインポートしたときのAPIの呼び出し記述になります。  
 ``` python
 import pyxel
 ```
 <br>
 
-説明中の「型」は数値や文字列の種別を示しています。  
+- 説明中の「型」は数値や文字列の種別を示しています。  
 
 | 型 | 内容 |
 |:---:|:---|
@@ -39,6 +42,11 @@ import pyxel
 | f64 | 浮動小数点数（小数の値） |
 | str | 文字列 |
 | bool | True/False |  
+<br>
+
+- コード例で使用しているリソースファイル（[sample.pyxres](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/assets/sample.pyxres)）は公式サイトからDownloadできます。
+
+
 <br>
 
 
