@@ -1,15 +1,15 @@
 import pyxel
-pyxel.init(120,96)
+pyxel.init(256,224)
 
 ball_x = 40
 ball_y = 20
 ball_r = 4
-ball_xp = 3
-ball_yp = 2
+ball_xp = 6
+ball_yp = 4
 
 bar_x = 20
-bar_y = 80
-bar_w = 20
+bar_y = 204
+bar_w = 40
 bar_h = 4
 
 flg = False
@@ -18,6 +18,10 @@ def update():
     global ball_x,ball_y,ball_xp,ball_yp,bar_x,flg
 
     if flg :
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) :
+            flg = False
+            ball_x = 40
+            ball_y = 20
         return
 
     ball_x += ball_xp
@@ -36,8 +40,8 @@ def update():
     elif pyxel.width - bar_w < bar_x :
         bar_x = pyxel.width - bar_w
 
-    if ( bar_x - 4 < ball_x < bar_x + bar_w + 8 ) and ( bar_y - 4 < ball_y < bar_y + 2 ) :
-           ball_yp = -2 - pyxel.rndi(0,2)
+    if ( bar_x - 8 < ball_x < bar_x + bar_w + 16 ) and ( bar_y - 8 < ball_y < bar_y ) :
+           ball_yp = -4 - pyxel.rndi(0,2)
     
     return
 
@@ -47,7 +51,7 @@ def draw():
     pyxel.rect(bar_x, bar_y, bar_w, bar_h, 3)
 
     if flg :
-        pyxel.text(42,40, "GAME OVER", 7)
+        pyxel.text(110,100, "GAME OVER", 7)
     
     return
 

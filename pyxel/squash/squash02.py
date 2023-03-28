@@ -1,12 +1,12 @@
 import pyxel
-pyxel.init(120,96)
+pyxel.init(256,224)
 
 # add *******
 ball_x = 40
 ball_y = 20
 ball_r = 4
-ball_xp = 3
-ball_yp = 2
+ball_xp = 6
+ball_yp = 4
 
 def update():
     global ball_x,ball_y,ball_xp,ball_yp

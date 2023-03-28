@@ -1,16 +1,16 @@
 import pyxel
-pyxel.init(120,96)
+pyxel.init(256,224)
 
 ball_x = 40
 ball_y = 20
 ball_r = 4
-ball_xp = 3
-ball_yp = 2
+ball_xp = 6
+ball_yp = 4
 
 # add *******
 bar_x = 20
-bar_y = 80
-bar_w = 20
+bar_y = 204
+bar_w = 40
 bar_h = 4
 
 def update():

@@ -20,7 +20,7 @@ Pyxelのゲームの処理の流れは基本的に「初期化処理を最初に
 squash.py
 ```python
 import pyxel
-pyxel.init(120,96)
+pyxel.init(256,224)
 
 def update():
     return
@@ -48,18 +48,14 @@ pyxel.width，pyxel.height は画面の幅と高さです。
 squash.py
 ```python
 import pyxel
-pyxel.init(120,96)
-
-# add
-import pyxel
-pyxel.init(120,96)
+pyxel.init(256,224)
 
 # add *******
 ball_x = 40
 ball_y = 20
 ball_r = 4
-ball_xp = 3
-ball_yp = 2
+ball_xp = 6
+ball_yp = 4
 
 def update():
     global ball_x,ball_y,ball_xp,ball_yp
@@ -96,18 +92,18 @@ Pyxelの入力機能を使って，マウスのx座標（pyxel.mouse_x）を取�
 squash.py
 ```python
 import pyxel
-pyxel.init(120,96)
+pyxel.init(256,224)
 
 ball_x = 40
 ball_y = 20
 ball_r = 4
-ball_xp = 3
-ball_yp = 2
+ball_xp = 6
+ball_yp = 4
 
 # add *******
 bar_x = 20
-bar_y = 80
-bar_w = 20
+bar_y = 204
+bar_w = 40
 bar_h = 4
 
 def update():
@@ -157,17 +153,17 @@ pyxel.run(update,draw)
 squash.py
 ```python
 import pyxel
-pyxel.init(120,96)
+pyxel.init(256,224)
 
 ball_x = 40
 ball_y = 20
 ball_r = 4
-ball_xp = 3
-ball_yp = 2
+ball_xp = 6
+ball_yp = 4
 
 bar_x = 20
-bar_y = 80
-bar_w = 20
+bar_y = 204
+bar_w = 40
 bar_h = 4
 
 # add ******
@@ -199,8 +195,8 @@ def update():
         bar_x = pyxel.width - bar_w
 
     # add *******
-    if ( bar_x - 4 < ball_x < bar_x + bar_w + 8 ) and ( bar_y - 4 < ball_y < bar_y + 2 ) :
-           ball_yp = -2 - pyxel.rndi(0,2)
+    if ( bar_x - 8 < ball_x < bar_x + bar_w + 16 ) and ( bar_y - 8 < ball_y < bar_y ) :
+           ball_yp = -4 - pyxel.rndi(0,2)
     
     return
 
@@ -211,7 +207,7 @@ def draw():
 
     # add *******
     if flg :
-        pyxel.text(42,40, "GAME OVER", 7)
+        pyxel.text(110,100, "GAME OVER", 7)
     
     return
 
@@ -219,6 +215,76 @@ pyxel.run(update,draw)
 ```
 
 ![img 04](../pyxel/squash/img/04b.gif) 
+
+<br>
+
+### 完成
+
+画面クリックで，ゲームオーバーの状態から復帰できるようにしましょう。
+
+squash.py
+``` python
+import pyxel
+pyxel.init(256,224)
+
+ball_x = 40
+ball_y = 20
+ball_r = 4
+ball_xp = 6
+ball_yp = 4
+
+bar_x = 20
+bar_y = 204
+bar_w = 40
+bar_h = 4
+
+flg = False
+
+def update():
+    global ball_x,ball_y,ball_xp,ball_yp,bar_x,flg
+
+    if flg :
+        # add *******
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) :
+            flg = False
+            ball_x = 40
+            ball_y = 20
+        return
+
+    ball_x += ball_xp
+    if ball_x < 0 or pyxel.width - ball_r < ball_x :
+        ball_xp = -ball_xp
+       
+    ball_y += ball_yp
+    if ball_y < 0 :
+        ball_yp = -ball_yp
+    elif pyxel.height - ball_r < ball_y :
+        flg = True
+
+    bar_x = pyxel.mouse_x
+    if bar_x < 0 :
+        bar_x = 0
+    elif pyxel.width - bar_w < bar_x :
+        bar_x = pyxel.width - bar_w
+
+    if ( bar_x - 8 < ball_x < bar_x + bar_w + 16 ) and ( bar_y - 8 < ball_y < bar_y ) :
+           ball_yp = -4 - pyxel.rndi(0,2)
+    
+    return
+
+def draw():
+    pyxel.cls(0)
+    pyxel.circ(ball_x, ball_y, ball_r, 10)
+    pyxel.rect(bar_x, bar_y, bar_w, bar_h, 3)
+
+    if flg :
+        pyxel.text(110,100, "GAME OVER", 7)
+    
+    return
+
+pyxel.run(update,draw)
+```
+
 
 これでボールを打ち返すゲームが作成できました。  
 

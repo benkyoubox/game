@@ -1,5 +1,5 @@
 import pyxel
-pyxel.init(120,96)
+pyxel.init(256,224)
 
 def update():
     return
