@@ -43,7 +43,7 @@ Python向けレトロゲームエンジン Pyxel を使用したゲーム作成�
 
 | コマンド | 内容 |
 |:---|:---|
-| `pip install -U pyxel` | Windows Pyxelのインストール（アップデート） |
+| `pip install -U pyxel` | Pyxelのインストール（アップデート）※Windows環境 |
 | `pyxel copy_examples` | サンプルコードコピー |
 | `pyxel edit filename` | Pyxel Editor の起動 |
 | `pyxel package appdir srcname` | Pyxel アプリケーションファイル (.pyxapp) 作成 |
@@ -53,14 +53,14 @@ Python向けレトロゲームエンジン Pyxel を使用したゲーム作成�
 <br>
 
 Pyxelアプリケーション実行中の特殊な操作  
-| 特殊操作 | 内容 |
-|:---|:---|
-| Esc | アプリケーションを終了する |
-| Alt(Option)+1 | スクリーンショットをデスクトップに保存する |
-| Alt(Option)+2 | 画面キャプチャ動画の録画開始時刻をリセットする |
-| Alt(Option)+3 | 画面キャプチャ動画をデスクトップに保存する |
-| Alt(Option)+0 | パフォーマンスモニタ (fps、update 時間、draw 時間) の表示を切り替える |
-| Alt(Option)+Enter | フルスクリーン表示を切り替える |
+| Windows | Mac | 内容 |
+|:---|:---|:---|
+| Esc | Esc | アプリケーションを終了する |
+| Alt+1 | Option+1 | スクリーンショットをデスクトップに保存する |
+| Alt+2 | Option+2 | 画面キャプチャ動画の録画開始時刻をリセットする |
+| Alt+3 | Option+3 | 画面キャプチャ動画をデスクトップに保存する |
+| Alt+0 | Option+0 | パフォーマンスモニタ (fps、update 時間、draw 時間) の表示を切り替える |
+| Alt+Enter | Option+Enter | フルスクリーン表示を切り替える |
 
 <br>
 
