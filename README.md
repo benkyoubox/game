@@ -32,8 +32,8 @@ Python向けレトロゲームエンジン Pyxel を使用したゲーム作成�
 - [ピンポンゲームの作成 (First Steps in Game Development)](docs/game_squash.md#gamedev-squash)  
   バーを動かしてボールを打ち返す，ゲームの基本となる処理を作ってみましょう。  
 
-- [ドット絵の表示方法 (How to display pixel art)](docs/specs_img#how-to-display-pixel-art)  
-　Pyxelの「イメージバンク」と「タイルマップ」についての説明です。
+- [ドット絵の表示方法 (How to display pixel art)](docs/specs_img.md#how-to-display-pixel-art)  
+  Pyxelの「イメージバンク」と「タイルマップ」についての説明です。
 
 - [サンプルリソースの記事](https://kinutani.hateblo.jp/entry/2023/01/07/155550)  
   sample.pyxres のイメージバンクの座標情報のブログ記事です。 
