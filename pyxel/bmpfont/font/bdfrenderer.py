@@ -21,6 +21,7 @@ class BDFRenderer:
         self.fonts = self._parse_bdf(bdf_filename)
         self.screen_ptr = pyxel.screen.data_ptr()
         self.screen_width = pyxel.width
+        self.fontboundingbox = None
 
     def _parse_bdf(self, bdf_filename):
         fonts = {}
@@ -32,12 +33,14 @@ class BDFRenderer:
                     code = int(line.split()[1])
                 elif line.startswith("BBX"):
                     bbx_data = list(map(int, line.split()[1:]))
-                    font_width, font_height = bbx_data[0], bbx_data[1]
+                    font_width, font_height, offset_x, offset_y = bbx_data[0], bbx_data[1], bbx_data[2], bbx_data[3]
                 elif line.startswith("BITMAP"):
                     bitmap = []
                 elif line.startswith("ENDCHAR"):
-                    fonts[code] = (font_width, font_height, bitmap)
+                    fonts[code] = (font_width, font_height, bitmap, offset_x, offset_y)
                     bitmap = None
+                elif line.startswith("PIXEL_SIZE"):
+                    self.pixelsize = int(line.split()[1])
                 elif bitmap is not None:
                     hex_string = line.strip()
                     bin_string = bin(int(hex_string, 16))[2:].zfill(len(hex_string) * 4)
@@ -45,9 +48,10 @@ class BDFRenderer:
         return fonts
 
     def _draw_font(self, x, y, font, color):
-        font_width, font_height, bitmap = font
+        font_width, font_height, bitmap, offset_x, offset_y = font
         screen_ptr = self.screen_ptr
         screen_width = self.screen_width
+        y = y + self.pixelsize - font_height - offset_y
         for j in range(font_height):
             for i in range(font_width):
                 if (bitmap[j] >> i) & 1:
