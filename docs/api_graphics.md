@@ -59,6 +59,10 @@ org_colors = pyxel.colors.to_list()
 # デフォルトのカラーパレットで復帰
 pyxel.colors.from_list(org_colors)
 ```
+<br>
+
+命令の引数など通常（pyxel.colors以外）は，色の番号で指定します。  
+![image color_s](images/api/g_color_s.png)  
 
 <br>  
 
@@ -171,6 +175,7 @@ def draw():
 
 pyxel.run(update, draw)
 ```
+![image pal](images/api/g_camera.png)  
 <br>
   
 ### pal()  
@@ -188,18 +193,18 @@ pyxel.run(update, draw)
 import pyxel
 pyxel.init(64, 64)
 
-toggle = False
+flg = False
 def update():
-    global toggle
+    global flg
     if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
-        toggle = not(toggle)
+        flg = not(flg)
     return
 
 def draw():
     pyxel.cls(1)
     pyxel.rectb(2,2,60,60,10)
     pyxel.text(8,28,"Hello world!",7)
-    if toggle:
+    if flg:
         pyxel.pal(1,7)
         pyxel.pal(7,1)
     else:
@@ -294,8 +299,9 @@ pyxel.run(update, draw)
 ![image pset](images/api/g_pset.png)  
 <br>
 
+
 ### line()  
-  色colの直線を (x1, y1)-(x2, y2) に描画します。 （[表示色](api_graphics.md#color)）   
+  色colの直線を (x1, y1)-(x2, y2) に描画します。    
   `line(x1, y1, x2, y2, col)`  
 
 ### rect()  
@@ -329,7 +335,13 @@ pyxel.run(update, draw)
 ### trib()  
   頂点が (x1, y1)、(x2, y2)、(x3, y3)、色colの三角形の輪郭線を描画します。  
   `trib(x1, y1, x2, y2, x3, y3, col)`  
-  
+
+<br>
+
+![image color_s](images/api/g_color_s.png)  [表示色詳細はこちら](api_graphics.md#color) 
+
+<br>
+
 ``` python
 import pyxel
 pyxel.init(128, 128)

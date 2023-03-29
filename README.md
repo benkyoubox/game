@@ -17,7 +17,7 @@ Python向けレトロゲームエンジン Pyxel を使用したゲーム作成�
 
 <br>
 
-![img color](docs/images/api/g_color.png)  
+![img color](docs/images/api/g_color_s.png)  
 
 
 
