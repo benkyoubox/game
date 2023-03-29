@@ -21,7 +21,7 @@ class BDFRenderer:
         self.fonts = self._parse_bdf(bdf_filename)
         self.screen_ptr = pyxel.screen.data_ptr()
         self.screen_width = pyxel.width
-        self.fontboundingbox = None
+        self.pixelsize = 10
 
     def _parse_bdf(self, bdf_filename):
         fonts = {}
