@@ -3,8 +3,12 @@
 
 [ [基本](#pyxelゲームの処理の基本) | [コマンド抜粋](#コマンド抜粋) | [APIコード例](README.md#api) | [プログラム例](#ブログ記事で紹介したプログラム) | [テンプレート](#プログラムテンプレート) | [コード部品](#コード部品) ]  
 
+<br>
 
-![DEMO image](docs/images/demo.gif)  
+![img color](docs/images/api/g_color_s.png)  
+
+<br>
+
 Python向けレトロゲームエンジン Pyxel を使用したゲーム作成の情報  
 
 
@@ -13,13 +17,6 @@ Python向けレトロゲームエンジン Pyxel を使用したゲーム作成�
 
 - [Pyxel公式サイト](https://github.com/kitao/pyxel/blob/main/docs/README.ja.md)  
   
-
-
-<br>
-
-![img color](docs/images/api/g_color_s.png)  
-
-
 
 <br>
 
