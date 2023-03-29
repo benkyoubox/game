@@ -83,7 +83,7 @@ Pyxelアプリケーション実行中の特殊な操作
 |[オーディオ](docs/api_audio.md#pyxel-api-sample)| [sound()](docs/api_audio.md#sound) [music()](docs/api_audio.md#music) [play_pos()](docs/api_audio.md#play_pos) [play()](docs/api_audio.md#play) [playm()](docs/api_audio.md#playm) [stop()](docs/api_audio.md#stop) |
 |[サウンドクラス](docs/api_audio.md#サウンドクラス)| [変数](docs/api_audio.md#variable) [set()](docs/api_audio.md#set) [set_notes()](docs/api_audio.md#set_notes) [set_tones()](docs/api_audio.md#set_tones) [set_volumes()](docs/api_audio.md#set_volumes) [set_effects()](docs/api_audio.md#set_effects) |
 |[ミュージッククラス](docs/api_audio.md#ミュージッククラス)| [変数](docs/api_audio.md#variable-1) [set()](docs/api_audio.md#set-1) |
-|[数学](docs/api_math.md#pyxel-api-sample)| [ceil()](docs/api_math.md#ceil) [floor()](docs/api_math.md#floor) [sgn()](docs/api_math.md#sgn) [sin()](docs/api_math.md#sin) [cos()](docs/api_math.md#cos) [atan2()](docs/api_math.md#atan2) [rseed()](docs/api_math.md#rseed) [rndi()](docs/api_math.md#rndi) [rndf()](docs/api_math.md#rndf) [nseed()](docs/api_math.md#nseed) [noise()](docs/api_math.md#noise) |
+|[数学](docs/api_math.md#pyxel-api-sample)| [ceil()](docs/api_math.md#ceil) [floor()](docs/api_math.md#floor) [sgn()](docs/api_math.md#sgn) [sqrt()](docs/api_math.md#sqrt) [sin()](docs/api_math.md#sin) [cos()](docs/api_math.md#cos) [atan2()](docs/api_math.md#atan2) [rseed()](docs/api_math.md#rseed) [rndi()](docs/api_math.md#rndi) [rndf()](docs/api_math.md#rndf) [nseed()](docs/api_math.md#nseed) [noise()](docs/api_math.md#noise) |
 
 
 <br>
