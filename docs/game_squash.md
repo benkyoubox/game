@@ -48,7 +48,7 @@ pyxel.run(update,draw)
 ### 02 動くボールの作成  
 
 Pyxelのグラフィックス命令でボールを描画します。  
-横方向の移動量を ball_xp ，縦方向の移動量を ball_yp として，周囲にぶつかったときに移動量を反転させます。  
+横方向の移動量を ball_dx ，縦方向の移動量を ball_dy として，周囲にぶつかったときに移動量を反転させます。  
 pyxel.width，pyxel.height は画面の幅と高さです。  
 
 squash.py
@@ -60,19 +60,19 @@ pyxel.init(256,224)
 ball_x = 40
 ball_y = 20
 ball_r = 4
-ball_xp = 6
-ball_yp = 4
+ball_dx = 6
+ball_dy = 4
 
 def update():
-    global ball_x,ball_y,ball_xp,ball_yp
+    global ball_x,ball_y,ball_dx,ball_dy
 
-    ball_x += ball_xp
+    ball_x += ball_dx
     if ball_x < 0 or pyxel.width - ball_r < ball_x :
-        ball_xp = -ball_xp
+        ball_dx = -ball_dx
        
-    ball_y += ball_yp
+    ball_y += ball_dy
     if ball_y < 0 or pyxel.height - ball_r < ball_y :
-        ball_yp = -ball_yp
+        ball_dy = -ball_dy
 
     return
 
@@ -103,8 +103,8 @@ pyxel.init(256,224)
 ball_x = 40
 ball_y = 20
 ball_r = 4
-ball_xp = 6
-ball_yp = 4
+ball_dx = 6
+ball_dy = 4
 
 # add *******
 bar_x = 20
@@ -114,15 +114,15 @@ bar_h = 4
 
 def update():
     # add bar_x
-    global ball_x,ball_y,ball_xp,ball_yp,bar_x
+    global ball_x,ball_y,ball_dx,ball_dy,bar_x
 
-    ball_x += ball_xp
+    ball_x += ball_dx
     if ball_x < 0 or pyxel.width - ball_r < ball_x :
-        ball_xp = -ball_xp
+        ball_dx = -ball_dx
        
-    ball_y += ball_yp
+    ball_y += ball_dy
     if ball_y < 0 or pyxel.height - ball_r < ball_y :
-        ball_yp = -ball_yp
+        ball_dy = -ball_dy
 
     # add *******
     bar_x = pyxel.mouse_x
@@ -164,8 +164,8 @@ pyxel.init(256,224)
 ball_x = 40
 ball_y = 20
 ball_r = 4
-ball_xp = 6
-ball_yp = 4
+ball_dx = 6
+ball_dy = 4
 
 bar_x = 20
 bar_y = 204
@@ -177,20 +177,20 @@ flg = False
 
 def update():
     # add flg
-    global ball_x,ball_y,ball_xp,ball_yp,bar_x,flg
+    global ball_x,ball_y,ball_dx,ball_dy,bar_x,flg
 
     # add ******
     if flg :
         return
 
-    ball_x += ball_xp
+    ball_x += ball_dx
     if ball_x < 0 or pyxel.width - ball_r < ball_x :
-        ball_xp = -ball_xp
+        ball_dx = -ball_dx
        
-    ball_y += ball_yp
+    ball_y += ball_dy
     # chg *******
     if ball_y < 0 :
-        ball_yp = -ball_yp
+        ball_dy = -ball_dy
     elif pyxel.height - ball_r < ball_y :
         flg = True
 
@@ -202,7 +202,7 @@ def update():
 
     # add *******
     if ( bar_x - 8 < ball_x < bar_x + bar_w + 16 ) and ( bar_y - 8 < ball_y < bar_y ) :
-           ball_yp = -4 - pyxel.rndi(0,2)
+           ball_dy = -4 - pyxel.rndi(0,2)
     
     return
 
@@ -236,8 +236,8 @@ pyxel.init(256,224)
 ball_x = 40
 ball_y = 20
 ball_r = 4
-ball_xp = 6
-ball_yp = 4
+ball_dx = 6
+ball_dy = 4
 
 bar_x = 20
 bar_y = 204
@@ -247,7 +247,7 @@ bar_h = 4
 flg = False
 
 def update():
-    global ball_x,ball_y,ball_xp,ball_yp,bar_x,flg
+    global ball_x,ball_y,ball_dx,ball_dy,bar_x,flg
 
     if flg :
         # add *******
@@ -257,13 +257,13 @@ def update():
             ball_y = 20
         return
 
-    ball_x += ball_xp
+    ball_x += ball_dx
     if ball_x < 0 or pyxel.width - ball_r < ball_x :
-        ball_xp = -ball_xp
+        ball_dx = -ball_dx
        
-    ball_y += ball_yp
+    ball_y += ball_dy
     if ball_y < 0 :
-        ball_yp = -ball_yp
+        ball_dy = -ball_dy
     elif pyxel.height - ball_r < ball_y :
         flg = True
 
@@ -274,7 +274,7 @@ def update():
         bar_x = pyxel.width - bar_w
 
     if ( bar_x - 8 < ball_x < bar_x + bar_w + 16 ) and ( bar_y - 8 < ball_y < bar_y ) :
-           ball_yp = -4 - pyxel.rndi(0,2)
+           ball_dy = -4 - pyxel.rndi(0,2)
     
     return
 
@@ -303,6 +303,7 @@ pyxel.run(update,draw)
 【参考文献】  
 　廣瀬 豪（2022）『７大ゲームの作り方を完全マスター！ ゲームアルゴリズムまるごと図鑑』　技術評論社  
 　本記事は上記書籍の「第1章　ゲーム制作の基本　5.ミニゲームを作ろう」の内容を参考に作成しました。  
+　（書籍内のプログラミング言語はJavaScriptです。Pythonではありませんのでご注意ください）  
 
 <br>
 
