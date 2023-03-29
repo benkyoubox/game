@@ -188,11 +188,11 @@ pyxel.run(update, draw)
 import pyxel
 pyxel.init(64, 64)
 
-toggle = 0
+toggle = False
 def update():
     global toggle
     if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
-        toggle = 1 - toggle
+        toggle = not(toggle)
     return
 
 def draw():
