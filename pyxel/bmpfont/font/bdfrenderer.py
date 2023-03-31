@@ -4,7 +4,6 @@
 #
 import pyxel
 
-
 class BDFRenderer:
     BORDER_DIRECTIONS = [
         (-1, -1),
@@ -23,7 +22,6 @@ class BDFRenderer:
         self.screen_ptr = pyxel.screen.data_ptr()
         self.screen_width = pyxel.width
 
-
     def _parse_bdf(self, bdf_filename):
         fonts = {}
         code = None
@@ -41,9 +39,10 @@ class BDFRenderer:
                 elif line.startswith("BITMAP"):
                     bitmap = []
                 elif line.startswith("ENDCHAR"):
-                    fonts[code] = (font_width, font_height, bitmap, offset_x, offset_y, dwidth)
+                    fonts[code] = (dwidth, font_width, font_height, offset_x, offset_y, bitmap)
                     bitmap = None
                 elif line.startswith("FONTBOUNDINGBOX"):
+                    # 0:width 1:height 2:offset_x 3:offset_y
                     self.fontboundingbox = list(map(int, line.split()[1:]))
                 elif bitmap is not None:
                     hex_string = line.strip()
@@ -52,7 +51,7 @@ class BDFRenderer:
         return fonts
 
     def _draw_font(self, x, y, font, color):
-        font_width, font_height, bitmap, offset_x, offset_y, dwidth = font
+        dwidth, font_width, font_height, offset_x, offset_y, bitmap = font
         screen_ptr = self.screen_ptr
         screen_width = self.screen_width
         x = x + self.fontboundingbox[2] + offset_x
@@ -62,7 +61,7 @@ class BDFRenderer:
                 if (bitmap[j] >> i) & 1:
                     screen_ptr[(y + j) * screen_width + x + i] = color
 
-    def draw_text(self, x, y, text, color=7, border_color=None):
+    def draw_text(self, x, y, text, color=7, border_color=None, spacing=0):
         for char in text:
             code = ord(char)
             if code not in self.fonts:
@@ -77,4 +76,4 @@ class BDFRenderer:
                         border_color,
                     )
             self._draw_font(x, y, font, color)
-            x += font[5] #+ 1
+            x += font[0] + spacing
