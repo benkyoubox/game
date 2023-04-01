@@ -184,8 +184,8 @@ pyxel.run(update, draw)
 
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
-| col1 | u8 | 置き換え対象の色 (0-15) （[表示色](api_graphics.md#color)） |  
-| col2 | u8 | 置き換える色 (0-15) |  
+| col1 | u8 | 置き換え対象の色 (0-15)  |  
+| col2 | u8 | 置き換える色 (0-15)  |  
 
 <br>
 
@@ -214,15 +214,16 @@ def draw():
 pyxel.run(update, draw)
 ```
 ![image pal](images/api/g_pal.gif)   
+
 <br>
-  
+
 ### cls()  
   画面を色colでクリアします。  
   `cls(col)`  
 
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
-| col | u8 | 画面を塗りつぶす色 (0-15) （[表示色](api_graphics.md#color)） |  
+| col | u8 | 画面を塗りつぶす色 (0-15)  |  
 
 <br>
 
@@ -230,7 +231,11 @@ pyxel.run(update, draw)
 pyxel.cls(0)
 ```
 <br>
-  
+
+![image color_s](images/api/g_color_s.png)  [表示色詳細はこちら](api_graphics.md#color) 
+
+<br>
+
 ### pget()  
   画面上 (x, y) のピクセルの色を取得します。  
   `pget(x, y)`  
@@ -278,7 +283,7 @@ pyxel.run(update, draw)
 |:---:|:---:|:---|
 | x | f64 | x座標 |  
 | y | f64 | y座標 |  
-| col | u8 | 描画色 (0-15) （[表示色](api_graphics.md#color)） |  
+| col | u8 | 描画色 (0-15)  |  
 
 <br>
 
@@ -297,8 +302,12 @@ def draw():
 pyxel.run(update, draw)
 ```
 ![image pset](images/api/g_pset.png)  
+
 <br>
 
+![image color_s](images/api/g_color_s.png)  [表示色詳細はこちら](api_graphics.md#color) 
+
+<br>
 
 ### line()  
   色colの直線を (x1, y1)-(x2, y2) に描画します。    
@@ -379,7 +388,7 @@ pyxel.run(update, draw)
 |:---:|:---:|:---|
 | x | f64 | x座標 |  
 | y | f64 | y座標 |  
-| col | u8 | 塗りつぶし色 (0-15) （[表示色](api_graphics.md#color)） |  
+| col | u8 | 塗りつぶし色 (0-15)  |  
 
 <br>
 
@@ -405,7 +414,11 @@ pyxel.run(update, draw)
 ![image fill](images/api/g_fill.gif)   
 
 <br>
- 
+
+![image color_s](images/api/g_color_s.png)  [表示色詳細はこちら](api_graphics.md#color) 
+
+<br>
+
 ### blt()  
   イメージバンクimg (0-2) の (u, v) からサイズ (w, h) の領域を (x, y) にコピーします。w、hそれぞれに負の値を設定すると水平、垂直方向に反転します。colkeyに色を指定すると透明色として扱われます。  
   `blt(x, y, img, u, v, w, h, [colkey])`  
@@ -498,7 +511,7 @@ pyxel.run(update, draw)
 | x | f64 | 描画先のx座標 |  
 | y | f64 | 描画先のy座標 | 
 | s | str | 文字列（半角英数） |
-| col | u8 | 文字色 (0-15) （[表示色](api_graphics.md#color)） |  
+| col | u8 | 文字色 (0-15)  |  
 
 <br>
 
@@ -506,6 +519,10 @@ pyxel.run(update, draw)
 ``` python
 pyxel.text(4, 4, "Hello, Pyxel!", pyxel.frame_count % 16)
 ```
+
+<br>
+
+![image color_s](images/api/g_color_s.png)  [表示色詳細はこちら](api_graphics.md#color) 
 
 <br>
 
@@ -539,7 +556,11 @@ print(pyxel.image(0).height)  # 256
 |:---:|:---:|:---|
 | x | i32 | イメージバンクの座標 |  
 | y | i32 | イメージバンクの座標 |  
-| data | リスト | ["1行目データ","2行目データ",・・・]<br>ドットの色を16進数で指定 |  
+| data | リスト | ["1行目データ","2行目データ",・・・]<br>ドットの色を16進の文字で指定 |  
+
+<br>
+
+![image color_hex](images/api/g_color_hex.png)  ※ 10-15 を a-f で表す  
 
 <br>
 
@@ -668,7 +689,8 @@ pyxel.run(update, draw)
 |:---:|:---:|:---|
 | x | f64 | イメージバンクの座標 |  
 | y | f64 | イメージバンクの座標 |  
-| col | u8 | 描画色 (0-15) （[表示色](api_graphics.md#color)） |
+| col | u8 | 描画色 (0-15)  |
+
 
 <br>
 
@@ -690,6 +712,10 @@ def draw():
 
 pyxel.run(update, draw)
 ```
+
+<br>
+
+![image color_s](images/api/g_color_s.png)  [表示色詳細はこちら](api_graphics.md#color) 
 
 <br>
 
