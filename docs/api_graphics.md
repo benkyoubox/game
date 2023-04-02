@@ -62,7 +62,7 @@ pyxel.colors.from_list(org_colors)
 <br>
 
 命令の引数など通常（pyxel.colors以外）は，色の番号で指定します。  
-![image color_s](images/api/g_color_s.png)  
+![image color_L](images/api/g_color_L.png)  
 
 <br>  
 

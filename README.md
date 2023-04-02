@@ -5,7 +5,7 @@
 
 <br>
 
-![img color](docs/images/api/g_color_s.png)  
+![img color](docs/images/api/g_color_L.png)  
 
 <br>
 
