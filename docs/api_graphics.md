@@ -721,6 +721,7 @@ pyxel.run(update, draw)
 
 [ページの先頭に戻る](#pyxel-api-sample)　
 
+
 ## タイルマップクラス  
 <br>
 
@@ -834,6 +835,11 @@ def draw():
 
 pyxel.run(update, draw)
 ```
+<br>
+
+> __Note__  
+タイル種類，イメージバンクとタイルマップの関係については，[タイルマップ](specs_img.md#タイルマップ--tilemap-) を参照してください。  
+
 <br>
   
 ### pset()  
