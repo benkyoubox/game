@@ -232,7 +232,7 @@ pyxel.cls(0)
 ```
 <br>
 
-![image color_s](images/api/g_color_s.png)  [表示色詳細はこちら](api_graphics.md#color) 
+[表示色](api_graphics.md#color)  ![image color_s](images/api/g_color_s.png) 
 
 <br>
 
@@ -305,7 +305,7 @@ pyxel.run(update, draw)
 
 <br>
 
-![image color_s](images/api/g_color_s.png)  [表示色詳細はこちら](api_graphics.md#color) 
+[表示色](api_graphics.md#color)  ![image color_s](images/api/g_color_s.png) 
 
 <br>
 
@@ -347,7 +347,7 @@ pyxel.run(update, draw)
 
 <br>
 
-![image color_s](images/api/g_color_s.png)  [表示色詳細はこちら](api_graphics.md#color) 
+[表示色](api_graphics.md#color)  ![image color_s](images/api/g_color_s.png) 
 
 <br>
 
@@ -415,7 +415,7 @@ pyxel.run(update, draw)
 
 <br>
 
-![image color_s](images/api/g_color_s.png)  [表示色詳細はこちら](api_graphics.md#color) 
+[表示色](api_graphics.md#color)  ![image color_s](images/api/g_color_s.png) 
 
 <br>
 
@@ -522,7 +522,7 @@ pyxel.text(4, 4, "Hello, Pyxel!", pyxel.frame_count % 16)
 
 <br>
 
-![image color_s](images/api/g_color_s.png)  [表示色詳細はこちら](api_graphics.md#color) 
+[表示色](api_graphics.md#color)  ![image color_s](images/api/g_color_s.png) 
 
 <br>
 
@@ -715,7 +715,7 @@ pyxel.run(update, draw)
 
 <br>
 
-![image color_s](images/api/g_color_s.png)  [表示色詳細はこちら](api_graphics.md#color) 
+[表示色](api_graphics.md#color)  ![image color_s](images/api/g_color_s.png)  
 
 <br>
 
