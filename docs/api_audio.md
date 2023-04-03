@@ -232,11 +232,11 @@ pyxel.run(update, draw)
 
 |変数名|型|説明|記述例|
 |:---:|:---:|:---|:---|
-| notes | リスト i8 | 音程 (0-127) のリスト。数値が大きいほど音程は高くなり、33 で'A2'(440Hz)になります。休符は-1 です。 | pyxel.sound(0).notes |  
-| tones | リスト u8 | 音色 (0:Triangle / 1:Square / 2:Pulse / 3:Noise) のリスト<br>レトロゲームサウンドでは，メロディー：Pulse/Square，ベース：Triangle，ドラム：Noise で用いることが多いそうです。 | pyxel.sound(0).tones |  
-| volumes | リスト u8 | 音量 (0-7) のリスト | pyxel.sound(0).volumes |  
-| effects | リスト u8 | エフェクト (0:None / 1:Slide / 2:Vibrato / 3:FadeOut) のリスト<br> Fで音を分離できます。 | pyxel.sound(0).effects |  
-| speed | u32| 再生速度。1 が一番速く、数値が大きいほど再生速度は遅くなります。120 で 1 音の長さが 1 秒になります。 | pyxel.sound(0).speed |  
+| notes | リスト i8 | 音程 (0-127) のリスト。数値が大きいほど音程は高くなり、33 で'A2'(440Hz)になります。休符は-1 です。 | `pyxel.sound(0).notes` |  
+| tones | リスト u8 | 音色 (0:Triangle / 1:Square / 2:Pulse / 3:Noise) のリスト<br>レトロゲームサウンドでは，メロディー：Pulse/Square，ベース：Triangle，ドラム：Noise で用いることが多いそうです。 | `pyxel.sound(0).tones` |  
+| volumes | リスト u8 | 音量 (0-7) のリスト | `pyxel.sound(0).volumes` |  
+| effects | リスト u8 | エフェクト (0:None / 1:Slide / 2:Vibrato / 3:FadeOut) のリスト<br> Fで音を分離できます。 | `pyxel.sound(0).effects` |  
+| speed | u32| 再生速度。1 が一番速く、数値が大きいほど再生速度は遅くなります。120 で 1 音の長さが 1 秒になります。 | `pyxel.sound(0).speed` |  
 
 <br>
 
@@ -380,7 +380,7 @@ pyxel.sound(0).set_effects("NFNF NVVS")
 
 |変数名|型|説明|記述例|
 |:---:|:---:|:---|:---|
-| snds_list | リスト | サウンド (0-63) のリストをチャンネル数分連ねた 2 次元リスト | pyxel.music(0).snds_list | 
+| snds_list | リスト | サウンド (0-63) のリストをチャンネル数分連ねた 2 次元リスト | `pyxel.music(0).snds_list` | 
 
 <br>
   
