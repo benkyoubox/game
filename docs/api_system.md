@@ -78,16 +78,16 @@ pyxel.text(10, 10, "Hello, Pyxel!", pyxel.frame_count % 16)
   Pyxel アプリケーションを初期化します。  
   `init(width, height, [title], [fps], [quit_key], [display_scale], [capture_scale], [capture_sec])`  
 
-| 引数 | 型 | 説明 |
-|:---:|:---:|:---|
-| width | u32 | 画面の幅 |
-| height | u32 | 画面の高さ |
-| title | str | ウィンドウタイトル |
-| fps | u32 | 動作フレームレート |
-| quit_key | u32 | アプリケーション終了キー（[キー記述例](api_system.md#keycode)） |
-| display_scale | u32 | 画面表示の倍率 |
-| capture_scale | u32 | 画面キャプチャの倍率 |
-| capture_sec | u32 | 画面キャプチャ動画の最大録画時間 |  
+| 引数 | 型 | 説明 | 省略時の値 |
+|:---:|:---:|:---|:---:|
+| width | u32 | 画面の幅 | - |
+| height | u32 | 画面の高さ | - |
+| title | str | ウィンドウタイトル | "Pyxel" |
+| fps | u32 | 動作フレームレート | 30 |
+| quit_key | u32 | アプリケーション終了キー（[キー記述例](api_system.md#keycode)） | pyxel.KEY_ESCAPE |  
+| display_scale | u32 | 画面表示の倍率 | 画面サイズから算出 |
+| capture_scale | u32 | 画面キャプチャの倍率 | 2 |
+| capture_sec | u32 | 画面キャプチャ動画の最大録画時間 | 10 |  
 
 <br>
  
