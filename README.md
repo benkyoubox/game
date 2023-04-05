@@ -170,8 +170,8 @@ if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) or pyxel.btnp(pyxel.GAMEPAD1_BUTTON_A):
 ```
 タイルマップ取得，設定  
 ``` python
-xidx = 1 //8
-yidx = 1 //8
+xidx = x //8
+yidx = y //8
 tile = pyxel.tilemap(0).pget(xidx,yidx)
 pyxel.tilemap(0).pset(xidx,yidx, (1,0) )
 ```
