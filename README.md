@@ -25,7 +25,7 @@ Python向けレトロゲームエンジン Pyxel を使用したゲーム作成�
 
 ### クイックスタートガイド
 
-- [Pyxelのインストール](docs/howto_install#how-to-install)  
+- [Pyxelのインストール](docs/howto_install.md#how-to-install)  
   PythonとPyxelをインストールします。  
 
 - [ピンポンゲームの作成 (First Steps in Game Development)](docs/game_squash.md#gamedev-squash)  
