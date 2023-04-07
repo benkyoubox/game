@@ -37,6 +37,9 @@ import pyxel
 pyxel.init(128, 128)
 pyxel.load("mygame.pyxres")
 
+# イメージバンク上のドット絵の座標データ
+# Pythonの辞書型（キーと値のペア）を使って取得できるようにした例
+# key:[u,v,w,h,透過色]
 images = {'bo-peep':[0,0,16,16,2],
           'sheep':[0,16,16,16,2]}
 
@@ -48,6 +51,7 @@ class Sprite:
         self.u, self.v, self.w, self.h, self.col = images.get(key,[0,0,8,8,0])
 
     def draw(self):
+        # イメージバンクのドット絵を表示する blt()命令
         pyxel.blt(self.x,self.y, 0, self.u,self.v, self.w, self.h, self.col)
         return
 
@@ -74,6 +78,12 @@ pyxel.run(update, draw)
 <br>
 
 ![img result1](images/sprites/01c.png)  
+
+<br>
+
+> __Note__  
+クラスを使用したプログラムが難しい人は [ブログ記事 クラスを使う](https://kinutani.hateblo.jp/entry/2023/01/08/171012) を参照してください。  
+  
 
 <br>
 
