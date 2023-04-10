@@ -1,5 +1,7 @@
 import pyxel
 
+TM = 7
+
 stagetiles = {'grassy':[[(0,0),(0,1),(0,2),(0,3)],[(1,0),(1,3)],[(1,1),(1,2)]],
               'rocky': [[(2,0),(2,1),(2,2),(2,3)],[(3,0),(3,3)],[(3,1),(3,2)]],
               'ice':   [[(4,0),(4,1),(4,2),(4,3)],[(5,0),(5,3)],[(5,1),(5,2)]]}
@@ -17,7 +19,6 @@ class Stage:
         self.right_border = width *0.66 -16
         self.upper_border = height * 0.33
         self.bottom_border = height * 0.66 -16
-        self.tm = 0
         self.col = 0
         return
     
@@ -25,9 +26,7 @@ class Stage:
         ''' w,h pixelsize  scale=0.05-0.07 z=1- '''
         self.width = width
         self.height = height
-        self.tm = 7
-        tm = self.tm
-        pyxel.tilemap(tm).refimg = 1 # imagebank
+        pyxel.tilemap(TM).refimg = 1 # imagebank
         span = 12
         border = 6
         fieldtile_low = stagetiles[key][0] #[(0,3),(0,4),(0,5),(0,6)]
@@ -37,24 +36,24 @@ class Stage:
             for x in range(self.height//8):
                 val = pyxel.floor(abs(pyxel.noise(x*scale, y*scale, z*scale) * span))
                 if val < border :
-                    pyxel.tilemap(tm).pset(x,y,fieldtile_low[0])
+                    pyxel.tilemap(TM).pset(x,y,fieldtile_low[0])
                     if pyxel.rndi(0,100) < val:
-                        pyxel.tilemap(tm).pset(x,y,fieldtile_low[lidx%len(fieldtile_low)])
+                        pyxel.tilemap(TM).pset(x,y,fieldtile_low[lidx%len(fieldtile_low)])
                         lidx += 1
                 else:
-                    pyxel.tilemap(tm).pset(x,y,fieldtile_high[0])
+                    pyxel.tilemap(TM).pset(x,y,fieldtile_high[0])
         
 
         clifftile = stagetiles[key][2] #[(1,4),(1,5)]
         for y in range(self.width//8 - 1):
             for x in range(self.height//8):
-                if fieldtile_high[0] == pyxel.tilemap(tm).pget(x,y) :
-                    if fieldtile_low[0][0] == pyxel.tilemap(tm).pget(x,y+1)[0] :
-                        pyxel.tilemap(tm).pset(x,y+1,clifftile[0])
+                if fieldtile_high[0] == pyxel.tilemap(TM).pget(x,y) :
+                    if fieldtile_low[0][0] == pyxel.tilemap(TM).pget(x,y+1)[0] :
+                        pyxel.tilemap(TM).pset(x,y+1,clifftile[0])
                         if y+2 < self.height//8:
-                            pyxel.tilemap(tm).pset(x,y+2,clifftile[1])
+                            pyxel.tilemap(TM).pset(x,y+2,clifftile[1])
                     elif pyxel.rndi(1,100) < 10:
-                        pyxel.tilemap(tm).pset(x,y,fieldtile_high[1])
+                        pyxel.tilemap(TM).pset(x,y,fieldtile_high[1])
         return
 
     def update(self,x,y):
@@ -79,7 +78,7 @@ class Stage:
     
     def draw(self):
         pyxel.camera()
-        pyxel.bltm(0,0, self.tm, self.scroll_x,self.scroll_y, self.area_w,self.area_h, self.col)
+        pyxel.bltm(0,0, TM, self.scroll_x,self.scroll_y, self.area_w,self.area_h, self.col)
         pyxel.camera(self.scroll_x,self.scroll_y)
         return
 
