@@ -7,7 +7,7 @@ import stages as mod_stage
 pyxel.init(APP_WIDTH, APP_HEIGHT, title="Pyxel")
 pyxel.load("actadv.pyxres")
 
-
+stgname = ['grassy','rocky','ice','cave']
 player = mod_sprite.Player(10,10,'player')
 stg = mod_stage.Stage(STAGE_WIDTH,STAGE_HEIGHT)
 cnt = 0
@@ -51,13 +51,10 @@ def update():
     if pyxel.btnp(pyxel.KEY_C):
         cnt += 1
         stg.setresource(cnt%3,1,256*8,256*8)
+        scale = pyxel.rndf(0.055,0.075)
+        z = pyxel.rndi(0,128)
+        stg.genmap(256*8,256*8,scale,z,stgname[cnt%len(stgname)])
         player.setpos(cnt%3,player.x,player.y)
-
-    if pyxel.btnp(pyxel.KEY_D):
-        stg.setresource(7,1,256*8,256*8)
-        stg.genmap(256*8,256*8,0.06,20,'cave')
-        player.setpos(7,player.x,player.y)
-
 
     dx = dy = 0
     if pyxel.btn(pyxel.KEY_UP):
