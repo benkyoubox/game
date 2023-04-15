@@ -1,18 +1,17 @@
 import pyxel
+from common import *
 
-TM = 7
-
-stagetiles = {'grassy':[[(0,0),(0,1),(0,2),(0,3)],[(1,0),(1,3)],[(1,1),(1,2)]],
-              'rocky': [[(2,0),(2,1),(2,2),(2,3)],[(3,0),(3,3)],[(3,1),(3,2)]],
-              'ice':   [[(4,0),(4,1),(4,2),(4,3)],[(5,0),(5,3)],[(5,1),(5,2)]]}
+stagetiles = {'grassy':[[(0,1),(0,2),(0,3),(0,4)],[(1,0)],[(1,1),(1,2)]],
+              'rocky': [[(2,0),(2,1)],[(3,0)],[(3,1),(3,2)]],
+              'ice':   [[(4,0),(4,1)],[(5,0)],[(5,1),(5,2)]]}
 
 class Stage:
 
     def __init__(self,width,height) -> None:
-        self.width = width
-        self.height = height
-        self.area_w = width
-        self.area_h = height
+        self.area_width = width
+        self.area_height = height
+        self.disp_w = width
+        self.disp_h = height
         self.scroll_x = 0
         self.scroll_y = 0
         self.left_border = width *0.33
@@ -20,40 +19,59 @@ class Stage:
         self.upper_border = height * 0.33
         self.bottom_border = height * 0.66 -16
         self.col = 0
+        self.tm = 0
         return
-    
+
+    def is_area(self,x,y,w,h) -> bool:
+        if self.scroll_x < x + w and x < self.scroll_x + self.disp_w \
+            and self.scroll_y < y + h and y < self.scroll_y + self.disp_h :
+            return True
+        else:
+            return False
+            
+
+    def setresource(self,tm_,img,width,height):
+        self.tm = tm_
+        pyxel.tilemap(self.tm).refimg = img
+        self.area_width = width
+        self.area_height = height
+        return
+
     def genmap(self,width,height,scale,z,key):
         ''' w,h pixelsize  scale=0.05-0.07 z=1- '''
-        self.width = width
-        self.height = height
-        pyxel.tilemap(TM).refimg = 1 # imagebank
-        span = 12
-        border = 6
-        fieldtile_low = stagetiles[key][0] #[(0,3),(0,4),(0,5),(0,6)]
-        fieldtile_high = stagetiles[key][1] #[(1,3),(1,6)]
-        lidx = 0
-        for y in range(self.width//8):
-            for x in range(self.height//8):
-                val = pyxel.floor(abs(pyxel.noise(x*scale, y*scale, z*scale) * span))
-                if val < border :
-                    pyxel.tilemap(TM).pset(x,y,fieldtile_low[0])
-                    if pyxel.rndi(0,100) < val:
-                        pyxel.tilemap(TM).pset(x,y,fieldtile_low[lidx%len(fieldtile_low)])
-                        lidx += 1
-                else:
-                    pyxel.tilemap(TM).pset(x,y,fieldtile_high[0])
-        
+        self.area_width = width
+        self.area_height = height
+        fieldtile_low = stagetiles[key][0]
+        fieldtile_high = stagetiles[key][1]
+        for y in range(self.area_width//8):
+            for x in range(self.area_height//8):
+                n = abs(pyxel.noise(x*scale, y*scale, z*scale))
 
-        clifftile = stagetiles[key][2] #[(1,4),(1,5)]
-        for y in range(self.width//8 - 1):
-            for x in range(self.height//8):
-                if fieldtile_high[0] == pyxel.tilemap(TM).pget(x,y) :
-                    if fieldtile_low[0][0] == pyxel.tilemap(TM).pget(x,y+1)[0] :
-                        pyxel.tilemap(TM).pset(x,y+1,clifftile[0])
-                        if y+2 < self.height//8:
-                            pyxel.tilemap(TM).pset(x,y+2,clifftile[1])
-                    elif pyxel.rndi(1,100) < 10:
-                        pyxel.tilemap(TM).pset(x,y,fieldtile_high[1])
+                if n < 0.15:
+                    pyxel.tilemap(self.tm).pset(x,y,fieldtile_low[1])
+                elif n < 0.5:
+                    pyxel.tilemap(self.tm).pset(x,y,fieldtile_low[0])
+                else:
+                    pyxel.tilemap(self.tm).pset(x,y,fieldtile_high[0])
+
+        clifftile = stagetiles[key][2]
+        for y in range(self.area_width//8 - 1):
+            for x in range(self.area_height//8):
+                if fieldtile_high[0] == pyxel.tilemap(self.tm).pget(x,y) :
+                    if fieldtile_low[0][0] == pyxel.tilemap(self.tm).pget(x,y+1)[0] :
+                        pyxel.tilemap(self.tm).pset(x,y+1,clifftile[0])
+                        if y+2 < self.area_height//8:
+                            pyxel.tilemap(self.tm).pset(x,y+2,clifftile[1])
+        if 'grassy' == key:
+            for y in range(self.area_width//8):
+                for x in range(self.area_height//8):
+                    if fieldtile_low[0] == pyxel.tilemap(self.tm).pget(x,y) :
+                        n = pyxel.noise(x*0.08, y*0.08, z*scale)*pyxel.rndf(-1.11,1.19)
+                        if n < -0.4:
+                            pyxel.tilemap(0).pset(x,y,fieldtile_low[2])
+                        elif 0.4 < n:
+                            pyxel.tilemap(0).pset(x,y,fieldtile_low[3])
+                    
         return
 
     def update(self,x,y):
@@ -63,8 +81,8 @@ class Stage:
                 self.scroll_x = 0
         if self.scroll_x + self.right_border < x:
             self.scroll_x = x - self.right_border
-            if self.width - self.area_w < self.scroll_x:
-                self.scroll_x = self.width - self.area_w
+            if self.area_width - self.disp_w < self.scroll_x:
+                self.scroll_x = self.area_width - self.disp_w
             
         if y < self.scroll_y + self.upper_border:
             self.scroll_y = y - self.upper_border
@@ -72,13 +90,13 @@ class Stage:
                 self.scroll_y = 0
         if self.scroll_y + self.bottom_border < y:
             self.scroll_y = y - self.bottom_border
-            if self.height - self.area_h < self.scroll_y:
-                self.scroll_y = self.height - self.area_h
+            if self.area_height - self.disp_h < self.scroll_y:
+                self.scroll_y = self.area_height - self.disp_h
         return
     
     def draw(self):
         pyxel.camera()
-        pyxel.bltm(0,0, TM, self.scroll_x,self.scroll_y, self.area_w,self.area_h, self.col)
+        pyxel.bltm(0,0, self.tm, self.scroll_x,self.scroll_y, self.disp_w,self.disp_h, self.col)
         pyxel.camera(self.scroll_x,self.scroll_y)
         return
 
@@ -92,6 +110,7 @@ if __name__ == '__main__':
 
     x=y=0
     stg = Stage(256,200)
+    stg.setresource(0,1,256*8,256*8)
 
     stgname = ['grassy','rocky','ice']
     cnt = 0
@@ -100,10 +119,13 @@ if __name__ == '__main__':
         global x,y,cnt
 
         if pyxel.btnp(pyxel.KEY_SPACE):
+            stg.setresource(7,1,256*8,256*8)
             scale = pyxel.rndf(0.055,0.075)
             z = pyxel.rndi(0,128)
-            stg.genmap(1024,1024,scale,z,stgname[cnt%len(stgname)])
-            cnt += 1
+            stg.genmap(256*8,256*8,scale,z,stgname[cnt%len(stgname)])
+        
+        if pyxel.btnp(pyxel.KEY_S):
+            pyxel.save("newmap.pyxres")
     
         dx = dy = 0
         if pyxel.btn(pyxel.KEY_UP):

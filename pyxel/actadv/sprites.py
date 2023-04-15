@@ -1,24 +1,14 @@
 import pyxel
-from stages import TM
-
-
-DIR_UP = 0
-DIR_DOWN = 1
-DIR_LEFT = 2
-DIR_RIGHT = 3
-
-MOT_WAIT = 0
-MOT_WALK = 1
-MOT_ATTACK = 2
+from common import *
 
 images = {'player':[0,16,16,16,3],
         'soldierA':[0,64,16,16,2],
         'soldierB':[0,80,16,16,2],
-        'enm1':[0,96,16,16,2],
-        'enm2':[16,96,16,16,2]
+        'enm1':[2,99,12,10,2],
+        'enm2':[18,99,12,10,2]
         }
 
-TILE_WALL_X = [1,3,5]
+
 
 class Sprite:
 
@@ -41,6 +31,10 @@ class Sprite:
     def draw(self):
         pyxel.blt(self.x,self.y, 0, self.u,self.v, self.w, self.h, self.col)
         return
+
+MOT_WAIT = 0
+MOT_WALK = 1
+MOT_ATTACK = 2
 
 ANIMA_WALK = [
     [(0,0),(16,0),(0,0),(32,0)],
@@ -70,20 +64,42 @@ class Player(Sprite):
         self.dir = DIR_DOWN
         self.speed = 3
         self.flmcnt = 0
+        self.damagecnt = 0
         self.motion = MOT_WAIT
         self.weapon = WP_SWORD
+        self.tm = 7
         self.chkpoint = [(2,5),(7,5),(13,5),
                          (2,7),      (13,7),
                          (2,15),(7,15),(13,15)]
+        return
+
+    def setpos(self,tm,x,y):
+        self.tm = tm
+        self.x = x
+        self.y = y
         return
 
     def chkwall(self,cx,cy):
         for cpx,cpy in self.chkpoint:
             xi = (cx + cpx)//8
             yi = (cy + cpy)//8
-            if pyxel.tilemap(TM).pget(xi,yi)[0] in TILE_WALL_X:
+            if pyxel.tilemap(self.tm).pget(xi,yi)[0] in TILE_WALL_X:
                 return True
         return False
+
+    def chkenemy(self,x,y,w,h) -> bool:
+        if (
+            self.damagecnt == 0
+            and self.x + self.w -4 > x
+            and x + w > self.x + 4
+            and self.y + self.h -4 > y
+            and y + h > self.y + 2
+        ):
+            self.life -= 1
+            self.damagecnt = 30
+            return True
+        else:
+            return False
 
     def setwalk(self,dir):
         self.dir = dir
@@ -124,9 +140,14 @@ class Player(Sprite):
             if 10 < self.flmcnt :
                 self.motion = MOT_WALK
                 self.flmcnt = 0
+        if self.damagecnt > 0:
+            self.damagecnt -= 1
         return
 
     def draw(self):
+        if self.damagecnt % 2 != 0 :
+            return
+
         if MOT_WAIT == self.motion :
             self.u, self.v = (0,16)
         elif MOT_WALK ==  self.motion :

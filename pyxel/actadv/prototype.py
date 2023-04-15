@@ -1,35 +1,28 @@
 import pyxel
+from common import *
 import sprites as mod_sprite
 import stages as mod_stage
 
-APP_WIDTH = 256
-APP_HEIGHT = 224
+
 pyxel.init(APP_WIDTH, APP_HEIGHT, title="Pyxel")
 pyxel.load("actadv.pyxres")
 
-DIR_UP = 0
-DIR_DOWN = 1
-DIR_LEFT = 2
-DIR_RIGHT = 3
 
-
-x=y=0
-player = mod_sprite.Player(x,y,'player')
-stg = mod_stage.Stage(256,200)
-
-stgname = ['grassy','rocky','ice']
+player = mod_sprite.Player(10,10,'player')
+stg = mod_stage.Stage(STAGE_WIDTH,STAGE_HEIGHT)
 cnt = 0
-stg.genmap(1024,1024, 0.06, 64, stgname[cnt%len(stgname)])
+stg.setresource(cnt,1,256*8,256*8)
+player.setpos(cnt,10,10)
 
 bullets = []
 enemies = []
 
-for i in range(10):
-    ex = pyxel.rndi(30,256)
-    ey = pyxel.rndi(30,256)
+for i in range(100):
+    ex = pyxel.rndi(30,2000)
+    ey = pyxel.rndi(30,2000)
     enemies.append(mod_sprite.Enemy(ex,ey,'enm1'))
-    ex = pyxel.rndi(30,256)
-    ey = pyxel.rndi(30,256)
+    ex = pyxel.rndi(30,2000)
+    ey = pyxel.rndi(30,2000)
     enemies.append(mod_sprite.Enemy(ex,ey,'enm2'))
 
 def update_list(list):
@@ -39,7 +32,8 @@ def update_list(list):
 
 def draw_list(list):
     for elem in list:
-        elem.draw()
+        if stg.is_area(elem.x,elem.y,elem.w,elem.h):
+            elem.draw()
 
 
 def cleanup_list(list):
@@ -52,13 +46,12 @@ def cleanup_list(list):
             i += 1
 
 def update():
-    global x,y,cnt
+    global cnt
 
     if pyxel.btnp(pyxel.KEY_C):
-        scale = pyxel.rndf(0.055,0.075)
-        z = pyxel.rndi(0,128)
-        stg.genmap(1024,1024,scale,z,stgname[cnt%len(stgname)])
         cnt += 1
+        stg.setresource(cnt%3,1,256*8,256*8)
+        player.setpos(cnt%3,player.x,player.y)
  
     dx = dy = 0
     if pyxel.btn(pyxel.KEY_UP):
@@ -91,6 +84,11 @@ def update():
                 if enemy.life <= 0:
                     enemy.is_alive = False
     
+    for enemy in enemies:
+        if player.chkenemy(enemy.x,enemy.y,enemy.w,enemy.h) :
+            # TODO damage
+            pass
+
     player.update(dx, dy)
     update_list(bullets)
     update_list(enemies)
@@ -107,6 +105,15 @@ def draw():
     player.draw()
     draw_list(enemies)
     draw_list(bullets)
+    pyxel.camera()
+    pyxel.rect(0,STAGE_HEIGHT,STAGE_WIDTH,APP_HEIGHT-STAGE_HEIGHT,0)
+    x = 10
+    y = STAGE_HEIGHT+5
+    w = 50 * player.life / 10
+    h = 8
+    pyxel.text(x,y+2,"Life",7)
+    pyxel.rect(x+18,y,w,h,11)
+    pyxel.rectb(x+18,y,50,h,7)
     return
 
 pyxel.run(update, draw)
