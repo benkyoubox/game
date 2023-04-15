@@ -158,10 +158,12 @@ class Player(Sprite):
             xp, yp, u, v, w, h, col = WEAPONS[self.weapon][self.dir]
             if DIR_UP == self.dir :
                 pyxel.blt(self.x + xp, self.y + yp, 0, u, v, w, h, col)
+                pyxel.blt(self.x + xp, self.y + yp, 0, u+16, v, w, h, col)
                 super().draw()
             else:
                 super().draw()
                 pyxel.blt(self.x + xp, self.y + yp, 0, u, v, w, h, col)
+                pyxel.blt(self.x + xp, self.y + yp, 0, u+16, v, w, h, col)
         else:
             super().draw()
         return 
@@ -186,20 +188,24 @@ class Bullet(Sprite):
             speed = 3
             self.cnt = 6
             if DIR_UP == dir :
+                self.x -= 2
                 self.y -= 2
-                self.w = 16
+                self.w = 20
                 self.dy = -speed
             elif DIR_DOWN == dir :
+                self.x -= 2
                 self.y += 18
-                self.w = 16
+                self.w = 20
                 self.dy = speed
             elif DIR_LEFT == dir :
                 self.x -= 2
-                self.h = 16
+                self.y -= 2
+                self.h = 20
                 self.dx = -speed
             elif DIR_RIGHT == dir :
                 self.x += 18
-                self.h = 16
+                self.y -= 2
+                self.h = 20
                 self.dx = speed
         return
 
@@ -214,7 +220,8 @@ class Bullet(Sprite):
     def draw(self):
         # DEBUG
         if WP_SWORD == self.kind :
-            pyxel.rect(self.x, self.y, self.w, self.h, 10)
+            #pyxel.rect(self.x, self.y, self.w, self.h, 10)
+            pass
         return
 
 

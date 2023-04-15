@@ -52,7 +52,13 @@ def update():
         cnt += 1
         stg.setresource(cnt%3,1,256*8,256*8)
         player.setpos(cnt%3,player.x,player.y)
- 
+
+    if pyxel.btnp(pyxel.KEY_D):
+        stg.setresource(7,1,256*8,256*8)
+        stg.genmap(256*8,256*8,0.06,20,'cave')
+        player.setpos(7,player.x,player.y)
+
+
     dx = dy = 0
     if pyxel.btn(pyxel.KEY_UP):
         dy -= player.speed

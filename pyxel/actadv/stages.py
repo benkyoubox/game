@@ -3,7 +3,8 @@ from common import *
 
 stagetiles = {'grassy':[[(0,1),(0,2),(0,3),(0,4)],[(1,0)],[(1,1),(1,2)]],
               'rocky': [[(2,0),(2,1)],[(3,0)],[(3,1),(3,2)]],
-              'ice':   [[(4,0),(4,1)],[(5,0)],[(5,1),(5,2)]]}
+              'ice':   [[(4,0),(4,1)],[(5,0)],[(5,1),(5,2)]],
+              'cave':  [[(2,3)],[(3,3)],[(3,4),(3,5)]]}
 
 class Stage:
 
@@ -47,12 +48,18 @@ class Stage:
             for x in range(self.area_height//8):
                 n = abs(pyxel.noise(x*scale, y*scale, z*scale))
 
-                if n < 0.15:
-                    pyxel.tilemap(self.tm).pset(x,y,fieldtile_low[1])
-                elif n < 0.5:
-                    pyxel.tilemap(self.tm).pset(x,y,fieldtile_low[0])
+                if 'cave' != key:
+                    if n < 0.15:
+                        pyxel.tilemap(self.tm).pset(x,y,fieldtile_low[1])
+                    elif n < 0.5:
+                        pyxel.tilemap(self.tm).pset(x,y,fieldtile_low[0])
+                    else:
+                        pyxel.tilemap(self.tm).pset(x,y,fieldtile_high[0])
                 else:
-                    pyxel.tilemap(self.tm).pset(x,y,fieldtile_high[0])
+                    if n < 0.3:
+                        pyxel.tilemap(self.tm).pset(x,y,fieldtile_low[0])
+                    else:
+                        pyxel.tilemap(self.tm).pset(x,y,fieldtile_high[0])
 
         clifftile = stagetiles[key][2]
         for y in range(self.area_width//8 - 1):
