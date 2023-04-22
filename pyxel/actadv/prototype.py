@@ -3,6 +3,7 @@ from common import *
 import sprites as mod_sprite
 import enemy as mod_enemy
 import stages as mod_stage
+import effects as mod_efc
 
 
 pyxel.init(APP_WIDTH, APP_HEIGHT, title="Pyxel")
@@ -18,18 +19,15 @@ player.setpos(tm,24,24)
 bullets = []
 enemies = []
 
-enemies.append(mod_enemy.EnemyWondering(164,60,'bat',tm,mod_enemy.ANI_TYPE_FRONT))
-enemies.append(mod_enemy.EnemyWondering(30,100,'bat',tm,mod_enemy.ANI_TYPE_FRONT))
-enemies.append(mod_enemy.EnemyWondering(40,180,'rat',tm))
-enemies.append(mod_enemy.EnemyWondering(80,180,'rat',tm))
-enemies.append(mod_enemy.EnemyWondering(40,120,'slimeG',tm))
-enemies.append(mod_enemy.EnemyWondering(60,150,'slimeG',tm))
+enemies.append(mod_enemy.EnemyWondering(164,60,'bat',tm,1, mod_enemy.ANI_TYPE_FRONT))
+enemies.append(mod_enemy.EnemyWondering(30,100,'snake',tm,1,mod_enemy.ANI_TYPE_LR))
+enemies.append(mod_enemy.EnemyWondering(40,180,'rat',tm,1))
+enemies.append(mod_enemy.EnemyWondering(80,180,'wolf',tm,2,ani=8))
+enemies.append(mod_enemy.EnemyWondering(40,120,'slimeG',tm,1))
+enemies.append(mod_enemy.EnemyWondering(60,150,'slimeY',tm,1))
+enemies.append(mod_enemy.EnemyWondering(200,220,'mage',tm,2,mod_enemy.ANI_TYPE_FRONT,ani=8))
+enemies.append(mod_enemy.EnemyWondering(280,80,'golem',tm,5,ani=8))
 
-for i in range(10):
-    x = pyxel.rndi(256,300)
-    y = pyxel.rndi(40,130)
-    enemies.append(mod_enemy.EnemyWondering(x+16,y-10,'bat',tm,mod_enemy.ANI_TYPE_FRONT))
-    enemies.append(mod_enemy.EnemyWondering(x,y,'slimeG',tm))
 
 def update_list(list):
     for elem in list:
@@ -41,6 +39,14 @@ def draw_list(list):
         if stg.is_area(elem.x,elem.y,elem.w,elem.h):
             elem.draw()
 
+def draw_front(list,ypos,flg):
+    for elem in list:
+        if stg.is_area(elem.x,elem.y,elem.w,elem.h):
+            if flg and ypos < elem.y + elem.h :
+                elem.draw()    
+            elif flg == False and elem.y + elem.h < ypos :
+                elem.draw()    
+        
 
 def cleanup_list(list):
     i = 0
@@ -52,15 +58,6 @@ def cleanup_list(list):
             i += 1
 
 def update():
-    global cnt
-
-    if pyxel.btnp(pyxel.KEY_C):
-        cnt += 1
-        stg.setresource(cnt%3,1,256*8,256*8)
-        scale = pyxel.rndf(0.055,0.075)
-        z = pyxel.rndi(0,128)
-        stg.genmap(256*8,256*8,scale,z,stgname[cnt%len(stgname)])
-        player.setpos(cnt%3,player.x,player.y)
 
     dx = dy = 0
     if pyxel.btn(pyxel.KEY_UP):
@@ -89,6 +86,7 @@ def update():
                 and bullet.y + bullet.h > enemy.y
             ):
                 bullet.is_alive = False
+                mod_efc.Hit(enemy.x + enemy.w//2,enemy.y + enemy.h//2)
                 enemy.life -= 1
                 if enemy.life <= 0:
                     enemy.is_alive = False
@@ -100,21 +98,24 @@ def update():
 
     player.update(dx, dy)
     update_list(bullets)
+    update_list(mod_efc.effects)
     for enemy in enemies:
-        enemy.update(player.x+6,player.y+6)
+        enemy.update(player.x+8,player.y+8)
     stg.update(player.x,player.y)
 
     cleanup_list(bullets)
     cleanup_list(enemies)
-
+    cleanup_list(mod_efc.effects)
     return
 
 def draw():
     pyxel.cls(0)
     stg.draw()
+    draw_front(enemies,player.y+player.h,False)
     player.draw()
-    draw_list(enemies)
+    draw_front(enemies,player.y+player.h,True)
     draw_list(bullets)
+    draw_list(mod_efc.effects)
     pyxel.camera()
     pyxel.rect(0,STAGE_HEIGHT,STAGE_WIDTH,APP_HEIGHT-STAGE_HEIGHT,0)
     x = 10
