@@ -36,8 +36,6 @@ class Stage:
         for y in range(self.width//8):
             for x in range(self.height//8):
                 n = pyxel.noise(x*scale, y*scale, z*scale)
-                #if 0 < n :
-                #    n += pyxel.noise(x*scale, y*scale, z*scale)*pyxel.rndf(0,0.5)
 
                 if n < -0.3:
                     tileNo = 1
