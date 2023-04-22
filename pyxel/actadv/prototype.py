@@ -1,6 +1,7 @@
 import pyxel
 from common import *
 import sprites as mod_sprite
+import enemy as mod_enemy
 import stages as mod_stage
 
 
@@ -10,20 +11,25 @@ pyxel.load("actadv.pyxres")
 stgname = ['grassy','rocky','ice','cave']
 player = mod_sprite.Player(10,10,'player')
 stg = mod_stage.Stage(STAGE_WIDTH,STAGE_HEIGHT)
-cnt = 0
-stg.setresource(cnt,1,256*8,256*8)
-player.setpos(cnt,10,10)
+tm = 3
+stg.setresource(tm,1,128*3,256)
+player.setpos(tm,24,24)
 
 bullets = []
 enemies = []
 
-for i in range(100):
-    ex = pyxel.rndi(30,2000)
-    ey = pyxel.rndi(30,2000)
-    enemies.append(mod_sprite.Enemy(ex,ey,'enm1'))
-    ex = pyxel.rndi(30,2000)
-    ey = pyxel.rndi(30,2000)
-    enemies.append(mod_sprite.Enemy(ex,ey,'enm2'))
+enemies.append(mod_enemy.EnemyWondering(164,60,'bat',tm,mod_enemy.ANI_TYPE_FRONT))
+enemies.append(mod_enemy.EnemyWondering(30,100,'bat',tm,mod_enemy.ANI_TYPE_FRONT))
+enemies.append(mod_enemy.EnemyWondering(40,180,'rat',tm))
+enemies.append(mod_enemy.EnemyWondering(80,180,'rat',tm))
+enemies.append(mod_enemy.EnemyWondering(40,120,'slimeG',tm))
+enemies.append(mod_enemy.EnemyWondering(60,150,'slimeG',tm))
+
+for i in range(10):
+    x = pyxel.rndi(256,300)
+    y = pyxel.rndi(40,130)
+    enemies.append(mod_enemy.EnemyWondering(x+16,y-10,'bat',tm,mod_enemy.ANI_TYPE_FRONT))
+    enemies.append(mod_enemy.EnemyWondering(x,y,'slimeG',tm))
 
 def update_list(list):
     for elem in list:
@@ -94,7 +100,8 @@ def update():
 
     player.update(dx, dy)
     update_list(bullets)
-    update_list(enemies)
+    for enemy in enemies:
+        enemy.update(player.x+6,player.y+6)
     stg.update(player.x,player.y)
 
     cleanup_list(bullets)

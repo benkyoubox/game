@@ -5,7 +5,7 @@ images = {'player':[0,16,16,16,3],
         'soldierA':[0,64,16,16,2],
         'soldierB':[0,80,16,16,2],
         'enm1':[2,99,12,10,2],
-        'enm2':[18,99,12,10,2]
+        'enm2':[66,99,12,10,2]
         }
 
 
@@ -182,28 +182,28 @@ class Bullet(Sprite):
         self.dy = 0
         self.dist = 0
         self.kind = kind
-        self.cnt = 30
+        self.cnt = 31
         self.is_alive = True
         if WP_SWORD == kind :
             speed = 3
             self.cnt = 6
             if DIR_UP == dir :
                 self.x -= 2
-                self.y -= 2
+                self.y += 2
                 self.w = 20
                 self.dy = -speed
             elif DIR_DOWN == dir :
                 self.x -= 2
-                self.y += 18
+                self.y += 14
                 self.w = 20
                 self.dy = speed
             elif DIR_LEFT == dir :
-                self.x -= 2
+                self.x += 2
                 self.y -= 2
                 self.h = 20
                 self.dx = -speed
             elif DIR_RIGHT == dir :
-                self.x += 18
+                self.x += 16
                 self.y -= 2
                 self.h = 20
                 self.dx = speed
@@ -223,20 +223,3 @@ class Bullet(Sprite):
             #pyxel.rect(self.x, self.y, self.w, self.h, 10)
             pass
         return
-
-
-class Enemy(Sprite):
-
-    def __init__(self, x, y, key):
-        self.life = 1
-        self.cnt = 0
-        super().__init__(x, y, key)
-
-    def update(self):
-        dx = dy = 0
-        self.cnt += 1
-        if self.cnt % 10 and pyxel.rndi(1,100) < 10:
-            dx = pyxel.rndi(-2,2)
-            dy = pyxel.rndi(-2,2)
-        return super().update(dx, dy)
-    
