@@ -44,6 +44,7 @@ class Enemy(spr.Sprite):
         self.anirate = ani
         self.dir = pyxel.rndi(0,3)
         self.speed = 2
+        self.sensor = 16 * 5
         self.life = life
         self.cnt = 0
         self.tm = tm
@@ -81,6 +82,19 @@ class Enemy(spr.Sprite):
                     return True
         return False
 
+    def getdir(self,x,y):
+        dir = DIR_DOWN
+        deg = pyxel.atan2(y,x)
+        if -135 <= deg < -45 :
+            dir = DIR_UP
+        elif -45 <= deg < 45 :
+            dir = DIR_RIGHT
+        elif 45 <= deg < 135 :
+            dir = DIR_DOWN
+        else:
+            dir = DIR_LEFT
+        return dir
+
     def ai(self,x,y):
         dx = dy = 0
         return dx,dy
@@ -96,6 +110,7 @@ class Enemy(spr.Sprite):
         return
 
 class EnemyWondering(Enemy):
+    
     def ai(self,px,py):
         dx = dy = 0
 
@@ -106,22 +121,33 @@ class EnemyWondering(Enemy):
 
         # 範囲内にプレイヤーがいれば近づく
         u,v,w,h,col = self.getdata()
+        dist = self.sensor
         x = self.x + abs(w)//2
         y = self.y + abs(h)//2
-        dist = 16*3
+        if self.dir == DIR_UP :
+            cx = x - dist // 2
+            cy = y - dist
+        elif self.dir == DIR_DOWN:
+            cx = x - dist // 2
+            cy = y
+        elif self.dir == DIR_LEFT:
+            cx = x - dist
+            cy = y - dist // 2
+        elif self.dir == DIR_RIGHT:
+            cx = x
+            cy = y - dist // 2
+
         speed = self.speed + pyxel.rndi(0,2)
-        if self.dir != DIR_DOWN and 2 < y - py < dist :
-            dy = -speed
-            self.dir = DIR_UP
-        if self.dir != DIR_UP and 2 < py - y < dist :
-            dy = speed
-            self.dir = DIR_DOWN
-        if self.dir != DIR_RIGHT and 2 < x - px < dist :
-            dx = -speed
-            self.dir = DIR_LEFT
-        if self.dir != DIR_LEFT and 2 < px - x < dist :
-            dx = speed
-            self.dir = DIR_RIGHT
+        if cx <= px <= cx + dist and cy <= py <= cy + dist:
+            self.dir = self.getdir(px-x,py-y)
+            if self.dir == DIR_UP :
+                dy = -speed                
+            elif self.dir == DIR_DOWN :
+                dy = speed
+            elif self.dir == DIR_LEFT:
+                dx = -speed
+            elif self.dir == DIR_RIGHT :
+                dx = speed
 
         # 前進
         if dx == 0 and dy == 0 and self.cnt % 8 == 0:
@@ -138,9 +164,14 @@ class EnemyWondering(Enemy):
             elif r < 0.6:
                 # 一定の割合で方向転換
                 self.dir = pyxel.rndi(0,3)
-
-        if self.chkwall(dx,dy) :
-            dx = dy = 0
+        chk = 0
+        if self.chkwall(dx,0) :
+            dx = 0
+            chk += 1
+        if self.chkwall(0,dy) :
+            dy = 0
+            chk += 1
+        if 1 < chk:
             self.dir = pyxel.rndi(0,3)
 
         return dx,dy

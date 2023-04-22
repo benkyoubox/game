@@ -42,7 +42,7 @@ def draw_list(list):
 def draw_front(list,ypos,flg):
     for elem in list:
         if stg.is_area(elem.x,elem.y,elem.w,elem.h):
-            if flg and ypos < elem.y + elem.h :
+            if flg and ypos <= elem.y + elem.h :
                 elem.draw()    
             elif flg == False and elem.y + elem.h < ypos :
                 elem.draw()    
