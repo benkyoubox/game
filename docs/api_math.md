@@ -245,7 +245,7 @@ pyxel.run(update,draw)
 
 | 戻り値 | 型 | 説明 |
 |:---:|:---:|:---|  
-| 度 | f64 | x軸との角度（yは画面下方向に大きくなる） |  
+| 度 | f64 | x軸との角度（角度は画面下方向が正，上方向が負） |  
 
 <br>  
 
@@ -295,6 +295,12 @@ def draw():
 pyxel.run(update,draw)
 ```
 ![image atanB](images/api/m_atan2.gif)  
+
+<br>  
+
+![image atandeg](images/api/m_atan4.png) 戻り値の角度は上方向が負  
+
+
 <br>  
   
 ### rseed()  
