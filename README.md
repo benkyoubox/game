@@ -52,7 +52,7 @@ Python向けレトロゲームエンジン Pyxel を使用したゲーム作成�
   
 ## コマンド抜粋
 
-| コマンド | 内容 |
+| コマンド　　　　　　　　　　　　　　 | 内容 |
 |:---|:---|
 | `pip install -U pyxel` | Pyxelのインストール（アップデート）※Windows環境 |
 | `pyxel copy_examples` | サンプルコードコピー |
