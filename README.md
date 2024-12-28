@@ -59,6 +59,8 @@ Python向けレトロゲームエンジン Pyxel を使用したゲーム作成�
 | `pyxel edit filename` | Pyxel Editor の起動 |
 | `pyxel package appdir srcname` | Pyxel アプリケーションファイル (.pyxapp) 作成 |
 | `pyxel app2html your_app.pyxapp` | Pyxel アプリを HTML ファイルに変換する |
+| `pyxel run filename` | python xxx.py と同様にPythonスクリプトファイルを実行できる |
+| `pyxel watch dirname filename` <br> e.g. `pyxel watch . mygame.py` | 指定したディレクトリ内の変更を監視し，変化があった際に自動でプログラムを再実行 <br> 監視終了は実行したコマンドラインで Ctrl+C を入力|
 | `python -m http.server` | PythonのWebサーバー起動<br>http://localhost:8000/test.html のようにアクセス |
 
 <br>
@@ -70,8 +72,15 @@ Pyxelアプリケーション実行中の特殊な操作
 | Alt+1 | Option+1 | スクリーンショットをデスクトップに保存する |
 | Alt+2 | Option+2 | 画面キャプチャ動画の録画開始時刻をリセットする |
 | Alt+3 | Option+3 | 画面キャプチャ動画をデスクトップに保存する |
-| Alt+0 | Option+0 | パフォーマンスモニタ (fps、update 時間、draw 時間) の表示を切り替える |
-| Alt+Enter | Option+Enter | フルスクリーン表示を切り替える |
+| Shift+Alt+1/2/3 | Shift+Option+1/2/3 | イメージバンク 0,1,2 をデスクトップに保存する |
+| Shift+Alt+0 | Shift+Option+0 | 現在のカラーパレットをデスクトップに保存する |
+
+| Windows | Mac | ゲームパッド | 内容 |
+|:---|:---|:---|:---|
+| Alt+8 | Option+8 | A+B+X+Y+DL | 画面の拡大方法を最大と整数倍で切り替える |
+| Alt+9 | Option+9 | A+B+X+Y+DR | 画面モード (Crisp/Smooth/Retro) を切り替える |
+| Alt+0 | Option+0 | A+B+X+Y+DU | パフォーマンスモニタ (fps，update 時間，draw 時間) の表示を切り替える |
+| Alt+Enter | Option+Enter | A+B+X+Y+DD | フルスクリーン表示を切り替える |
 
 <br>
 
