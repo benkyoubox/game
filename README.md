@@ -117,7 +117,7 @@ Pyxelアプリケーション実行中の特殊な操作
 | 5 | [シューティングゲーム](pyxel/shooter_r/) | 公式サンプルプログラムを横方向のSTGに改造します | [![ブログ](docs/images/ico_BLOG.png)](https://kinutani.hateblo.jp/entry/2023/01/15/155601) |  
 | 6 | [迷路ゲーム1](pyxel/maze/) | ウサギロボがお化けを避けてゴールを目指します<br>上下左右移動のアニメーション（クラス未使用版） | [![ブログ](docs/images/ico_BLOG.png)](https://kinutani.hateblo.jp/entry/2023/03/04/234813) |  
 | 7 | [迷路ゲーム2](pyxel/maze_random/) | アリスが迷路のゴールを目指します<br>迷路の自動生成　2点間の距離を調べる | [![ブログ](docs/images/ico_BLOG.png)](https://kinutani.hateblo.jp/entry/2023/03/10/222546) |  
-| 8 | [日本語表示例](pyxel/bmpfont/) | ビットマップフォントの表示 | [![ブログ](docs/images/ico_BLOG.png)](https://kinutani.hateblo.jp/entry/2023/03/22/185042) |  
+| 8 | 日本語表示例 | ビットマップフォントの表示<br>日本語表示は標準機能でできるようになりました 記事参照→ | [![ブログ](docs/images/ico_BLOG.png)](https://kinutani.hateblo.jp/entry/2024/09/01/230236) |  
 
 
 <br>
