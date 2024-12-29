@@ -33,8 +33,8 @@
 |:---:|:---|:---|
 | [Web](https://kitao.github.io/pyxel/wasm/examples/03_draw_api.html) | [03_draw_api.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/03_draw_api.py) | 描画 API のデモ |
 | [Web](https://kitao.github.io/pyxel/wasm/examples/08_triangle_api.html) | [08_triangle_api.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/08_triangle_api.py) | 三角形描画 API のデモ |
-| [Web](https://kitao.github.io/pyxel/wasm/examples/11_offscreen.html) | [11_offscreen.py]() | Image クラスによるオフスクリーン描画 <br> メモリ上で描画してから画面に表示する，処理負荷を減らす手法 |
-| [Web](https://kitao.github.io/pyxel/wasm/examples/13_bitmap_font.html) | [13_bitmap_font.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/13_bitmap_font.py) | ビットマップフォント描画 |
+| [Web](https://kitao.github.io/pyxel/wasm/examples/11_offscreen.html) | [11_offscreen.py]() | Image クラスによるオフスクリーン描画 <br> 縁取りや拡大などイメージバンク上で描画してから画面表示 |
+| [Web](https://kitao.github.io/pyxel/wasm/examples/13_bitmap_font.html) | [13_bitmap_font.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/13_bitmap_font.py) | ビットマップフォント描画 <br> 日本語表示，文字の縁取り処理など |
 | [Web](https://kitao.github.io/pyxel/wasm/examples/15_tiled_map_file.html) | [15_tiled_map_file.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/15_tiled_map_file.py) | タイルマップファイル (.tmx) の読み込みと描画 |
 | [Web](https://kitao.github.io/pyxel/wasm/examples/16_transform.html) | [16_transform.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/16_transform.py) | 画像の回転と拡大縮小 |
 
@@ -103,9 +103,12 @@ pyxel.blt(10,10, 0, 0,0, 20,8, 0)   # img 0 の指定範囲を画面に表示
 
 pyxel.show()
 ```
-
-※画面にテキストを表示する場合，通常は [pyxel.text()](#text) を用います。  
-　この例はイメージバンクの絵を変更する特殊な例です（キャラクタの見た目を変える，処理負荷を減らす場合など）。  
+> __Note__  
+画面にテキストを表示する場合，通常は [pyxel.text()](#text) を用います。  
+この例はイメージバンクの絵を変更する特殊な例で，以下のような用途で使えそうです。  
+・ ゲーム中にキャラクタの見た目を変える  
+・ マップウィンドウなどをメイン画面と別にイメージバンクに作ってから画面に表示する  
+詳しくは [オフスクリーン描画の公式サンプル](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/11_offscreen.py) を参照してください。  
 
 <br>
   
@@ -231,12 +234,12 @@ pyxel.run(update, draw)
 <br>
 
 ### dither()  
-  以降の描画命令にディザリングを追加します。（上級者向けAPI）   
+  以降の描画命令にディザリングを追加して半透明にします。（上級者向けAPI）   
   `dither(alpha)`  
 
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
-| alpha | f32 | 透明度（1.0で不透明 通常の描画）  |  
+| alpha | f32 | 透明度（0.0 透明 ～ 1.0 不透明） |  
 
 <br>
 
@@ -245,26 +248,28 @@ import pyxel
 pyxel.init(160, 110, fps=3)
 pyxel.image(0).load(0, 0, "g_load_3.png",incl_colors=True)
 
-alpha = 0.0
+alpha = 1.0
 def update():
     global alpha
     if alpha < 1.0 :
         alpha += 0.1
     else :
-        alpha = 1.0
+        alpha = 0.0
     return
 
 def draw():
     pyxel.cls(1)
+    pyxel.text(1,16,"dither sample", 7) # 背面のテキスト
     pyxel.dither(alpha) # ディザリング
     pyxel.blt(0,10, 0, 0,0, 160, 100)
     pyxel.dither(1.0) # ディザリングなしで文字を描画
-    pyxel.text(1,1,"dither "+str(alpha), 7)
+    pyxel.text(1,1,"alpha "+str(alpha), 7)
     return
 
 pyxel.run(update, draw)
 ```
-![image dither](images/api/g_dither.gif)   
+
+![image dither](images/api/g_dither.gif)  コード例で読み込んだファイル [g_load_3.png](https://github.com/benkyoubox/game/blob/main/docs/images/api/g_load_3.png)   
 
 <br>
 
@@ -472,7 +477,7 @@ pyxel.run(update, draw)
 
 ### blt()  
   イメージバンクimg (0-2) の (u, v) からサイズ (w, h) の領域を (x, y) にコピーします。w、hそれぞれに負の値を設定すると水平、垂直方向に反転します。colkeyに色を指定すると透明色として扱われます。  
-  `blt(x, y, img, u, v, w, h, [colkey])`  
+  `blt(x, y, img, u, v, w, h, [colkey], [rotate], [scale])`  
 
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
@@ -483,7 +488,9 @@ pyxel.run(update, draw)
 | v | f64 | ドット絵の座標 |  
 | w | f64 | ドット絵の幅（マイナスで左右反転） |  
 | h | f64 | ドット絵の高さ（マイナスで上下反転） |  
-| colkey | u8 | 透明色 (0-15)  （[表示色](api_graphics.md#color)） |  
+| colkey | u8 | 透明色 (0-15)  （[表示色](api_graphics.md#color)） | 
+| rotate | f64 | 回転角度（反時計回り） |
+| scale | f64 | 拡大率 |  
 
 <br>
 
@@ -506,6 +513,50 @@ def draw():
 pyxel.run(update, draw)
 ```
 ![image blt](images/api/g_blt.png)  
+
+``` python
+import pyxel
+pyxel.init(124, 24)
+pyxel.load("sample.pyxres")
+
+def update():
+    return
+
+def draw():
+    pyxel.cls(3)
+    pyxel.rectb(2,2,120,8,0)
+    for i in range(11):
+        pyxel.blt(2+i*10,2, 0, 8,0, 8,8, 0, rotate=i*36 )
+        if i % 2 == 0:
+            pyxel.text(2+i*10,12,str(i*36),7)
+    return
+
+pyxel.run(update, draw)
+```
+![image blt2](images/api/g_blt_2.png)  
+
+``` python
+import pyxel
+pyxel.init(124, 32)
+pyxel.load("sample.pyxres")
+
+def update():
+    return
+
+def draw():
+    pyxel.cls(3)
+    for i in range(1,6):
+        pyxel.blt(i*20,12, 0, 8,0, 8,8, 0, scale=i*0.5 )
+        pyxel.text(i*20,2,str(i*0.5),7)
+        pyxel.rectb(i*20,12, 8,8, 0)
+    return
+
+pyxel.run(update, draw)
+```
+![image blt3](images/api/g_blt_3.png)  
+
+
+
 <br>
   
 ### bltm()  
@@ -522,6 +573,8 @@ pyxel.run(update, draw)
 | w | f64 | タイルマップの幅（ピクセル単位　マイナスで左右反転） |  
 | h | f64 | タイルマップ高さ（ピクセル単位　マイナスで上下反転） |  
 | colkey | u8 | 透明色 (0-15)  （[表示色](api_graphics.md#color)） | 
+| rotate | f64 | 回転角度（反時計回り） |
+| scale | f64 | 拡大率 |  
 
 <br>
 
@@ -551,6 +604,26 @@ def draw():
 
 pyxel.run(update, draw)
 ```
+``` python
+import pyxel
+pyxel.init(42, 24)
+pyxel.load("sample.pyxres")
+
+def update():
+    return
+
+def draw():
+    pyxel.cls(3)
+    pyxel.bltm(2,4, 0, 8,0, 8,8, 0)
+    pyxel.bltm(12,4, 0, 8,0, 8,8, 0, rotate=90)
+    pyxel.bltm(26,4, 0, 8,0, 8,8, 0, scale=2)
+    pyxel.rectb(26,4, 8,8, 0)
+    return
+
+pyxel.run(update, draw)
+```
+![image bltm](images/api/g_bltm.png)  
+
 <br>
   
 ### text()  
