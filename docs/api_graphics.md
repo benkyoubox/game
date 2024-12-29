@@ -514,6 +514,10 @@ pyxel.run(update, draw)
 ```
 ![image blt](images/api/g_blt.png)  
 
+<br>
+
+回転表示の例（詳しくは公式サンプル [16_transform.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/16_transform.py) 参照）
+
 ``` python
 import pyxel
 pyxel.init(124, 24)
@@ -534,6 +538,10 @@ def draw():
 pyxel.run(update, draw)
 ```
 ![image blt2](images/api/g_blt_2.png)  
+
+<br>
+
+拡大縮小表示の例（詳しくは公式サンプル [16_transform.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/16_transform.py) 参照）
 
 ``` python
 import pyxel
