@@ -36,7 +36,7 @@
 | [Web](https://kitao.github.io/pyxel/wasm/examples/11_offscreen.html) | [11_offscreen.py]() | Image クラスによるオフスクリーン描画 <br> 縁取りや拡大などイメージバンク上で描画してから画面表示 |
 | [Web](https://kitao.github.io/pyxel/wasm/examples/13_bitmap_font.html) | [13_bitmap_font.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/13_bitmap_font.py) | ビットマップフォント描画 <br> 日本語表示，文字の縁取り処理など |
 | [Web](https://kitao.github.io/pyxel/wasm/examples/15_tiled_map_file.html) | [15_tiled_map_file.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/15_tiled_map_file.py) | タイルマップファイル (.tmx) の読み込みと描画 |
-| [Web](https://kitao.github.io/pyxel/wasm/examples/16_transform.html) | [16_transform.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/16_transform.py) | 画像の回転と拡大縮小 |
+| [Web](https://kitao.github.io/pyxel/wasm/examples/16_transform.html) | [16_transform.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/16_transform.py) | 画像の回転と拡大縮小，半透明処理 |
 
 <br>
 
