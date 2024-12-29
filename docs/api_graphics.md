@@ -1,7 +1,7 @@
 # Pyxel API sample
 
-グラフィックス，イメージクラス，タイルマップクラス  
-バージョン：Pyxel 1.9版  
+グラフィックス，イメージクラス，タイルマップクラス，フォントクラス  
+バージョン：Pyxel 2.2版  
   
 ## contents
 
@@ -11,9 +11,10 @@
 |[システム](api_system.md#システム)| [変数](api_system.md#variable) [init()](api_system.md#init) [run()](api_system.md#run) [show()](api_system.md#show) [flip()](api_system.md#flip) [quit()](api_system.md#quit)|
 |[リソース](api_system.md#リソース)| [load()](api_system.md#load) [save()](api_system.md#save)  |
 |[入力](api_system.md#入力)| [変数](api_system.md#variable-1) [btn()](api_system.md#btn) [btnp()](api_system.md#btnp) [btnr()](api_system.md#btnr) [mouse()](api_system.md#mouse) [キー記述例](api_system.md#keycode) |  
-|[グラフィックス](api_graphics.md#グラフィックス)| [変数](api_graphics.md#variable) [image()](api_graphics.md#image) [tilemap()](api_graphics.md#tilemap) [clip()](api_graphics.md#clip) [camera()](api_graphics.md#camera) [pal()](api_graphics.md#pal) [cls()](api_graphics.md#cls) [pget()](api_graphics.md#pget) [pset()](api_graphics.md#pset) <br> [line()](api_graphics.md#line) [rect()](api_graphics.md#rect) [rectb()](api_graphics.md#rectb) [circ()](api_graphics.md#circ) [circb()](api_graphics.md#circb) [elli()](api_graphics.md#elli) [ellib()](api_graphics.md#ellib) [tri()](api_graphics.md#tri) [trib()](api_graphics.md#trib) <br> [fill()](api_graphics.md#fill) [blt()](api_graphics.md#blt) [bltm()](api_graphics.md#bltm) [text()](api_graphics.md#text) [表示色](api_graphics.md#color) |
-|[イメージクラス](api_graphics.md#イメージクラス)| [変数](api_graphics.md#variable-1) [set()](api_graphics.md#set) [load()](api_graphics.md#load) [save()](api_graphics.md#save) [pget()](api_graphics.md#pget-1) [pset()](api_graphics.md#pset-1) |
+|[グラフィックス](api_graphics.md#グラフィックス)| [変数](api_graphics.md#variable) [image()](api_graphics.md#image) [tilemap()](api_graphics.md#tilemap) [clip()](api_graphics.md#clip) [camera()](api_graphics.md#camera) [pal()](api_graphics.md#pal) [dither()](api_graphics.md#dither) [cls()](api_graphics.md#cls) [pget()](api_graphics.md#pget) [pset()](api_graphics.md#pset) <br> [line()](api_graphics.md#line) [rect()](api_graphics.md#rect) [rectb()](api_graphics.md#rectb) [circ()](api_graphics.md#circ) [circb()](api_graphics.md#circb) [elli()](api_graphics.md#elli) [ellib()](api_graphics.md#ellib) [tri()](api_graphics.md#tri) [trib()](api_graphics.md#trib) <br> [fill()](api_graphics.md#fill) [blt()](api_graphics.md#blt) [bltm()](api_graphics.md#bltm) [text()](api_graphics.md#text) [表示色](api_graphics.md#color) |
+|[イメージクラス](api_graphics.md#イメージクラス)| [変数](api_graphics.md#variable-1) [from_image()](api_graphics.md#from_image) [data_ptr()](api_graphics.md#data_ptr) [set()](api_graphics.md#set) [load()](api_graphics.md#load) [save()](api_graphics.md#save) [pget()](api_graphics.md#pget-1) [pset()](api_graphics.md#pset-1) |
 |[タイルマップクラス](api_graphics.md#タイルマップクラス)| [変数](api_graphics.md#variable-2)  [set()](api_graphics.md#set-1) [pget()](api_graphics.md#pget-2) [pset()](api_graphics.md#pset-2) |
+|[フォントクラス](api_graphics.md#フォントクラス)| [Font()](api_graphics.md#font) [text_width()](api_graphics.md#text_width) |
 |[オーディオ](api_audio.md#オーディオ)| [sound()](api_audio.md#sound) [music()](api_audio.md#music) [play_pos()](api_audio.md#play_pos) [play()](api_audio.md#play) [playm()](api_audio.md#playm) [stop()](api_audio.md#stop) |
 |[サウンドクラス](api_audio.md#サウンドクラス)| [変数](api_audio.md#variable) [set()](api_audio.md#set) [set_notes()](api_audio.md#set_notes) [set_tones()](api_audio.md#set_tones) [set_volumes()](api_audio.md#set_volumes) [set_effects()](api_audio.md#set_effects) |
 |[ミュージッククラス](api_audio.md#ミュージッククラス)| [変数](api_audio.md#variable-1) [set()](api_audio.md#set-1) |
@@ -26,7 +27,16 @@
 
 <br>
 
-- 公式サンプルは[03_draw_api.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/03_draw_api.py)を参照してください。  
+- 公式サンプルは以下を参照してください。<br>
+
+| デモ | コード | 内容 |
+|:---:|:---|:---|
+| [Web](https://kitao.github.io/pyxel/wasm/examples/03_draw_api.html) | [03_draw_api.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/03_draw_api.py) | 描画 API のデモ |
+| [Web](https://kitao.github.io/pyxel/wasm/examples/08_triangle_api.html) | [08_triangle_api.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/08_triangle_api.py) | 三角形描画 API のデモ |
+| [Web](https://kitao.github.io/pyxel/wasm/examples/11_offscreen.html) | [11_offscreen.py]() | Image クラスによるオフスクリーン描画 <br> メモリ上で描画してから画面に表示する，処理負荷を減らす手法 |
+| [Web](https://kitao.github.io/pyxel/wasm/examples/13_bitmap_font.html) | [13_bitmap_font.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/13_bitmap_font.py) | ビットマップフォント描画 |
+| [Web](https://kitao.github.io/pyxel/wasm/examples/15_tiled_map_file.html) | [15_tiled_map_file.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/15_tiled_map_file.py) | タイルマップファイル (.tmx) の読み込みと描画 |
+| [Web](https://kitao.github.io/pyxel/wasm/examples/16_transform.html) | [16_transform.py](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/16_transform.py) | 画像の回転と拡大縮小 |
 
 <br>
 
@@ -94,7 +104,8 @@ pyxel.blt(10,10, 0, 0,0, 20,8, 0)   # img 0 の指定範囲を画面に表示
 pyxel.show()
 ```
 
-※画面にテキストを表示する場合，通常は [pyxel.text()](#text) を用います。この例はイメージバンクの絵を変更する特殊な例です（キャラクタの見た目を変えてしまう場合など）。  
+※画面にテキストを表示する場合，通常は [pyxel.text()](#text) を用います。  
+　この例はイメージバンクの絵を変更する特殊な例です（キャラクタの見た目を変える，処理負荷を減らす場合など）。  
 
 <br>
   
@@ -175,7 +186,7 @@ def draw():
 
 pyxel.run(update, draw)
 ```
-![image pal](images/api/g_camera.png)  
+![image camera](images/api/g_camera.png)  
 <br>
   
 ### pal()  
@@ -214,6 +225,46 @@ def draw():
 pyxel.run(update, draw)
 ```
 ![image pal](images/api/g_pal.gif)   
+
+<br>
+
+<br>
+
+### dither()  
+  以降の描画命令にディザリングを追加します。（上級者向けAPI）   
+  `dither(alpha)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| alpha | f32 | 透明度（1.0で不透明 通常の描画）  |  
+
+<br>
+
+``` python
+import pyxel
+pyxel.init(160, 110, fps=3)
+pyxel.image(0).load(0, 0, "g_load_3.png",incl_colors=True)
+
+alpha = 0.0
+def update():
+    global alpha
+    if alpha < 1.0 :
+        alpha += 0.1
+    else :
+        alpha = 1.0
+    return
+
+def draw():
+    pyxel.cls(1)
+    pyxel.dither(alpha) # ディザリング
+    pyxel.blt(0,10, 0, 0,0, 160, 100)
+    pyxel.dither(1.0) # ディザリングなしで文字を描画
+    pyxel.text(1,1,"dither "+str(alpha), 7)
+    return
+
+pyxel.run(update, draw)
+```
+![image dither](images/api/g_dither.gif)   
 
 <br>
 
@@ -504,14 +555,16 @@ pyxel.run(update, draw)
   
 ### text()  
   色colの文字列sを (x, y) に描画します。  
-  `text(x, y, s, col)`  
+  `text(x, y, s, col)` 　　　　 # 半角英数文字列を表示  
+  `text(x, y, s, col, font)` 　# 日本語の文字列を表示  
 
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
 | x | f64 | 描画先のx座標 |  
 | y | f64 | 描画先のy座標 | 
 | s | str | 文字列（半角英数） |
-| col | u8 | 文字色 (0-15)  |  
+| col | u8 | 文字色 (0-15)  |
+| font | Font | 省略可 <br> フォントクラスを使用した日本語表示例は [フォントクラス](#フォントクラス) 参照 |  
 
 <br>
 
@@ -548,6 +601,50 @@ print(pyxel.image(0).height)  # 256
 ```
 <br>
   
+### from_image()  
+  画像ファイルを読み込んでイメージクラスを作成します。   
+  `from_image(filename, [incl_colors])`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| filename | str | 画像ファイルパス |  
+| incl_colors | bool | 省略時 Falseと同じ <br> True 画像ファイルの色も読み込む <br> False 現在のカラーパレットで読み込む | 
+
+| 戻り値 | 型 | 説明 |
+|:---:|:---:|:---|  
+| img | Image | イメージクラス |  
+<br>
+
+``` python
+pyxel.images[0] = pyxel.Image.from_image( "col.png", incl_colors=True )
+```
+カラーパレットはイメージバンク0-2で共通です。（色も読み込むについては [load()](#load) を参照してください）  
+<br>
+
+### data_ptr()  
+  画像メモリへアクセスするリストを返します。（上級者向けAPI）  
+  `data_ptr()`  
+
+``` python
+import pyxel
+pyxel.init(64, 64)
+screen_ptr = pyxel.screen.data_ptr()
+color = 0
+for j in range(pyxel.height):
+    for i in range(pyxel.width):
+        screen_ptr[  j * pyxel.width +  i  ] = color % 16
+        color += 1
+
+pyxel.show()
+```
+
+![image data_ptr](images/api/g_data_ptr.png)  
+
+> __Note__  
+data_ptr()を使用した画面効果については[ブログ記事](https://kinutani.hateblo.jp/entry/2023/03/30/165436)も参照してください。  
+
+<br>
+
 ### set()  
   (x, y) に文字列のリストでイメージを設定します。  
   `set(x, y, data)`  
@@ -589,19 +686,54 @@ pyxel.run(update, draw)
   
 ### load()  
   (x, y) に画像ファイル (png/gif/jpeg) を読み込みます。  
-  `load(x, y, filename)`  
+  `load(x, y, filename)` 　　　　　　　　# 現在のカラーパレットで読み込み  
+  `load(x, y, filename, incl_colors)` 　# 画像ファイルからカラーパレットを作成 
 
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
 | x | i32 | イメージバンクの座標 |  
 | y | i32 | イメージバンクの座標 |  
 | filename | str | 画像ファイル名 (png/gif/jpeg) |  
+| incl_colors | bool | 省略時 Falseと同じ <br> True 画像ファイルの色も読み込む <br> False 現在のカラーパレットで読み込む |  
 
 <br>
 
 ``` python
 pyxel.image(2).load(0, 0, "penguin.png")    # イメージバンク2に画像ファイルを読み込む例
 ```
+
+<br>
+
+> __Note__  
+カラーパレットはイメージバンク0-2で共通です。  
+画像ファイルからのカラーパレット作成について （カラーパレットの拡張については[ブログ記事](https://kinutani.hateblo.jp/entry/2024/04/26/235010)も参照してください）  
+
+読み込み元のファイル  
+![img load0](images/api/g_load_0.png)  
+
+(1) 現在のカラーパレットで読み込むと，パレット内の近似色に置換される  
+``` python
+pyxel.image(0).load(0, 0, "g_load_0.png",incl_colors=False) # 現在のカラーパレットで読み込む
+pyxel.cls(0)
+pyxel.blt(0,10, 0, 0,0, 160, 100)
+pyxel.text(1,1,"incl_colors = False", 7)
+```
+![img load1](images/api/g_load_1.png) 色は自動的に変換  
+
+(2) 画像ファイルの色も読み込むと，ファイルの色でパレットが再作成される  
+``` python
+pyxel.image(0).load(0, 0, "g_load_0.png",incl_colors=True) # 色も読み込む
+pyxel.cls(0) # 0番の色で塗りつぶし
+pyxel.blt(0,10, 0, 0,0, 160, 100)
+pyxel.text(1,1,"incl_colors = True", 7) # 文字色は7番
+```
+![img load2](images/api/g_load_2.png) 0番や7番の色もファイルの色になる  
+
+(3) 読み込み元のファイルにデフォルトカラーパレットの色を追加した例  
+![img load3](images/api/g_load_3.png) 左上から色が読まれるので，カラーパレットを先に設定    
+
+![img load4](images/api/g_load_4.png) 0番や7番の色を保持  
+
 
 <br>
 
@@ -861,7 +993,93 @@ pyxel.tilemap(0).pset(xidx,yidx, (1,0) )
 ```
 <br>
 
-  
+
+[ページの先頭に戻る](#pyxel-api-sample)　
+
+<br>
+
+## フォントクラス  
+
+ビットマップフォント（BDFファイル）を用意すると [text()](#text) で日本語を含む文字列が表示できるようになります。  
+BDFファイルは文字のデータをASCIIコードで定義したフォントデータで，テキストエディタで開くと中を確認できます。  
+BDFファイルは公式サイトから取得(Download raw file)できます。  
+サイズ10 [umplus_j10r.bdf
+](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/assets/umplus_j10r.bdf)，サイズ12 
+[umplus_j12r.bdf](https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/assets/umplus_j12r.bdf)
+
+
+
+### Font()
+  ビットマップフォントのファイルパスを指定して，Fontクラスを作成します。  
+  `Font(filename)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| filename | str | ビットマップフォントのファイルパス |
+
+<br>
+
+``` python
+import pyxel
+pyxel.init(128, 128)
+
+# ビットマップフォントの読み込み
+font = pyxel.Font("umplus_j10r.bdf")
+
+# フォントを指定してテキスト表示
+pyxel.text(10,10,"日本語の表示",7,font)
+
+pyxel.show()
+```
+![img Font](images/api/g_Font.png)  
+
+<br>
+
+### text_width()  
+  引数で指定した文字列の表示幅を返します。  
+  `Fontクラス.text_width(s)`  
+
+| 引数 | 型 | 説明 |
+|:---:|:---:|:---|
+| s | str | 横幅を取得したい文字列 |
+
+<br>
+
+| 戻り値 | 型 | 説明 |
+|:---:|:---:|:---|  
+| 表示幅 | i32 | 文字列を画面に出力するときの横幅 |  
+
+<br>
+
+``` python
+import pyxel
+pyxel.init(128, 128)
+
+# ビットマップフォントの読み込み
+font = pyxel.Font("umplus_j10r.bdf")
+
+# 表示する文字列の横幅を取得
+msg = "あいうえおabcdefg"
+w = font.text_width(msg)
+
+# 文字列の背面に矩形を表示
+pyxel.rect(10,10,w,10,3)
+
+# フォントを指定してテキスト表示
+pyxel.text(10,10,msg,7,font)
+
+pyxel.show()
+```
+
+<br>
+
+![img Font](images/api/g_text_width.png)  
+
+<br>
+
+[ページの先頭に戻る](#pyxel-api-sample)　
+
+<br>
 
 ## color  
 

@@ -1,5 +1,9 @@
-# Pyxel用 Appクラス
-# メイン処理コード例
+# title: Pyxel App
+# author: 
+# desc: example
+# site: https://
+# license: 
+# version: 1.0
 
 import pyxel
 

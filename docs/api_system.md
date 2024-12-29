@@ -463,16 +463,16 @@ pyxel.mouse(True)    # 以降False指定されるまで表示
 |:---|:---|
 | pyxel.KEY_SPACE | スペースキー |
 | pyxel.KEY_RETURN | Enterキー |
-| pyxel.KEY_0 | 数字キー 0 |
-| pyxel.KEY_A | 文字キー A |
+| pyxel.KEY_0 <br> pyxel.KEY_9 | 数字キー 0 ～ 9 |
+| pyxel.KEY_A <br> pyxel.KEY_Z | 文字キー A ～ Z |
 | pyxel.KEY_UP | 上方向キー |
 | pyxel.KEY_DOWN | 下方向キー |
 | pyxel.KEY_LEFT | 左方向キー |
 | pyxel.KEY_RIGHT | 右方向キー |
 | pyxel.MOUSE_BUTTON_LEFT | マウス左ボタン<br>スマホ画面タップ(Web) |
 | pyxel.MOUSE_BUTTON_RIGHT | マウス右ボタン |
-| pyxel.KEY_KP_1 | テンキー数字 1 |
-| pyxel.KEY_KP_ENTER | テンキーEnterキー |
+| pyxel.KEY_KP_0 ～ pyxel.KEY_KP_9 | テンキー数字 0 ～ 9 |
+| pyxel.KEY_KP_ENTER <br> pyxel.KEY_KP_PLUS <br> ：| テンキーEnterキー <br> テンキー+キー <br> 他キーも同様 |
 | pyxel.GAMEPAD1_BUTTON_DPAD_UP | バーチャルゲームパッド上 |
 | pyxel.GAMEPAD1_BUTTON_DPAD_DOWN | バーチャルゲームパッド下 |
 | pyxel.GAMEPAD1_BUTTON_DPAD_LEFT | バーチャルゲームパッド左 |
