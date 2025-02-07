@@ -110,7 +110,7 @@ pyxel.run(update, draw)
   
 ### play()  
   チャンネルch (0-3) でサウンドsnd (0-63) を再生します。sndがリストの場合順に再生されます。再生開始位置はtick (1 tick = 1/120 秒) で指定できます。loopにTrueを指定するとループ再生します。  
-  `play(ch, snd, [tick], [loop])`  
+  `play(ch, snd, [tick], [loop], [resume])`  
 
 
 | 引数 | 型 | 説明 |
@@ -119,6 +119,7 @@ pyxel.run(update, draw)
 | snd | u32 | サウンド (0-63) |  
 | tick | u32 | 再生開始位置 |  
 | loop | bool | 省略，またはFalse指定でループ再生なし |  
+| resume | bool | Trueで再生終了後，直前に再生していたサウンドを復帰 |
 
 <br>
 
