@@ -15,9 +15,9 @@
 |[イメージクラス](api_graphics.md#イメージクラス)| [変数](api_graphics.md#variable-1) [from_image()](api_graphics.md#from_image) [data_ptr()](api_graphics.md#data_ptr) [set()](api_graphics.md#set) [load()](api_graphics.md#load) [save()](api_graphics.md#save) [pget()](api_graphics.md#pget-1) [pset()](api_graphics.md#pset-1) |
 |[タイルマップクラス](api_graphics.md#タイルマップクラス)| [変数](api_graphics.md#variable-2)  [set()](api_graphics.md#set-1) [pget()](api_graphics.md#pget-2) [pset()](api_graphics.md#pset-2) |
 |[フォントクラス](api_graphics.md#フォントクラス)| [Font()](api_graphics.md#font) [text_width()](api_graphics.md#text_width) |
-|[オーディオ](api_audio.md#オーディオ)| [sound()](api_audio.md#sound) [music()](api_audio.md#music) [play_pos()](api_audio.md#play_pos) [play()](api_audio.md#play) [playm()](api_audio.md#playm) [stop()](api_audio.md#stop) |
-|[サウンドクラス](api_audio.md#サウンドクラス)| [変数](api_audio.md#variable) [set()](api_audio.md#set) [set_notes()](api_audio.md#set_notes) [set_tones()](api_audio.md#set_tones) [set_volumes()](api_audio.md#set_volumes) [set_effects()](api_audio.md#set_effects) |
-|[ミュージッククラス](api_audio.md#ミュージッククラス)| [変数](api_audio.md#variable-1) [set()](api_audio.md#set-1) |
+|[オーディオ](api_audio.md#オーディオ)| [変数](api_audio.md#variable) [sound()](api_audio.md#sound) [music()](api_audio.md#music) [play_pos()](api_audio.md#play_pos) [play()](api_audio.md#play) [playm()](api_audio.md#playm) [stop()](api_audio.md#stop) |
+|[サウンドクラス](api_audio.md#サウンドクラス)| [変数](api_audio.md#variable-1) [set()](api_audio.md#set) [set_notes()](api_audio.md#set_notes) [set_tones()](api_audio.md#set_tones) [set_volumes()](api_audio.md#set_volumes) [set_effects()](api_audio.md#set_effects) [mml()](api_audio.md#mml) [old_mml()](api_audio.md#old_mml) [save()](api_audio.md#save) [total_sec()](api_audio.md#total_sec) |
+|[ミュージッククラス](api_audio.md#ミュージッククラス)| [変数](api_audio.md#variable-2) [set()](api_audio.md#set-1) [save()](api_audio.md#save-1) |
 |[数学](api_math.md#pyxel-api-sample)| [ceil()](api_math.md#ceil) [floor()](api_math.md#floor) [sgn()](api_math.md#sgn) [sqrt()](api_math.md#sqrt) [sin()](api_math.md#sin) [cos()](api_math.md#cos) [atan2()](api_math.md#atan2) [rseed()](api_math.md#rseed) [rndi()](api_math.md#rndi) [rndf()](api_math.md#rndf) [nseed()](api_math.md#nseed) [noise()](api_math.md#noise) |
 
 
