@@ -191,7 +191,7 @@ pyxel.run(update, draw)
   
 ### playm()  
   ミュージックmsc (0-7) を再生します。secで再生開始位置を秒単位で指定できます。loopにTrueを指定するとループ再生します。  
-  `playm(msc, [tick], [loop]) `  
+  `playm(msc, [sec], [loop]) `  
 
 | 引数 | 型 | 説明 |
 |:---:|:---:|:---|
