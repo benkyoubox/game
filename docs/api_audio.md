@@ -491,7 +491,9 @@ pyxel.run(update, draw)
 
 <br> 
 
-MMLのコマンドについては，[公式サイトFAQ API仕様と使い方 － PyxelのMMLの使い方を教えてください](https://github.com/kitao/pyxel/blob/main/docs/faq-jp.md) を参照してください。  
+MMLのコマンドについては，下記を参考してください。  
+  - 公式サイトFAQ [API仕様と使い方 － PyxelのMMLの使い方を教えてください](https://github.com/kitao/pyxel/blob/main/docs/faq-jp.md)    
+  - ブログ記事 [Pyxel 2.4版のMMLで音楽を再生する](https://kinutani.hateblo.jp/entry/2025/07/07/230428)  
 
 <br> 
 
@@ -534,7 +536,7 @@ sec = pyxel.sounds[0].total_sec()
 pyxel.sounds[0].save("snd0", sec) # snd0.wav
 #pyxel.sounds[0].save("snd0", sec, ffmpeg=True) # snd0.wav , snd0.mp4
 
-pyxel.show()
+pyxel.quit()
 ```
 <br>
 
@@ -640,7 +642,7 @@ for snd_no in pyxel.musics[0].seqs[0]:
 pyxel.musics[0].save("msc0", sec) # msc0.wav
 #pyxel.musics[0].save("msc0", sec, ffmpeg=True) # msc0.wav , msc0.mp4
 
-pyxel.show()
+pyxel.quit()
 ```
 <br>
 
